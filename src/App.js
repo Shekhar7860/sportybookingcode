@@ -10,6 +10,7 @@ import Messages from './components/user/Messages'
 import Profile from './components/user/Profile'
 import OwnerHome from './components/owner/OwnerHome'
 import OwnerCalendar from './components/owner/OwnerCalender'
+import OwnerBooking from './components/owner/OwnerBooking'
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/profile" ><Profile /></Route>
                     <Route path="/owner" ><OwnerHome /> </Route>
                     <Route path="/calender" ><OwnerCalendar /> </Route>
+                    <Route path="/booking" ><OwnerBooking /> </Route>
                 </Switch>
             </Router>
         </div>

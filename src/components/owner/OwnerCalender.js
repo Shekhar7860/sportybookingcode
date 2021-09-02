@@ -8,6 +8,7 @@ import facilities from '../../assets/owner/facilities.png'
 import Payments from '../../assets/owner/Payments.png'
 import notifications from '../../assets/owner/notifications.png'
 import subscriptions from '../../assets/owner/subscriptions.png'
+import cal from '../../assets/images/Calendar.png'
 import { Link } from 'react-router-dom'
 
 
@@ -36,8 +37,10 @@ const OwnerCalendar = () => {
                         <h3>Listings</h3>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/booking">
                         <img src={bookings} />
                         <h3>Bookings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
                         <img src={facilities} />
@@ -60,8 +63,26 @@ const OwnerCalendar = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 mt-4">
-                            <div className="glance-heading">
+                            <div className="glance-heading calender-page">
                                 <h2>Calender</h2>
+                                <div class="all-room-right">
+                                    <button class="btn btn-black btn-filter more-btn space-no upcoming">Upcoming</button>
+                                    <button class="btn btn-black btn-filter more-btn space-no past">Past</button>
+                                </div>
+                                <div class="all-room-right">
+                                    <button class="btn btn-black btn-filter more-btn space-no month">Month</button>
+                                    <button class="btn btn-black btn-filter more-btn space-no week">Week</button>
+                                    <button class="btn btn-black btn-filter day space-no day">Day</button>
+                                    <button class="btn btn-black btn-filter more-btn">This Month</button>
+                                    <button class="btn btn-black btn-filter green">Import</button>
+                                    <button class="btn btn-black btn-filter more-btn green">Add</button>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mt-4 mb-4">
+                            <div className="calender-owner">
+                                <img src={cal} />
                             </div>
                         </div>
                     </div>

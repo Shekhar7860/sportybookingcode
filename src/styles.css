@@ -1823,6 +1823,75 @@ span.message-notification {
   left: 0;
   margin-right: 13px;
 }
+.botton-booked h3, .botton-booked h2 {
+  margin-bottom: 0;
+}
+.booked-one i {
+  font-size: 27px;
+  position: relative;
+  top: 4px;
+  line-height: 0;
+  margin-left: 10px;
+}
+.Open-booked h2, .Open-booked h3 {
+  margin: 0;
+}
+.booked-open.Open-booked {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.calender-page{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calender-page button.btn.btn-black.btn-filter.day {
+  margin-left: 0;
+  margin-right: 60px;
+}
+.calender-page button.btn.btn-black.btn-filter.green {
+  background: #65C87A;
+  color: #fff;
+  border-color: #65C87A;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no {
+  margin: 0;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no.week {
+  border-radius: 0;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no.month {
+  border-radius: 6px 0px 0px 6px;
+  border-right: 0;
+}
+button.btn.btn-black.btn-filter.day.space-no.day {
+  border-radius: 0 6px 6px 0px;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no.upcoming {
+  background: #080808;
+  color: #fff;
+  border-radius: 6px 0px 0px 6px;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no.past {
+  border-radius: 0 6px 6px 0px;
+}
+.calender-owner img {
+  width: 100%;
+}
+.booking-owner .booking-img {
+  display: flex;
+}
+.booking-owner .booking-img input {
+  margin-right: 5px;
+}
+.booking-owner .booking-img img {
+  max-width: 230px;
+}
+.booking-owner .sendmessege button.btn {
+  font-size: 14px;
+}
 /******* responsive start here ********/
 
 @media only screen and (max-width: 1320px) {

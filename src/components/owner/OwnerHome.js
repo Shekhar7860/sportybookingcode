@@ -36,8 +36,10 @@ const OwnerHome  = () => {
                         <h3>Listings</h3>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/booking">
                         <img src={bookings} />
                         <h3>Bookings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
                         <img src={facilities} />
@@ -93,15 +95,123 @@ const OwnerHome  = () => {
                             <div className="booked">
                                 <h2>Booked</h2>
                             </div>
-                            <div className="booked-open">
+                            <div className="booked-open mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    
+                                </div>
+                                <div className="booked-one botton-booked">
+                                    <h3>Bailey Johnson</h3>
+                                    <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                            <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
                                     <h3>South Rink <i className="fal fa-angle-down"></i></h3>
                                     
                                 </div>
+                                <div className="booked-one botton-booked">
+                                    <h3>Scott Powell</h3>
+                                    <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                            <div className="booked-open mb-3">
                                 <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    
+                                </div>
+                                <div className="booked-one botton-booked">
+                                    <h3>Adam Carter</h3>
+                                    <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                            <div className="booked-open mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    
+                                </div>
+                                <div className="booked-one botton-booked">
+                                    <h3>Jasmine Mccarthy</h3>
+                                    <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                            <div className="booked-open mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    
+                                </div>
+                                <div className="booked-one botton-booked">
                                     <h3>Adam Owen</h3>
                                     <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                            <div className="booked-open mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    
+                                </div>
+                                <div className="booked-one botton-booked">
+                                    <h3>Adam Owen</h3>
+                                    <h2>$45<span className="size-same">.55</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 mt-5">
+                            <div className="booked">
+                                <h2>Open</h2>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>Swimming Pool <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                </div>
+                            </div>
+                            <div className="booked-open Open-booked mb-3">
+                                <div className="booked-one">
+                                    <h2>9–10:30<span>AM</span></h2>
+                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
                                 </div>
                             </div>
                         </div>
