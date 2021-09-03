@@ -32,8 +32,10 @@ const OwnerHome  = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/listing">
                         <img src={listings} />
                         <h3>Listings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
                     <Link to="/booking">
@@ -42,20 +44,28 @@ const OwnerHome  = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/billing">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/payment">
                         <img src={Payments} />
                         <h3>Payments</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/notification">
                         <img src={notifications} />
                         <h3>Notifications</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/subscription">
                         <img src={subscriptions} />
                         <h3>Subscriptions</h3>
+                        </Link>
                     </div>
                 </div>
                 <div className="owner-right">

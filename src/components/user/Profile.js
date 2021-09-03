@@ -145,7 +145,8 @@ function Profile() {
                                         <div className="col-md-6">
                                             <div className="radio-btn">
                                                 <label>
-                                                    <input type="checkbox" />Save card details for future bookings
+                                                <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label>Save card details for future bookings
                                                 </label>
                                             </div>
                                         </div>
@@ -239,7 +240,8 @@ function Profile() {
                                         <div className="col-md-12">
                                             <div className="radio-btn">
                                                 <label>
-                                                    <input type="checkbox" /><span>I would like to receive SMS Text Messages for Status Changes to my Booking (ex. Confirmations, ?Cancellations, etc)</span>
+                                                <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label><span>I would like to receive SMS Text Messages for Status Changes to my Booking (ex. Confirmations, ?Cancellations, etc)</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -253,7 +255,8 @@ function Profile() {
                                         <div className="col-md-12">
                                             <div className="radio-btn">
                                                 <label>
-                                                    <input type="checkbox" /><span>I would like to recieve SMS notifications from facilities</span>
+                                                <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label><span>I would like to recieve SMS notifications from facilities</span>
                                                 </label>
                                             </div>
                                         </div>

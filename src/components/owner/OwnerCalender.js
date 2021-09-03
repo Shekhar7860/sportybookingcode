@@ -19,7 +19,7 @@ const OwnerCalendar = () => {
              <Ownerheader />
         <section className="owner-home">
             <div className="owner-main">
-                <div className="onwer-left">
+            <div className="onwer-left">
                     <div className="owner-icons">
                         <Link to="/owner">
                             <img src={home} />
@@ -33,8 +33,10 @@ const OwnerCalendar = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/listing">
                         <img src={listings} />
                         <h3>Listings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
                     <Link to="/booking">
@@ -43,29 +45,37 @@ const OwnerCalendar = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/billing">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/payment">
                         <img src={Payments} />
                         <h3>Payments</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/notification">
                         <img src={notifications} />
                         <h3>Notifications</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/subscription">
                         <img src={subscriptions} />
                         <h3>Subscriptions</h3>
+                        </Link>
                     </div>
                 </div>
                 <div className="owner-right">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 mt-4">
-                            <div className="glance-heading calender-page">
+                            <div className="glance-heading calender-page owner-calender">
                                 <h2>Calender</h2>
-                                <div class="all-room-right">
+                                <div class="all-room-right mr-auto ml-5">
                                     <button class="btn btn-black btn-filter more-btn space-no upcoming">Upcoming</button>
                                     <button class="btn btn-black btn-filter more-btn space-no past">Past</button>
                                 </div>

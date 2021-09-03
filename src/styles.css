@@ -1715,12 +1715,26 @@ span.message-notification {
   margin-top: 30px;
   padding-top: 40px;
 }
+/* .onwer-left {
+  background: #fafafa;
+  width: 100px;
+  padding: 15px 10px;
+  text-align: center;
+  border-right: 1px solid #eeeeee;
+} */
+.search-main-page a {
+  text-decoration: none;
+  display: block;
+}
 .onwer-left {
   background: #fafafa;
   width: 100px;
   padding: 15px 10px;
   text-align: center;
   border-right: 1px solid #eeeeee;
+  position: sticky;
+  height: 100vh;
+  top: 70px;
 }
 .owner-right {
   width: calc(100% - 100px);
@@ -1773,12 +1787,15 @@ span.message-notification {
 }
 .owner-icons a {
   text-decoration: none;
+  display: block;
 }
 .booked-one {
   display: flex;
   justify-content: space-between;
 }
-
+.billing-page button.btn.btn-black.btn-filter.more-btn.space-no.week {
+  border-right: 0;
+}
 .booked h2 {
   font-weight: 600;
   font-size: 20px;
@@ -1887,11 +1904,336 @@ button.btn.btn-black.btn-filter.more-btn.space-no.past {
   margin-right: 5px;
 }
 .booking-owner .booking-img img {
-  max-width: 230px;
+  max-width: 215px;
+  margin-left: 3px;
 }
 .booking-owner .sendmessege button.btn {
   font-size: 14px;
 }
+.owner-notification p {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000000;
+  opacity: 0.6;
+  padding-top: 10px;
+}
+.owner-notification span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #080808;
+  width: auto !important;
+  margin-right: 25px;
+}
+.owner-notification .radio-btn label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #65C87A;
+  display: block;
+  margin-bottom: 20px;
+}
+.owner-notification .bottom-sms span {
+  color: #444444;
+}
+.owner-payment {
+  width: 100%;
+  max-width: 720px;
+  margin: 20px auto;
+}
+.owner-payment h3 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  color: #666666;
+}
+.owner-payment p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+}
+.stripe input {
+  border-bottom: 2px solid #666666;
+  padding: 5px 0;
+}
+.booking-box.booking-transprnt {
+  background: #FAFAFA;
+  padding: 10px 20px;
+}
+.booking-transprnt .booking-text h6 span {
+  font-size: 14px;
+  line-height: 22px;
+  text-align: right;
+  color: #080808;
+  opacity: 0.6;
+}
+.booking-transprnt select {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #080808;
+  border: none;
+  background: transparent;
+  margin-left: 10px;
+}
+.booking-transprnt .sendmessege button.btn.btn-cancal {
+  background: #080808;
+  border-radius: 4px;
+  padding: 7px 16px;
+  color: #fff;
+}
+.booking-transprnt .booking-img, .booking-transprnt .booking-text {
+  margin-top: 10px;
+}
+.plans-box {
+  width: 300px;
+  background: #FFFFFF;
+  border: transparent;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin: 0 30px;
+  position: relative;
+}
+.gold-plan .standed-plan h2 span {
+  opacity: 0.4;
+}
+.standed-plan {
+  background: #080808;
+  color: #fff;
+  padding: 20px 0 10px;
+  border-radius: 4px 4px 0 0;
+}
+button.select-btn {
+  background: #999999;
+  opacity: 0.2;
+  border-radius: 4px;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  height: 64px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #080808;
+}
+.bottom-plan {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+.standed-plan h6 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.plans-name ul li {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  padding: 8px 0;
+}
+.plans-name {
+  padding: 15px 0;
+  border: 2px solid #999999;
+  height: 438px;
+}
+.gold-plan .plans-name{
+  border: 2px solid #BFA14F;
+}
+.standed-plan h2 {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 64px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 0;
+}
+.plans {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.plans-box.gold-plan {
+  border-color: #BFA14F;
+}
+.gold-plan .standed-plan {
+  background: #BFA14F;
+}
+.gold-plan button.select-btn {
+  background: #BFA14F;
+  color: #fff;
+  opacity: 1;
+}
+.billing-page .all-room-right {
+  width: 49%;
+}
+.calender-page.billing-page {
+  justify-content: inherit;
+}
+.billing-page button.btn.btn-black.btn-filter.month.black-btnss {
+  background: #000;
+  color: #fff;
+}
+.billing-page .day.space-no.day {
+  background: transparent;
+  color: #080808;
+  border: 1px solid #080808;
+}
+.billing-page thead th {
+  background: #FAFAFA;
+  border-top: 0;
+}
+.table td {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #080808;
+}
+.listing-page .all-room-right {
+  width: 49%;
+}
+.listing-boxss h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  margin-left: 15px;
+  margin-bottom: 0;
+}
+.listing-boxss .booking-img {
+  display: flex;
+}
+.listing-boxss .booking-img span {
+  color: #999999;
+}
+.mid-list h4 {
+  opacity: 0.8;
+}
+.mid-list h4 span {
+  opacity: 0.4;
+  margin-left: 10px;
+}
+.list-sendbox p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  opacity: 0.8;
+}
+.list-sendbox p span{
+  margin-right: 10px;
+}
+.booking-box.listing-boxss {
+  background: #F5F5F5;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 10px;
+}
+.booking-box.listing-boxss:hover, .booking-box.listing-boxss.booked-list:hover {
+  border: 2px solid #000;
+}
+.booking-box.listing-boxss.booked-list {
+  background: #FFFFFF;
+  border: 2px solid #EEEEEE;
+
+}
+
+
+
+
+
+
+
+
+/**************** Checkbox ***************/
+
+
+.checkbox-custom-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px;
+  cursor: pointer;
+  position: absolute;
+  left: 14px;
+  top: -2px;
+}
+.booking-transprnt label.checkbox-custom-label {
+  top: 5px;
+  left: 11px;
+}
+.checkbox-custom + .checkbox-custom-label:before {
+  content: '';
+  background: #fff;
+  border-radius: 5px;
+  border: 2px solid #000;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  margin-right: 10px;
+}
+.checkbox-custom:checked + .checkbox-custom-label:before{
+  background-color: #000;
+}
+input.checkbox-custom {
+  z-index: 999999999999999;
+  position: relative;
+  opacity: 0;
+  width: 20px;
+  top: 4px;
+    margin: 0;
+    left: 1px;
+    margin: 0;
+    height: 20px;
+}
+#v-pills-messages .payment-method .radio-btn label {
+  top: 1px;
+}
+.notification label.checkbox-custom-label {
+  top: 0;
+}
+.booking-transprnt .booking-img{
+  margin-top: 5px;
+}
+.bottom-sms label.checkbox-custom-label {
+  left: 0;
+  top: -2px;
+}
+.owner-notification label.checkbox-custom-label {
+  top: -2px;
+}
+.listingss .booking-img {
+  margin-top: 3px;
+}
+.bottom-sms{
+  position: relative;
+}
+.checkbox-custom:checked + .checkbox-custom-label:after {
+  content: "";
+  padding: 2px;
+  position: absolute;
+  width: 1px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  top: 6px;
+    left: 5px;
+}
+
+
+
+
 /******* responsive start here ********/
 
 @media only screen and (max-width: 1320px) {

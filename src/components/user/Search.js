@@ -8,6 +8,7 @@ import nine from '../../assets/images/imagenine.png'
 import ten from '../../assets/images/imageten.png'
 import elebn from '../../assets/images/imageelevn.png'
 import twelb from '../../assets/images/imagetwelbe.png'
+import { Link } from 'react-router-dom'
 
 
 function Search() {
@@ -52,6 +53,7 @@ function Search() {
                             </div>
                             <div className="row">
                                 <div className="col-md-6 pt-4">
+                                    <Link to="/facility">
                                     <div className="search-box">
                                         <div className="serch-img">
                                             <img className="hover-img" src={one} />
@@ -63,8 +65,11 @@ function Search() {
                                             <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
+                                
                                 <div className="col-md-6 pt-4">
+                                <Link to="/facility">
                                     <div className="search-box">
                                         <div className="serch-img">
                                             <img className="hover-img" src={nine} />
@@ -76,8 +81,10 @@ function Search() {
                                             <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
                                 <div className="col-md-6 pt-4">
+                                <Link to="/facility">
                                     <div className="search-box">
                                         <div className="serch-img">
                                             <img className="hover-img" src={ten} />
@@ -89,8 +96,10 @@ function Search() {
                                             <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
                                 <div className="col-md-6 pt-4">
+                                <Link to="/facility">
                                     <div className="search-box">
                                         <div className="serch-img">
                                             <img className="hover-img" src={elebn} />
@@ -102,8 +111,10 @@ function Search() {
                                             <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
                                 <div className="col-md-6 pt-4">
+                                <Link to="/facility">
                                     <div className="search-box">
                                         <div className="serch-img">
                                             <img className="hover-img" src={twelb} />
@@ -115,7 +126,9 @@ function Search() {
                                             <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
+                                
                             </div>
                             <div className="loading text-center">
                                 <p>Loading...</p>

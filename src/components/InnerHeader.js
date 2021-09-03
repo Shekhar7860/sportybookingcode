@@ -30,7 +30,7 @@ const InnerHeader = () => {
                   </div>
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item manage-facility desktopViwe">
-                      <Link className="nav-link" to="/facility">Manage Facility</Link>
+                      <Link className="nav-link" to="/owner">Manage Facility</Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/mybooking">My Bookings</Link>

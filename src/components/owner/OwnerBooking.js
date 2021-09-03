@@ -9,7 +9,6 @@ import facilities from '../../assets/owner/facilities.png'
 import Payments from '../../assets/owner/Payments.png'
 import notifications from '../../assets/owner/notifications.png'
 import subscriptions from '../../assets/owner/subscriptions.png'
-import cal from '../../assets/images/Calendar.png'
 import { Link } from 'react-router-dom'
 
 function OwnerBooking() {
@@ -19,7 +18,7 @@ function OwnerBooking() {
 
             <section className="owner-home">
             <div className="owner-main">
-                <div className="onwer-left">
+            <div className="onwer-left">
                     <div className="owner-icons">
                         <Link to="/owner">
                             <img src={home} />
@@ -33,28 +32,40 @@ function OwnerBooking() {
                         </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/listing">
                         <img src={listings} />
                         <h3>Listings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/booking">
                         <img src={bookings} />
                         <h3>Bookings</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/billing">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/payment">
                         <img src={Payments} />
                         <h3>Payments</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                    <Link to="/notification">
                         <img src={notifications} />
                         <h3>Notifications</h3>
+                        </Link>
                     </div>
                     <div className="owner-icons">
+                        <Link to="/subscription">
                         <img src={subscriptions} />
                         <h3>Subscriptions</h3>
+                        </Link>
                     </div>
                 </div>
                 <div className="owner-right booking-owner">
@@ -63,11 +74,43 @@ function OwnerBooking() {
                         <div className="col-md-12 mt-4">
                         <div className="glance-heading">
                                 <h2>Bookings</h2>
+
+                                <div className="booking-box booking-transprnt">
+                                    <div className="row">
+                                        <div className="col-md-2">
+                                            <div className="booking-img">
+                                            <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label>
+                                                <select name="cars" id="cars">
+                                                    <option value="volvo">Select All</option>
+                                                    <option value="saab">All</option>
+                                                    <option value="mercedes">All Booked</option>
+                                                    <option value="audi">All Open</option>
+                                                    <option>Unselect All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-7">
+                                        <div className="sendmessege">
+                                        <button className="btn btn-cancal">Cancel</button>
+                                            <button className="btn btn-cancal">Refund</button>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-3 text-right">
+                                           
+                                        <div className="booking-text">
+                                                <h6><span>Selected</span> 2</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="booking-box">
                                     <div className="row">
                                         <div className="col-md-3">
                                             <div className="booking-img">
-                                                <input type="checkbox" />
+                                            <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label>
                                                 <img src={imagenine} />
                                             </div>
                                         </div>
@@ -109,7 +152,8 @@ function OwnerBooking() {
                                     <div className="row">
                                         <div className="col-md-3">
                                             <div className="booking-img">
-                                            <input type="checkbox" />
+                                            <input className="checkbox-custom" type="checkbox" />
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label>
                                                 <img src={imagenine} />
                                             </div>
                                         </div>
