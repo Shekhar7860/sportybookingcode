@@ -29,14 +29,14 @@ const InnerHeader = () => {
                     <input type="search" placeholder="Toronto, Canada" />
                   </div>
                   <ul className="navbar-nav ml-auto">
-                    <li className="nav-item manage-facility desktopViwe">
+                    {/* <li className="nav-item manage-facility desktopViwe">
                       <Link className="nav-link" to="/owner">Manage Facility</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                       <Link className="nav-link" to="/mybooking">My Bookings</Link>
                     </li>
                     <li className="nav-item">
-                    <Link className="nav-link" to="/">Favorites</Link>
+                    <Link className="nav-link" to="/favorite">Favorites</Link>
                     </li>
                     <li className="nav-item">
                     <Link className="nav-link" to="/messages">Messages</Link>

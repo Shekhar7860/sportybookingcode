@@ -26,14 +26,17 @@ const Header = () => {
                 </button> */}
                 <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav ml-auto">
-                    <li className="nav-item en-type">
+                    {/* <li className="nav-item en-type">
                       <a className="nav-link"><img src={entype} /></a>
+                    </li> */}
+                    <li className="nav-item manage-facility desktopViwe" data-toggle="modal" data-target="#exampleModalCenter">
+                      <Link className="nav-link" to="/">Manage Facility</Link>
                     </li>
-                    <li className="nav-item manage-facility desktopViwe">
-                      <Link className="nav-link" to="/owner">Manage Facility</Link>
-                    </li>
-                    <li className="nav-item manage-facility mobileViwe">
+                    <li className="nav-item manage-facility mobileViwe" data-toggle="modal" data-target="#exampleModalCenter">
                       <Link className="nav-link" to="/">Facility</Link>
+                    </li>
+                    <li className="nav-item login" data-toggle="modal" data-target="#signupmodal">
+                      <Link className="nav-link" to="/">Sign Up</Link>
                     </li>
                     <li className="nav-item login" data-toggle="modal" data-target="#exampleModalCenter">
                       <Link className="nav-link" to="/">Login</Link>
@@ -58,7 +61,7 @@ const Header = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">Log In</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" id="close-modal" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i class="fal fa-times"></i></span>
               </button>
             </div>
@@ -75,7 +78,7 @@ const Header = () => {
                   </div>
                   <div className="forgot-pass">
                     <p>Forgot password? <span data-bs-dismiss="modal" data-toggle="modal" data-target="#forgot" data-dismiss="modal">Reset password</span></p>
-                    <button class="btn btn-search" data-dismiss="modal">Log In</button>
+                    <Link className="" to="/owner" onClick={()=> document.getElementById("close-modal").click()}><button class="btn btn-search">Log In</button></Link>
                   </div>
                   <div className="login-with">
                     <span></span>

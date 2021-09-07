@@ -16,6 +16,9 @@ import OwnerPayment from './components/owner/OwnerPayment'
 import OwnerSubscriptions from './components/owner/OwnerSubscriptions'
 import OwnerBilling from './components/owner/OwnerBilling'
 import OwnerListing from './components/owner/OwnerListing'
+import Favorite from './components/Favorite'
+import OwnerMyFacilities from './components/owner/OwnerMyFacilities'
+import OwnerAddFacility from './components/owner/OwnerAddfacility'
 const App = () => {
     return (
         <div>
@@ -35,6 +38,9 @@ const App = () => {
                     <Route path="/subscription" ><OwnerSubscriptions /> </Route>
                     <Route path="/billing" ><OwnerBilling /> </Route>
                     <Route path="/listing" ><OwnerListing /> </Route>
+                    <Route path="/favorite" ><Favorite /> </Route>
+                    <Route path="/myfacilities" ><OwnerMyFacilities /> </Route>
+                    <Route path="/addfacilitiy" ><OwnerAddFacility /> </Route>
                 </Switch>
             </Router>
         </div>

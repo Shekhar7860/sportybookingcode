@@ -44,7 +44,7 @@ const OwnerPayment  = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
-                        <Link to="/billing">
+                        <Link to="/myfacilities">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
                         </Link>
@@ -88,7 +88,7 @@ const OwnerPayment  = () => {
                                     <p>Have a Stripe account? You can see the same email.</p>
                                     <div className="row mt-2">
                                         <div className="col-md-12">
-                                        <button className="update-btn">Next</button>
+                                        <Link to="/billing"><button className="update-btn">Next</button></Link>
                                         </div>
                                         </div>
                                    

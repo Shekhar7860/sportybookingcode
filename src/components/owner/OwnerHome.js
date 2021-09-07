@@ -44,7 +44,7 @@ const OwnerHome  = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
-                        <Link to="/billing">
+                        <Link to="/myfacilities">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
                         </Link>
@@ -105,7 +105,8 @@ const OwnerHome  = () => {
                             <div className="booked">
                                 <h2>Booked</h2>
                             </div>
-                            <div className="booked-open mb-3">
+                            
+                            <div className="booked-open mb-3" id="dropdownMenuLink">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
                                     <h3>North Rink <i className="fal fa-angle-down"></i></h3>
@@ -116,6 +117,11 @@ const OwnerHome  = () => {
                                     <h2>$45<span className="size-same">.55</span></h2>
                                 </div>
                             </div>
+                            {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div> */}
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>

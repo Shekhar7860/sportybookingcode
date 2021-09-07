@@ -28,7 +28,7 @@ const Home = () => {
                     <div className="form-group">
                       <i className="fa fa-search"></i>
                       <input type="search" placeholder="Your Location" />
-                      <i className="fas fa-map-marker-alt"></i>
+                      <Link to="/search"><i className="fas fa-map-marker-alt"></i></Link>
                       <Link to="/search">
                         <button className="btn btn-search">Search</button>
                       </Link>
@@ -49,38 +49,50 @@ const Home = () => {
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+                <Link to="/search">
                 <img src={rinks} />
                 <p>Ice Rinks</p>
+                </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+              <Link to="/search">
                 <img src={feilds} />
                 <p>Fields</p>
+                </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+              <Link to="/search">
                 <img src={courts} />
                 <p>Indoor Courts</p>
+                </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+              <Link to="/search">
                 <img src={tennis} />
                 <p>Tennis Courts</p>
+                </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+              <Link to="/search">
                 <img src={indoor} />
                 <p>Fitness</p>
+                </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
+              <Link to="/search">
                 <img src={dark} />
                 <p>More</p>
+                </Link>
               </div>
             </div>
           </div>

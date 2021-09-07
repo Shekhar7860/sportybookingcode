@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import footerlogo from '../assets/images/logo-small-transparent.svg'
 
 const Footer = () => {
@@ -18,36 +19,36 @@ const Footer = () => {
             <div className="col-md-2 desktopViwe">
               <div className="footer-links">
                 <ul>
-                  <li>Sign Up For Free</li>
-                  <li>Pricing</li>
-                  <li>About</li>
-                  <li>FAQ</li>
-                  <li>Help</li>
-                  <li>Contact</li>
+                  <Link to=""><li>Sign Up For Free</li></Link>
+                  <Link to=""><li>Pricing</li></Link>
+                  <Link to=""><li>About</li></Link>
+                  <Link to=""><li>FAQ</li></Link>
+                  <Link to=""><li>Help</li></Link>
+                  <Link to=""><li>Contact</li></Link>
                 </ul>
               </div>
             </div>
             <div className="col-md-3 pl-5 desktopViwe">
               <div className="footer-links">
                 <ul>
-                  <li>Ice Rinks</li>
-                  <li>Fields</li>
-                  <li>Indoor Courts</li>
-                  <li>Swimming Pools</li>
-                  <li>Tennis Courts</li>
-                  <li>Fitness Rooms</li>
+                <Link to=""><li>Ice Rinks</li></Link>
+                <Link to=""><li>Fields</li></Link>
+                <Link to=""><li>Indoor Courts</li></Link>
+                <Link to=""><li>Swimming Pools</li></Link>
+                <Link to=""><li>Tennis Courts</li></Link>
+                <Link to=""><li>Fitness Rooms</li></Link>
                 </ul>
               </div>
             </div>
             <div className="col-md-2 desktopViwe">
               <div className="footer-links">
                 <ul>
-                  <li>Climbing Walls</li>
-                  <li>Yoga Studios</li>
-                  <li>Baseball</li>
-                  <li>Squash Courts</li>
-                  <li>Tracks</li>
-                  <li>Cricket</li>
+                <Link to=""><li>Climbing Walls</li></Link>
+                <Link to=""><li>Yoga Studios</li></Link>
+                <Link to=""><li>Baseball</li></Link>
+                <Link to=""><li>Squash Courts</li></Link>
+                <Link to=""><li>Tracks</li></Link>
+                <Link to=""><li>Cricket</li></Link>
                 </ul>
               </div>
             </div>
@@ -58,7 +59,10 @@ const Footer = () => {
                   <li><i className="fab fa-facebook-f"></i></li>
                   <li><i className="fab fa-twitter"></i></li>
                 </ul>
-                <p className="mt-5 pt-5">Terms of Service<br/>
+                <p className="mt-4 pt-4 english">
+                  English
+                </p>
+                <p className="">Terms of Service<br/>
                     Privacy policy</p>
               </div>
             </div>

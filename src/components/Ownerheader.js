@@ -24,17 +24,17 @@ const Ownerheader = () => {
                   <i className="fa fa-bars" />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                  <div className="search-main">
+                  {/* <div className="search-main">
                     <img src={Searchmain} />
                     <input type="search" placeholder="Toronto, Canada" />
-                  </div>
+                  </div> */}
                   <ul className="navbar-nav ml-auto">
                    
                     <li className="nav-item">
-                    <Link className="nav-link" to="">Dashboard</Link>
+                    <Link className="nav-link" to="/owner">Dashboard</Link>
                     </li>
                     <li className="nav-item">
-                    <Link className="nav-link" to="">Messages<span className="message-notification">1</span> </Link>
+                    <Link className="nav-link" to="/messages">Messages<span className="message-notification">1</span> </Link>
                     </li>
                     <li className="nav-item">
                       <div class="dropdown">

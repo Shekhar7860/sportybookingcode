@@ -45,7 +45,7 @@ const OwnerCalendar = () => {
                         </Link>
                     </div>
                     <div className="owner-icons">
-                        <Link to="/billing">
+                        <Link to="/myfacilities">
                         <img src={facilities} />
                         <h3>My Facilities</h3>
                         </Link>
