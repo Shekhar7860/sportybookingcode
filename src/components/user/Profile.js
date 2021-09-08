@@ -114,7 +114,7 @@ function Profile() {
                                             </div>
                                             <div className="row mt-4">
                                                 <div className="col-md-5">
-                                                    <label>Password</label>
+                                                    <label>Password</label> 
                                                     <input type="password" autocomplete="off" placeholder="*********" />
                                                 </div>
                                             </div>
@@ -123,7 +123,7 @@ function Profile() {
                                                     <button className="update-btn">Save</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>
