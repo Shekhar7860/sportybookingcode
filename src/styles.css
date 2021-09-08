@@ -2740,7 +2740,7 @@ button.close {
 .upcoming-tab .profile-data button.update-btn {
   width: auto;
 }
-.modal-open {
+body.modal-open {
   padding-right: 0 !important;
 }
 /******* responsive start here ********/
