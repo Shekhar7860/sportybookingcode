@@ -2743,6 +2743,9 @@ button.close {
 body.modal-open {
   padding-right: 0 !important;
 }
+.modal-open .modal{
+  padding-right: 0 !important;
+}
 /******* responsive start here ********/
 
 
