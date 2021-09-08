@@ -2287,9 +2287,6 @@ input.checkbox-custom {
   margin-bottom: 0;
 }
 
-.modal-open header #navbarNav {
-  margin-right: 15px;
-}
 
 
 .search-box:hover .favrate path {
@@ -2740,14 +2737,18 @@ button.close {
 .upcoming-tab .profile-data button.update-btn {
   width: auto;
 }
+.modal-open #navbarNav{
+  margin-right: 15px;
+}
+/******* responsive start here ********/
+@media only screen and (min-width: 1420px) {
 body.modal-open {
   padding-right: 0 !important;
 }
 .modal-open .modal{ 
   padding-right: 0 !important;
 }
-/******* responsive start here ********/
-
+}
 
 @media only screen and (max-width: 1320px) {
   .search-main input {
