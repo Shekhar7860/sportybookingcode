@@ -2293,7 +2293,7 @@ input.checkbox-custom {
 
 
 .search-box:hover .favrate path {
-  fill: #ED4C3F;
+  fill: transparent;
   stroke: #ED4C3F;
 }
 
@@ -2737,7 +2737,12 @@ button.close {
 #addcongrs .congo-room button.continue-btn.update-btn {
   width: 100%;
 }
-
+.upcoming-tab .profile-data button.update-btn {
+  width: auto;
+}
+.modal-open {
+  padding-right: 0 !important;
+}
 /******* responsive start here ********/
 
 
