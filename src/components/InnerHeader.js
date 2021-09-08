@@ -50,8 +50,10 @@ const InnerHeader = () => {
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <Link class="dropdown-item" to="/profile">Profile</Link>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                          <Link className="dropdown-item" to="/messages">Messages</Link>
+                          <Link className="dropdown-item" to="/favorite">Favorites</Link>
+                          <Link className="dropdown-item" to="/mybooking">My Bookings</Link>
+                          <Link className="dropdown-item" to="/"><img src={profile} />Log Out</Link>
                         </div>
                       </div>
                    

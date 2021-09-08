@@ -68,7 +68,15 @@ function Search() {
 
                                             </div>
                                             <div className="serch-content">
-                                                <h2>Wayne Gretzky Sports Centre <img src={preium} /> <img src={verify} /> </h2>
+                                                <h2>Wayne Gretzky Sports Centre
+                                                     <span className="tooltips-text" data-toggle="tooltip" data-placement="left" title="Premium Gold Facility">
+                                                     <img src={preium} /> 
+                                                     </span>
+                                                     <span className="tooltips-cont" data-toggle="tooltip" data-placement="left" title="Verified Facility">
+                                                     <img src={verify} />
+                                                     </span>
+                                                    </h2>
+
 
                                                 <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                             </div>
@@ -87,7 +95,11 @@ function Search() {
                                                 </svg>
                                             </div>
                                             <div className="serch-content">
-                                                <h2>Wayne Gretzky Sports Centre  <img src={verify} /></h2>
+                                                <h2>Wayne Gretzky Sports Centre 
+                                                <span className="tooltips-cont" data-toggle="tooltip" data-placement="left" title="Verified Facility">
+                                                     <img src={verify} />
+                                                     </span>
+                                                </h2>
 
                                                 <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                             </div>
@@ -105,7 +117,11 @@ function Search() {
                                                 </svg>
                                             </div>
                                             <div className="serch-content">
-                                                <h2>Wayne Gretzky Sports Centre  <img src={verify} /></h2>
+                                                <h2>Wayne Gretzky Sports Centre  
+                                                <span className="tooltips-cont" data-toggle="tooltip" data-placement="left" title="Verified Facility">
+                                                     <img src={verify} />
+                                                     </span>
+                                                </h2>
 
                                                 <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                             </div>
@@ -123,7 +139,11 @@ function Search() {
                                                 </svg>
                                             </div>
                                             <div className="serch-content">
-                                                <h2>Wayne Gretzky Sports Centre  <img src={verify} /></h2>
+                                                <h2>Wayne Gretzky Sports Centre  
+                                                <span className="tooltips-cont" data-toggle="tooltip" data-placement="left" title="Verified Facility">
+                                                     <img src={verify} />
+                                                     </span>
+                                                </h2>
 
                                                 <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                             </div>
@@ -141,7 +161,11 @@ function Search() {
                                                 </svg>
                                             </div>
                                             <div className="serch-content">
-                                                <h2>Wayne Gretzky Sports Centre  <img src={verify} /></h2>
+                                                <h2>Wayne Gretzky Sports Centre  
+                                                <span className="tooltips-cont" data-toggle="tooltip" data-placement="left" title="Verified Facility">
+                                                     <img src={verify} />
+                                                     </span>
+                                                </h2>
 
                                                 <p>254 North Park Street, Brantford ON N3R 4L1</p>
                                             </div>

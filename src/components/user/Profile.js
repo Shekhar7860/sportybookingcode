@@ -120,7 +120,7 @@ function Profile() {
                                             </div>
                                             <div className="row mt-4">
                                                 <div className="col-md-12">
-                                                    <button className="update-btn">Change Password</button>
+                                                    <button className="update-btn">Save</button>
                                                 </div>
                                             </div>
                                         </div>

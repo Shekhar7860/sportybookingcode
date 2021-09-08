@@ -390,7 +390,7 @@ ul {
 }
 
 .innerheader a.nav-link:hover {
-  color: #1a2a8c;
+  color: #65c87a;
 }
 
 .innerheader li.nav-item:last-child {
@@ -1766,6 +1766,7 @@ span.message-notification {
   position: sticky;
   height: 100vh;
   top: 70px;
+  margin-bottom: 72px;
 }
 .owner-right {
   width: calc(100% - 100px);
@@ -2262,7 +2263,7 @@ input.checkbox-custom {
     left: 5px;
 }
 .search-main-page .right-search {
-  height: 100vh;
+  height: calc(100vh - 72px);
   position: sticky;
   top: 0;
   right: 0;
@@ -2289,7 +2290,7 @@ input.checkbox-custom {
 
 
 
-.search-box:hover .favrate path {
+.search-box .favrate path:hover {
   fill: transparent;
   stroke: #ED4C3F;
 }
@@ -2739,6 +2740,75 @@ button.close {
 }
 .modal-open #navbarNav{
   margin-right: 15px;
+}
+.search-box.preium:hover img.hover-img {
+  border: 4px solid #65c87a;
+}
+.search-box.preium:hover h2 {
+  color: #65c87a;
+}
+.owner-icons a:hover svg path, .owner-icons a:hover svg rect {
+  stroke: #65c87a;
+  fill: #65c87a;
+}
+.owner-icons a:hover h3 {
+  color: #65c87a;
+}
+.owner-icons a.same-stoke:hover svg path{
+  fill: inherit;
+}
+.owner-icons a.subs:hover circle {
+  fill: #65c87a;
+}
+.owner-icons a.subs:hover path {
+  fill: #fff;
+}
+button.btn.btn-black.btn-filter.more-btn.space-no.upcoming:hover {
+  background: #080808c7;
+  border-color: #080808c7;
+}
+.nav-pills .nav-link:hover {
+  color: #000000;
+}
+button.btn.btn-black.btn-filter.more-btn:hover {
+  background: #080808;
+  color: #fff;
+}
+button.btn.btn-black.btn-filter.day.space-no.day:hover {
+  background: #080808c7;
+  border-color: #080808c7;
+}
+button.btn.btn-black.btn-filter.more-btn.green:hover {
+  color: #fff;
+  background: #83da95;
+  border-color: #83da95;
+}
+.booking-transprnt .sendmessege button.btn.btn-cancal:hover {
+  background: #080808c7;
+  border-color: #080808c7;
+}
+.sendmessege button.btn.btn-cancal:hover {
+  color: #080808;
+}
+.innerheader a.dropdown-item img {
+  width: 100%;
+  max-width: 30px;
+  margin-right: 10px;
+}
+.innerheader .nav-item .dropdown-menu.show {
+  min-width: 15rem;
+}
+.serch-content span.tooltips-text img {
+  width: 21px;
+  height: 21px;
+}
+
+span.tooltips-text {
+  margin-left: 5px;
+  margin-right: 0px;
+}
+span.tooltips-cont {
+  margin-left: 5px;
 }
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
