@@ -4,31 +4,24 @@ import { Link } from "react-router-dom";
 import entype from "../assets/images/image 12.png";
 import mobilelogo from "../assets/images/Logotype.png";
 import google from "../assets/images/Google.png";
-
+import { useGoogleLogin } from 'react-google-login'
 const Header = () => {
+  const onSuccess = (googleUser) => {
+    let profile = googleUser.getBasicProfile();
+    console.log('s', profile)
+  }
+  const { signIn, loaded } = useGoogleLogin({
+    onSuccess
+  })
+
+  
   const loginFb = async () => {
     const response = await window.FB.login();
     console.log("s", response);
   };
 
   const loginGoogle = () => {
-    window.gapi.load("auth2", () => {
-      window.gapi.auth2.init({
-        client_id:
-          "1092860248063-af070oa96l0coegbhmiqvm9cb37ffdsd.apps.googleusercontent.com",
-      });
-
-      window.gapi.load("signin2", function () {
-        // render a sign in button
-        // using this method will show Signed In if the user is already signed in
-        var opts = {
-          width: 200,
-          height: 50,
-          onsuccess: onSignIn,
-        };
-        window.gapi.signin2.render("loginButton", opts);
-      });
-    });
+   signIn()
   };
   const onSignIn = (googleUser) => {
     console.log("s", googleUser);
