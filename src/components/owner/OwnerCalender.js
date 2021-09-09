@@ -55,7 +55,7 @@ const OwnerCalendar = () => {
                         <h3>Listings</h3>
                         </Link>
                     </div>
-                    <div className="owner-icons">
+                    {/* <div className="owner-icons">
                     <Link to="/booking" className="same-stoke">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.66667 6.16665C2.66667 5.61437 3.11438 5.16666 3.66667 5.16666H16.3333C16.8856 5.16666 17.3333 5.61437 17.3333 6.16666V15.5C17.3333 16.0523 16.8856 16.5 16.3333 16.5H3.66667C3.11438 16.5 2.66667 16.0523 2.66667 15.5V6.16665Z" stroke="#080808" stroke-width="2"/>
@@ -66,7 +66,7 @@ const OwnerCalendar = () => {
 
                         <h3>Bookings</h3>
                         </Link>
-                    </div>
+                    </div> */}
                     <div className="owner-icons">
                         <Link to="/myfacilities">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

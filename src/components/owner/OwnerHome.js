@@ -54,7 +54,7 @@ const OwnerHome  = () => {
                         <h3>Listings</h3>
                         </Link>
                     </div>
-                    <div className="owner-icons">
+                    {/* <div className="owner-icons">
                     <Link to="/booking" className="same-stoke">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.66667 6.16665C2.66667 5.61437 3.11438 5.16666 3.66667 5.16666H16.3333C16.8856 5.16666 17.3333 5.61437 17.3333 6.16666V15.5C17.3333 16.0523 16.8856 16.5 16.3333 16.5H3.66667C3.11438 16.5 2.66667 16.0523 2.66667 15.5V6.16665Z" stroke="#080808" stroke-width="2"/>
@@ -65,7 +65,7 @@ const OwnerHome  = () => {
 
                         <h3>Bookings</h3>
                         </Link>
-                    </div>
+                    </div> */}
                     <div className="owner-icons">
                         <Link to="/myfacilities">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,26 +139,59 @@ const OwnerHome  = () => {
                                 <h2>Booked</h2>
                             </div>
                             
-                            <div className="booked-open mb-3" id="dropdownMenuLink">
+                            <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
                                     
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                    
+                                  
+                                    
+                                    {/* <div class="dropdown">
+                                   
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                    </div> */}
+
                                 </div>
                                 <div className="booked-one botton-booked">
                                     <h3>Bailey Johnson</h3>
                                     <h2>$45<span className="size-same">.55</span></h2>
                                 </div>
                             </div>
-                            {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div> */}
+                            
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink  </h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                    
+                                   
                                     
                                 </div>
                                 <div className="booked-one botton-booked">
@@ -169,7 +202,19 @@ const OwnerHome  = () => {
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                                 <div className="booked-one botton-booked">
@@ -180,7 +225,19 @@ const OwnerHome  = () => {
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                                 <div className="booked-one botton-booked">
@@ -191,7 +248,19 @@ const OwnerHome  = () => {
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                                 <div className="booked-one botton-booked">
@@ -202,7 +271,19 @@ const OwnerHome  = () => {
                             <div className="booked-open mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                                 <div className="booked-one botton-booked">
@@ -218,49 +299,149 @@ const OwnerHome  = () => {
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                   
+                                     <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>Swimming Pool <i className="fal fa-angle-down"></i></h3>
+                                   
+
+                                    <h3 className="ml-auto">Swimming Pool</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">North Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>South Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">South Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">South Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">South Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">South Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="booked-open Open-booked mb-3">
                                 <div className="booked-one">
                                     <h2>9–10:30<span>AM</span></h2>
-                                    <h3>North Rink <i className="fal fa-angle-down"></i></h3>
+                                    <h3 className="ml-auto">South Rink</h3>
+                                    
+                                    <div class="dropdown">
+                                        <button className="arrow" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i className="fal fa-angle-down"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Add</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

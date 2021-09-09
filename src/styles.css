@@ -56,7 +56,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9999;
   width: 100%;
   background: #fff;
   display: flex;
@@ -865,10 +865,13 @@ button.btn.btn-black.btn-filter:focus {
 }
 
 .footer-links ul li i:hover {
-  color: #1a2a8c;
+  color: #65c87a;
   cursor: pointer;
 }
-
+.footer-links.footer-icons p:hover {
+  cursor: pointer;
+  color: #65c87a;
+}
 .facility-banner {
   background-image: url("./assets/images/facility.png");
   background-repeat: no-repeat;
@@ -1824,6 +1827,7 @@ span.message-notification {
 .booked-one {
   display: flex;
   justify-content: space-between;
+
 }
 .billing-page button.btn.btn-black.btn-filter.more-btn.space-no.week {
   border-right: 0;
@@ -1852,8 +1856,10 @@ span.message-notification {
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  color: #000000;
-  opacity: 0.8;
+  color: #000000b5;
+  display: flex;
+  z-index: 99;
+  position: relative;
 }
 .booked-one h2 {
   font-weight: 600;
@@ -2738,9 +2744,9 @@ button.close {
 .upcoming-tab .profile-data button.update-btn {
   width: auto;
 }
-.modal-open #navbarNav{
+/* .modal-open #navbarNav{
   margin-right: 15px;
-}
+} */
 .search-box.preium:hover img.hover-img {
   border: 4px solid #65c87a;
 }
@@ -2809,6 +2815,24 @@ span.tooltips-text {
 }
 span.tooltips-cont {
   margin-left: 5px;
+}
+.footer-links ul a:hover li {
+  color: #65c87a;
+}
+.booked-one a.dropdown-item {
+  font-weight: 500;
+  color: #080808;
+  padding: 10px;
+}
+.booked-one .dropdown-menu.show {
+  padding: 0;
+}
+.booked-one button#dropdownMenuButton {
+  color: #000000b5;
+  padding: 0;
+}
+.booked-open.Open-booked .dropdown-menu.show {
+  left: -95px !important;
 }
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
