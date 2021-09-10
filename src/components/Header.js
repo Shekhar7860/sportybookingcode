@@ -8,10 +8,12 @@ import { useGoogleLogin } from "react-google-login";
 import { connect } from "react-redux";
 import { loginUser, getUser } from "../redux/actions/user";
 import { getFaceBookData } from "../services/service";
+import { useHistory } from "react-router-dom";
 const Header = ({ get }) => {
+  const history = useHistory();
   const onSuccess = (googleUser) => {
     let profile = googleUser.getBasicProfile();
-    console.log("s", profile);
+    history.push("/owner");
   };
   const { signIn, loaded } = useGoogleLogin({
     onSuccess,
@@ -33,18 +35,20 @@ const Header = ({ get }) => {
   const getCurrentUserInfo = async (response) => {
     const fbResponse = await getFaceBookData(response.authResponse.accessToken);
     console.log("fb", fbResponse);
+    history.push("/owner");
   };
   const loginGoogle = () => {
     signIn();
   };
   const onSignIn = (googleUser) => {
-    console.log("s", googleUser);
-    // let profile = googleUser.getBasicProfile();
-    // console.log("pr", profile);
+    // console.log("s", googleUser);
+    let profile = googleUser.getBasicProfile();
+    console.log("pr", profile);
   };
 
   const userLogin = async (e) => {
     e.preventDefault();
+    history.push("/owner");
   };
   return (
     <div>
@@ -281,11 +285,19 @@ const Header = ({ get }) => {
                     <p>or Sign Up with</p>
 
                     <div className="google-buttons">
-                      <button type="button" class="btn-google">
+                      <button
+                        type="button"
+                        class="btn-google"
+                        onClick={loginGoogle}
+                      >
                         <img src={google} />
                         Google
                       </button>
-                      <button type="button" class="btn-google">
+                      <button
+                        type="button"
+                        class="btn-google"
+                        onClick={loginFb}
+                      >
                         <i class="fab fa-facebook-f"></i>
                         Facebook
                       </button>
