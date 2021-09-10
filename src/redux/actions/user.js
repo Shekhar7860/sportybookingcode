@@ -1,20 +1,10 @@
-import { SET_STATUS, SET_DATA, SET_PROFILE_DATA } from "../actionTypes";
-export function setLoggedIn(val) {
-  return {
-    type: SET_STATUS,
-    status: val,
-  };
-}
+import { postApi, getApi } from "../../services/service";
 
-export function saveUserData(data) {
-  return {
-    type: SET_DATA,
-    data,
-  };
-}
-export function setProfileData(data) {
-  return {
-    type: SET_PROFILE_DATA,
-    profileData: data,
-  };
-}
+export const loginUser = (params) => async (dispatch) => {
+  const response = await postApi(params);
+  return response;
+};
+export const getUser = (params) => async (dispatch) => {
+  const response = await getApi(params);
+  return response;
+};

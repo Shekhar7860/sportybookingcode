@@ -4,29 +4,47 @@ import { Link } from "react-router-dom";
 import entype from "../assets/images/image 12.png";
 import mobilelogo from "../assets/images/Logotype.png";
 import google from "../assets/images/Google.png";
-import { useGoogleLogin } from 'react-google-login'
-const Header = () => {
+import { useGoogleLogin } from "react-google-login";
+import { connect } from "react-redux";
+import { loginUser, getUser } from "../redux/actions/user";
+import { getFaceBookData } from "../services/service";
+const Header = ({ get }) => {
   const onSuccess = (googleUser) => {
     let profile = googleUser.getBasicProfile();
-    console.log('s', profile)
-  }
+    console.log("s", profile);
+  };
   const { signIn, loaded } = useGoogleLogin({
-    onSuccess
-  })
+    onSuccess,
+  });
 
-  
   const loginFb = async () => {
-    const response = await window.FB.login();
-    console.log("s", response);
+    window.FB.login(
+      function (response) {
+        if (response.authResponse) {
+          getCurrentUserInfo(response);
+        } else {
+          console.log("Auth cancelled.");
+        }
+      },
+      { scope: "email" }
+    );
   };
 
+  const getCurrentUserInfo = async (response) => {
+    const fbResponse = await getFaceBookData(response.authResponse.accessToken);
+    console.log("fb", fbResponse);
+  };
   const loginGoogle = () => {
-   signIn()
+    signIn();
   };
   const onSignIn = (googleUser) => {
     console.log("s", googleUser);
     // let profile = googleUser.getBasicProfile();
     // console.log("pr", profile);
+  };
+
+  const userLogin = async (e) => {
+    e.preventDefault();
   };
   return (
     <div>
@@ -151,15 +169,10 @@ const Header = () => {
                         Reset password
                       </span>
                     </p>
-                    <Link
-                      className=""
-                      to="/owner"
-                      onClick={() =>
-                        document.getElementById("close-modal").click()
-                      }
-                    >
-                      <button class="btn btn-search">Log In</button>
-                    </Link>
+
+                    <button class="btn btn-search" onClick={userLogin}>
+                      Log In
+                    </button>
                   </div>
                   <div className="login-with">
                     <span></span>
@@ -421,4 +434,11 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (data) => dispatch(loginUser(data)),
+    get: (data) => dispatch(getUser(data)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Header);
