@@ -873,18 +873,22 @@ button.btn.btn-black.btn-filter:focus {
   color: #65c87a;
 }
 .facility-banner {
-  background-image: url("./assets/images/facility.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 440px;
-  padding: 40px;
   border-radius: 15px;
   position: relative;
-  display: flex;
-  justify-content: space-between;
 }
-
+.full-img{
+  width: 100%;
+}
+.facilty-logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.heart-white {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
 button.white-btn.btn {
   font-weight: 500;
   font-size: 12px;
@@ -895,6 +899,7 @@ button.white-btn.btn {
   position: absolute;
   right: 40px;
   bottom: 40px;
+  background: #fff;
 }
 
 .swining-pol-text h6 {
@@ -922,6 +927,7 @@ button.white-btn.btn {
   line-height: 18px;
   text-align: right;
   color: #666666;
+  padding-top: 5px;
 }
 
 .swining-pol-text p {
@@ -934,6 +940,10 @@ button.white-btn.btn {
 
 .all-room button.btn.btn-black.btn-filter.more-btn {
   border: 1px solid #aaaaaa;
+}
+
+svg.change {
+  display: none;
 }
 
 .more-btn span {
@@ -2833,6 +2843,25 @@ span.tooltips-cont {
 }
 .booked-open.Open-booked .dropdown-menu.show {
   left: -95px !important;
+}
+.heart-white path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.heart-white path:hover {
+  stroke: rgb(237, 76, 63);
+}
+.facility .slick-prev {
+  left: 20px;
+  z-index: 99;
+}
+.slick-next {
+  right: 37px;
+}
+.slick-prev:before, .slick-next:before{
+  font-size: 35px;
+  opacity: 1;
 }
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
