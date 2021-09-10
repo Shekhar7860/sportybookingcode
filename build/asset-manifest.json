@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2d6c3ed2.chunk.css",
+    "main.js": "/static/js/main.ef18b43a.chunk.js",
+    "main.js.map": "/static/js/main.ef18b43a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5eb90bbe.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5eb90bbe.js.map",
+    "static/css/2.19627560.chunk.css": "/static/css/2.19627560.chunk.css",
+    "static/js/2.b791d6cc.chunk.js": "/static/js/2.b791d6cc.chunk.js",
+    "static/js/2.b791d6cc.chunk.js.map": "/static/js/2.b791d6cc.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.19627560.chunk.css.map": "/static/css/2.19627560.chunk.css.map",
+    "static/css/main.2d6c3ed2.chunk.css.map": "/static/css/main.2d6c3ed2.chunk.css.map",
+    "static/js/2.b791d6cc.chunk.js.LICENSE.txt": "/static/js/2.b791d6cc.chunk.js.LICENSE.txt",
+    "static/media/Calendar.1191e6d9.png": "/static/media/Calendar.1191e6d9.png",
+    "static/media/styles.css": "/static/media/landingdesktop.c8c0bd54.png",
+    "static/media/image10.6436e3c4.png": "/static/media/image10.6436e3c4.png",
+    "static/media/imageelevn.9cf3275f.png": "/static/media/imageelevn.9cf3275f.png",
+    "static/media/imagenine.9215675d.png": "/static/media/imagenine.9215675d.png",
+    "static/media/imagesearch.5f3f9dfc.png": "/static/media/imagesearch.5f3f9dfc.png",
+    "static/media/imageten.f24150a9.png": "/static/media/imageten.f24150a9.png",
+    "static/media/imagetwelbe.0d9d0a61.png": "/static/media/imagetwelbe.0d9d0a61.png",
+    "static/media/indoor-tennis-court.e5d5f8c1.png": "/static/media/indoor-tennis-court.e5d5f8c1.png",
+    "static/media/landingcourts.39ba9e1f.png": "/static/media/landingcourts.39ba9e1f.png",
+    "static/media/landingfields.44fb8eb4.png": "/static/media/landingfields.44fb8eb4.png",
+    "static/media/landingrinks.e5f57068.png": "/static/media/landingrinks.e5f57068.png",
+    "static/media/logo-small-transparent.bd2a6eb9.svg": "/static/media/logo-small-transparent.bd2a6eb9.svg",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5eb90bbe.js",
+    "static/css/2.19627560.chunk.css",
+    "static/js/2.b791d6cc.chunk.js",
+    "static/css/main.2d6c3ed2.chunk.css",
+    "static/js/main.ef18b43a.chunk.js"
+  ]
+}
