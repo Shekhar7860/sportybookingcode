@@ -1,25 +1,16 @@
-import { SET_STATUS, SET_DATA, SET_PROFILE_DATA } from "../actionTypes";
+import { SET_USER_DATA } from "../actionTypes";
 const initialState = {
   data: null,
-  profileData: {},
+  userData: {},
   status: false,
 };
 export function user(state = initialState, action) {
   switch (action.type) {
-    case SET_STATUS:
+    case SET_USER_DATA:
+      console.log("s", action);
       return {
         ...state,
-        status: action.status,
-      };
-    case SET_DATA:
-      return {
-        ...state,
-        data: { ...state.status, ...action.data },
-      };
-    case SET_PROFILE_DATA:
-      return {
-        ...state,
-        profileData: { ...state, ...action.profileData },
+        userData: action.data,
       };
     default:
       return state;

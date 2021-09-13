@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import Home from "./components/Home";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Search from "./components/user/Search";
 import Facility from "./components/user/Facility";
 import Mybooking from "./components/user/Mybooking";
@@ -20,16 +25,23 @@ import OwnerMyFacilities from "./components/owner/OwnerMyFacilities";
 import OwnerAddFacility from "./components/owner/OwnerAddfacility";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const App = () => {
+const App = ({ userData }) => {
+  const loggedIn = true;
   useEffect(() => {
     toast.configure();
-  }, []);
+  }, [userData]);
   return (
     <div>
       <Router>
         <Switch>
-          <Home path="/" exact />
+          <Route exact path="/">
+            {userData.userData.id != undefined ? (
+              <Redirect to="/owner" />
+            ) : (
+              <Home />
+            )}
+          </Route>
+          {/* <Route path="/" exact component={Home} /> */}
           <Route path="/search">
             <Search />
           </Route>
@@ -85,4 +97,10 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+  };
+};
+
+export default connect(mapStateToProps, null)(App);

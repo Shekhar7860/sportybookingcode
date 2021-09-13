@@ -114,10 +114,9 @@ const Header = ({ signUp, login }) => {
         password,
       });
       if (res.status == 200) {
-        if (res.data.message == "User SignUp successfully") {
-          showLoading(false);
-          toast.success(res.data.message);
-        }
+        showLoading(false);
+        toast.success(res.data.message);
+        // history.push("/owner");
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
@@ -156,10 +155,8 @@ const Header = ({ signUp, login }) => {
       };
       const res = await signUp("/user/signup", updatedState);
       if (res.status == 200) {
-        if (res.data.message == "User SignUp successfully") {
-          showLoading(false);
-          toast.success(res.data.message);
-        }
+        showLoading(false);
+        toast.success(res.data.message);
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
