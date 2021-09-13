@@ -1,9 +1,16 @@
 import axios from "axios";
 import { apiUrl } from "../../src/constants/constants";
-export const postApi = (params) => {
-  return axios.post(apiUrl + "/profile", { params }).then((response) => {
-    return response;
-  });
+export const postApi = async (url, params) => {
+  let obj = {
+    ...params,
+    role: "1",
+  };
+  try {
+    let x = await axios.post(apiUrl + url, obj);
+    return x;
+  } catch (error) {
+    return error.response;
+  }
 };
 
 export const getApi = (param) => {

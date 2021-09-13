@@ -16,6 +16,13 @@ h3 {
   line-height: 30px;
   color: #080808;
 }
+.rowAlign {
+  flex-direction: "row";
+  display: flex;
+}
+.react-tel-input .form-control {
+  width: 100px !important;
+}
 
 /************* header css start here *************/
 
@@ -28,8 +35,48 @@ h3 {
 
 .login .nav-link:hover {
   color: #fff;
-    background: #83da95;
-    border-color: #83da95;
+  background: #83da95;
+  border-color: #83da95;
+}
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+}
+
+.loader {
+  border: 16px solid #e3e3e3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 .nav-link {
@@ -188,9 +235,9 @@ input:focus-visible {
 }
 
 button.btn.btn-search:hover {
-    color: #fff;
-    background: #83da95;
-    border-color: #83da95;
+  color: #fff;
+  background: #83da95;
+  border-color: #83da95;
 }
 
 /********** landing page css ********/
@@ -1451,7 +1498,6 @@ button.update-btn:hover {
   border-color: #83da95;
 }
 
-
 button:focus {
   border: none;
   outline: none;
@@ -1827,7 +1873,6 @@ span.message-notification {
 .booked-one {
   display: flex;
   justify-content: space-between;
-
 }
 .billing-page button.btn.btn-black.btn-filter.more-btn.space-no.week {
   border-right: 0;
@@ -1878,7 +1923,8 @@ span.message-notification {
   left: 0;
   margin-right: 13px;
 }
-.botton-booked h3, .botton-booked h2 {
+.botton-booked h3,
+.botton-booked h2 {
   margin-bottom: 0;
 }
 .booked-one i {
@@ -1888,16 +1934,17 @@ span.message-notification {
   line-height: 0;
   margin-left: 10px;
 }
-.Open-booked h2, .Open-booked h3 {
+.Open-booked h2,
+.Open-booked h3 {
   margin: 0;
 }
 .booked-open.Open-booked {
-  background: #FFFFFF;
-  border: 1px solid #DDDDDD;
+  background: #ffffff;
+  border: 1px solid #dddddd;
   box-sizing: border-box;
   border-radius: 6px;
 }
-.calender-page{
+.calender-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1907,9 +1954,9 @@ span.message-notification {
   margin-right: 60px;
 }
 .calender-page button.btn.btn-black.btn-filter.green {
-  background: #65C87A;
+  background: #65c87a;
   color: #fff;
-  border-color: #65C87A;
+  border-color: #65c87a;
 }
 button.btn.btn-black.btn-filter.more-btn.space-no {
   margin: 0;
@@ -1968,7 +2015,7 @@ button.btn.btn-black.btn-filter.more-btn.space-no.past {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #65C87A;
+  color: #65c87a;
   display: block;
   margin-bottom: 20px;
 }
@@ -1997,7 +2044,7 @@ button.btn.btn-black.btn-filter.more-btn.space-no.past {
   padding: 5px 0;
 }
 .booking-box.booking-transprnt {
-  background: #FAFAFA;
+  background: #fafafa;
   padding: 10px 20px;
 }
 .booking-transprnt .booking-text h6 span {
@@ -2022,12 +2069,13 @@ button.btn.btn-black.btn-filter.more-btn.space-no.past {
   padding: 7px 16px;
   color: #fff;
 }
-.booking-transprnt .booking-img, .booking-transprnt .booking-text {
+.booking-transprnt .booking-img,
+.booking-transprnt .booking-text {
   margin-top: 10px;
 }
 .plans-box {
   width: 300px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: transparent;
   box-sizing: border-box;
   border-radius: 6px;
@@ -2068,7 +2116,7 @@ button.select-btn {
   font-size: 20px;
   line-height: 30px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .plans-name ul li {
   font-weight: 500;
@@ -2083,15 +2131,15 @@ button.select-btn {
   border: 2px solid #999999;
   height: 438px;
 }
-.gold-plan .plans-name{
-  border: 2px solid #BFA14F;
+.gold-plan .plans-name {
+  border: 2px solid #bfa14f;
 }
 .standed-plan h2 {
   font-weight: 500;
   font-size: 42px;
   line-height: 64px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0;
 }
 .plans {
@@ -2100,13 +2148,13 @@ button.select-btn {
   text-align: center;
 }
 .plans-box.gold-plan {
-  border-color: #BFA14F;
+  border-color: #bfa14f;
 }
 .gold-plan .standed-plan {
-  background: #BFA14F;
+  background: #bfa14f;
 }
 .gold-plan button.select-btn {
-  background: #BFA14F;
+  background: #bfa14f;
   color: #fff;
   opacity: 1;
 }
@@ -2126,7 +2174,7 @@ button.select-btn {
   border: 1px solid #080808;
 }
 .billing-page thead th {
-  background: #FAFAFA;
+  background: #fafafa;
   border-top: 0;
 }
 .table td {
@@ -2166,34 +2214,26 @@ button.select-btn {
   color: #000000;
   opacity: 0.8;
 }
-.list-sendbox p span{
+.list-sendbox p span {
   margin-right: 10px;
 }
 .booking-box.listing-boxss {
-  background: #F5F5F5;
+  background: #f5f5f5;
   border: 2px solid transparent;
   box-sizing: border-box;
   border-radius: 6px;
   padding: 10px;
 }
-.booking-box.listing-boxss:hover, .booking-box.listing-boxss.booked-list:hover {
+.booking-box.listing-boxss:hover,
+.booking-box.listing-boxss.booked-list:hover {
   border: 2px solid #000;
 }
 .booking-box.listing-boxss.booked-list {
-  background: #FFFFFF;
-  border: 2px solid #EEEEEE;
-
+  background: #ffffff;
+  border: 2px solid #eeeeee;
 }
 
-
-
-
-
-
-
-
 /**************** Checkbox ***************/
-
 
 .checkbox-custom-label {
   display: inline-block;
@@ -2209,7 +2249,7 @@ button.select-btn {
   left: 11px;
 }
 .checkbox-custom + .checkbox-custom-label:before {
-  content: '';
+  content: "";
   background: #fff;
   border-radius: 5px;
   border: 2px solid #000;
@@ -2220,7 +2260,7 @@ button.select-btn {
   padding: 2px;
   margin-right: 10px;
 }
-.checkbox-custom:checked + .checkbox-custom-label:before{
+.checkbox-custom:checked + .checkbox-custom-label:before {
   background-color: #000;
 }
 input.checkbox-custom {
@@ -2229,10 +2269,10 @@ input.checkbox-custom {
   opacity: 0;
   width: 20px;
   top: 4px;
-    margin: 0;
-    left: 1px;
-    margin: 0;
-    height: 20px;
+  margin: 0;
+  left: 1px;
+  margin: 0;
+  height: 20px;
 }
 #v-pills-messages .payment-method .radio-btn label {
   top: 1px;
@@ -2240,7 +2280,7 @@ input.checkbox-custom {
 .notification label.checkbox-custom-label {
   top: 0;
 }
-.booking-transprnt .booking-img{
+.booking-transprnt .booking-img {
   margin-top: 5px;
 }
 .bottom-sms label.checkbox-custom-label {
@@ -2253,7 +2293,7 @@ input.checkbox-custom {
 .listingss .booking-img {
   margin-top: 3px;
 }
-.bottom-sms{
+.bottom-sms {
   position: relative;
 }
 .checkbox-custom:checked + .checkbox-custom-label:after {
@@ -2266,7 +2306,7 @@ input.checkbox-custom {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   top: 6px;
-    left: 5px;
+  left: 5px;
 }
 .search-main-page .right-search {
   height: calc(100vh - 72px);
@@ -2277,7 +2317,7 @@ input.checkbox-custom {
 .search-main-page.active .right-search {
   display: none;
 }
-.search-main-page.active .listing-tab.pt-4{
+.search-main-page.active .listing-tab.pt-4 {
   display: block;
 }
 .footer-links ul a {
@@ -2294,11 +2334,9 @@ input.checkbox-custom {
   margin-bottom: 0;
 }
 
-
-
 .search-box .favrate path:hover {
   fill: transparent;
-  stroke: #ED4C3F;
+  stroke: #ed4c3f;
 }
 
 .search-page .favrate path {
@@ -2322,19 +2360,19 @@ input.checkbox-custom {
   font-size: 26px;
   color: #666666;
   position: relative;
-    top: -3px;
-    left: 10px;
+  top: -3px;
+  left: 10px;
 }
 .my-facilities button.btn.btn-black.btn-filter.green {
-  background: #65C87A;
+  background: #65c87a;
   color: #fff;
-  border-color: #65C87A;
+  border-color: #65c87a;
   margin: 0;
 }
-button.btn.btn-black.btn-filter.green:hover{
+button.btn.btn-black.btn-filter.green:hover {
   color: #fff;
-    background: #83da95;
-    border-color: #83da95;
+  background: #83da95;
+  border-color: #83da95;
 }
 .my-facilities .glance-heading {
   display: flex;
@@ -2346,12 +2384,12 @@ button.btn.btn-black.btn-filter.green:hover{
   justify-content: space-between;
   align-items: center;
 }
-.facilities-two h3{
+.facilities-two h3 {
   text-align: center;
   margin: 0;
   line-height: 20px;
 }
-.facilities-two span{
+.facilities-two span {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
@@ -2374,14 +2412,14 @@ button.btn.btn-black.btn-filter.green:hover{
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 5px 0 0;
 }
 .search-box.pending:hover img.hover-img {
   border: 4px solid transparent;
 }
 .search-box.pending:hover h2 {
- color: #080808;
+  color: #080808;
 }
 .prium-text {
   position: absolute;
@@ -2394,8 +2432,8 @@ button.btn.btn-black.btn-filter.green:hover{
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  color: #FFFFFF;
-  background: #BFA14F;
+  color: #ffffff;
+  background: #bfa14f;
   border-radius: 4px;
   padding: 2px 10px;
   display: flex;
@@ -2438,7 +2476,8 @@ button.btn.btn-black.btn-filter.green:hover{
   font-size: 20px;
   margin-right: 8px;
 }
-.add-facility .nav-tabs .nav-link, .add-facility .nav-tabs .nav-link h2 {
+.add-facility .nav-tabs .nav-link,
+.add-facility .nav-tabs .nav-link h2 {
   border: none;
   font-weight: 600;
   font-size: 20px;
@@ -2450,10 +2489,10 @@ button.btn.btn-black.btn-filter.green:hover{
   padding: 0 !important;
   margin: 0;
 }
-.add-facility .nav-tabs .nav-link{
+.add-facility .nav-tabs .nav-link {
   opacity: 0.4;
 }
-.add-facility .nav-tabs .nav-link.active{
+.add-facility .nav-tabs .nav-link.active {
   opacity: 1;
 }
 .add-facility {
@@ -2463,9 +2502,10 @@ button.btn.btn-black.btn-filter.green:hover{
   margin-top: 35px;
 }
 .add-facility-form .form-group input::placeholder {
-  color: #BBBBBB;
+  color: #bbbbbb;
 }
-.add-facility-form .form-group input, .add-facility-form .form-group textarea {
+.add-facility-form .form-group input,
+.add-facility-form .form-group textarea {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
@@ -2482,7 +2522,7 @@ button.btn.btn-black.btn-filter.green:hover{
   color: #080808;
   margin-top: 22px;
 }
-.add-facility-form .form-group textarea{
+.add-facility-form .form-group textarea {
   height: 80px;
 }
 .location {
@@ -2502,13 +2542,13 @@ button.btn.btn-black.btn-filter.green:hover{
   margin-bottom: 15px;
 }
 
-.sunday .switch-input:checked ~ .switch-label:after{
+.sunday .switch-input:checked ~ .switch-label:after {
   background-color: #666 !important;
 }
-.sunday .switch{
+.sunday .switch {
   background-color: #666 !important;
 }
-.sunday .switch-left-right .switch-label:after{
+.sunday .switch-left-right .switch-label:after {
   background-color: #666 !important;
 }
 .add-facility span.map-text {
@@ -2523,7 +2563,7 @@ button.btn.btn-black.btn-filter.green:hover{
   margin: 0 25px;
 }
 .drop-photo .form-group {
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -2533,8 +2573,9 @@ button.btn.btn-black.btn-filter.green:hover{
   text-align: center;
   position: relative;
 }
-button.back-btn, button.back-btn:hover {
-  background: #EEEEEE;
+button.back-btn,
+button.back-btn:hover {
+  background: #eeeeee;
   color: #080808;
 }
 .add-room {
@@ -2547,16 +2588,17 @@ button.back-btn, button.back-btn:hover {
   width: 100%;
 }
 button.add-room.btn {
-  background: #65C87A;
+  background: #65c87a;
   border-radius: 4px;
   height: 40px;
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-button.back-btn-continue, button.back-btn-continue:hover {
+button.back-btn-continue,
+button.back-btn-continue:hover {
   background: #999999;
   color: #ffffff82;
 }
@@ -2581,8 +2623,8 @@ input.open-file {
   border-bottom: 2px solid #080808;
   text-align: left;
   width: 100%;
-    appearance: none;
-    position: relative;
+  appearance: none;
+  position: relative;
 }
 .select-one i {
   position: absolute;
@@ -2619,7 +2661,8 @@ input.open-file {
   font-weight: 600;
   cursor: pointer;
 }
-.add-room-one p, .add-room-one span {
+.add-room-one p,
+.add-room-one span {
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
@@ -2634,16 +2677,18 @@ input.open-file {
   /* height: 146px; */
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 16px rgb(0 0 0 / 16%);
   border-radius: 6px;
 }
-.dropdown-item:focus, .dropdown-item:hover {
+.dropdown-item:focus,
+.dropdown-item:hover {
   color: #fff !important;
   text-decoration: none;
   background-color: #64c679;
 }
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active,
+.dropdown-item:active {
   color: #fff;
   text-decoration: none;
   background-color: #64c679;
@@ -2662,7 +2707,7 @@ input.open-file {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #eeeeee;
 }
 .add-room-modal .glance-heading p {
   margin: 0;
@@ -2672,7 +2717,7 @@ input.open-file {
   color: #080808;
 }
 #addroom .modal-content {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 20px #000000;
   border-radius: 8px;
   border: none;
@@ -2724,7 +2769,7 @@ button.close {
   color: #080808;
 }
 #addcongrs .modal-content {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 20px #000000;
   border-radius: 8px;
   padding: 15px 15px 20px;
@@ -2735,7 +2780,7 @@ button.close {
   line-height: 28px;
   color: #000000;
   margin: 15px 0;
-  border-bottom: 1px solid #EEEEEE; 
+  border-bottom: 1px solid #eeeeee;
   padding-bottom: 25px;
 }
 #addcongrs .congo-room button.continue-btn.update-btn {
@@ -2753,14 +2798,15 @@ button.close {
 .search-box.preium:hover h2 {
   color: #65c87a;
 }
-.owner-icons a:hover svg path, .owner-icons a:hover svg rect {
+.owner-icons a:hover svg path,
+.owner-icons a:hover svg rect {
   stroke: #65c87a;
   fill: #65c87a;
 }
 .owner-icons a:hover h3 {
   color: #65c87a;
 }
-.owner-icons a.same-stoke:hover svg path{
+.owner-icons a.same-stoke:hover svg path {
   fill: inherit;
 }
 .owner-icons a.subs:hover circle {
@@ -2836,12 +2882,12 @@ span.tooltips-cont {
 }
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
-body.modal-open {
-  padding-right: 0 !important;
-}
-.modal-open .modal{ 
-  padding-right: 0 !important;
-} 
+  body.modal-open {
+    padding-right: 0 !important;
+  }
+  .modal-open .modal {
+    padding-right: 0 !important;
+  }
 }
 
 @media only screen and (max-width: 1320px) {
@@ -2948,12 +2994,12 @@ body.modal-open {
   .footer-links.footer-icons p {
     margin-top: 5px;
     margin-bottom: 0;
-}
+  }
   .english {
     opacity: 0;
     margin-bottom: 0;
     margin-top: 0 !important;
-}
+  }
   .search-main-page .container-fluid.pr-0 {
     padding-right: 20px !important;
   }

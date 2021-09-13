@@ -1,24 +1,73 @@
-import React from "react";
+import React, { useState, useReducer } from "react";
 import logoheader from "../assets/images/logo-small-transparent.svg";
 import { Link } from "react-router-dom";
 import entype from "../assets/images/image 12.png";
 import mobilelogo from "../assets/images/Logotype.png";
 import google from "../assets/images/Google.png";
 import { useGoogleLogin } from "react-google-login";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import { connect } from "react-redux";
-import { loginUser, getUser } from "../redux/actions/user";
+import { loginUser, getUser, signUpUser } from "../redux/actions/user";
 import { getFaceBookData } from "../services/service";
 import { useHistory } from "react-router-dom";
-const Header = ({ get }) => {
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { validateEmail, validatePhone } from "../helpers/commonFunctions";
+const initialData = {
+  email: "",
+  phone_number: "",
+  first_name: "",
+  last_name: "",
+  password: "",
+};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "EMAIL":
+      return { ...state, email: action.payload };
+    case "PHONE":
+      return { ...state, phone_number: action.payload };
+    case "FIRSTNAME":
+      return { ...state, first_name: action.payload };
+    case "LASTNAME":
+      return { ...state, last_name: action.payload };
+    case "PASSWORD":
+      return { ...state, password: action.payload };
+    default:
+      return state;
+  }
+};
+const Header = ({ signUp, login }) => {
+  const [loading, showLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState(91);
+  const [state, dispatch] = useReducer(reducer, initialData);
   const history = useHistory();
   const onSuccess = (googleUser) => {
     let profile = googleUser.getBasicProfile();
     history.push("/owner");
   };
+
+  const handleChange = (e, param) => {
+    if (param == "email") {
+      dispatch({ type: "EMAIL", payload: e.target.value });
+    } else if (param == "phone") {
+      dispatch({ type: "PHONE", payload: e.target.value });
+    } else if (param == "firstName") {
+      dispatch({ type: "FIRSTNAME", payload: e.target.value });
+    } else if (param == "lastName") {
+      dispatch({ type: "LASTNAME", payload: e.target.value });
+    } else if (param == "password") {
+      dispatch({ type: "PASSWORD", payload: e.target.value });
+    }
+  };
   const { signIn, loaded } = useGoogleLogin({
     onSuccess,
   });
-
+  const selected = (phone) => {
+    setPhone(phone);
+  };
   const loginFb = async () => {
     window.FB.login(
       function (response) {
@@ -46,9 +95,78 @@ const Header = ({ get }) => {
     console.log("pr", profile);
   };
 
+  const update = (e, param) => {
+    if (param == "email") {
+      setEmail(e.target.value);
+    } else {
+      setPassword(e.target.value);
+    }
+  };
   const userLogin = async (e) => {
     e.preventDefault();
-    history.push("/owner");
+    if (email && password) {
+      if (!validateEmail(email)) {
+        toast.error("Please Enter Valid Email Id");
+      }
+      showLoading(true);
+      const res = await login("/user/login", {
+        email,
+        password,
+      });
+      if (res.status == 200) {
+        if (res.data.message == "User SignUp successfully") {
+          showLoading(false);
+          toast.success(res.data.message);
+        }
+      } else {
+        showLoading(false);
+        toast.error(res.data ? res.data.error_description : String(res));
+      }
+    } else {
+      toast.error("Please Enter Email And Password Both");
+      showLoading(false);
+    }
+    //toast.configure();
+    // toast.error("Wow so easy!");
+    // showLoading(true);
+    // setTimeout(() => {
+    //   history.push("/owner");
+    // }, 2000);
+  };
+
+  const signUpUser = async (e) => {
+    e.preventDefault();
+    if (
+      state.email &&
+      state.phone_number &&
+      state.first_name &&
+      state.last_name &&
+      state.password
+    ) {
+      if (!validatePhone(state.phone_number)) {
+        toast.error("Please Enter Valid Phone Number");
+      }
+      if (!validateEmail(state.email)) {
+        toast.error("Please Enter Valid Email Id");
+      }
+      showLoading(true);
+      let updatedState = {
+        ...state,
+        country_code: phone,
+      };
+      const res = await signUp("/user/signup", updatedState);
+      if (res.status == 200) {
+        if (res.data.message == "User SignUp successfully") {
+          showLoading(false);
+          toast.success(res.data.message);
+        }
+      } else {
+        showLoading(false);
+        toast.error(res.data ? res.data.error_description : String(res));
+      }
+    } else {
+      toast.error("Please Enter All Details");
+    }
   };
   return (
     <div>
@@ -151,15 +269,32 @@ const Header = ({ get }) => {
               </button>
             </div>
             <div class="modal-body">
+              {loading ? (
+                <div class="loader-wrapper">
+                  <div class="loader"></div>
+                </div>
+              ) : null}
               <div className="login">
                 <form>
                   <div className="login-form">
                     <label>Email</label>
-                    <input type="email" placeholder="eg: john.j@gmail.com" />
+                    <input
+                      type="email"
+                      placeholder="eg: john.j@gmail.com"
+                      onChange={(e) => {
+                        update(e, "email");
+                      }}
+                    />
                   </div>
                   <div className="login-form">
                     <label>Password</label>
-                    <input type="password" placeholder="•••••••••••••••••" />
+                    <input
+                      type="password"
+                      placeholder="•••••••••••••••••"
+                      onChange={(e) => {
+                        update(e, "password");
+                      }}
+                    />
                   </div>
                   <div className="forgot-pass">
                     <p>
@@ -173,7 +308,6 @@ const Header = ({ get }) => {
                         Reset password
                       </span>
                     </p>
-
                     <button class="btn btn-search" onClick={userLogin}>
                       Log In
                     </button>
@@ -254,32 +388,74 @@ const Header = ({ get }) => {
                 <form>
                   <div className="login-form">
                     <label>Email</label>
-                    <input type="email" placeholder="eg: john.j@gmail.com" />
+                    <input
+                      type="email"
+                      placeholder="eg: john.j@gmail.com"
+                      onChange={(e) => {
+                        handleChange(e, "email");
+                      }}
+                    />
                   </div>
 
                   <div className="login-form">
                     <label>Phone Number</label>
-                    <input type="number" placeholder="eg: +1 234 567 8900" />
+                    <div className="rowAlign">
+                      <PhoneInput
+                        className="phonewidth"
+                        country={"in"}
+                        onChange={(phone) => selected(phone)}
+                      />
+                      <input
+                        type="number"
+                        placeholder="eg: +1 234 567 8900"
+                        onChange={(e) => {
+                          handleChange(e, "phone");
+                        }}
+                      />
+                    </div>
                   </div>
                   <div className="full-div">
                     <div className="login-form half">
                       <label>First Name</label>
-                      <input type="email" placeholder="eg: John" />
+                      <input
+                        type="email"
+                        placeholder="eg: John"
+                        onChange={(e) => {
+                          handleChange(e, "firstName");
+                        }}
+                      />
                     </div>
                     <div className="login-form half">
                       <label>Last Name</label>
-                      <input type="email" placeholder="eg: John" />
+                      <input
+                        type="email"
+                        placeholder="eg: John"
+                        onChange={(e) => {
+                          handleChange(e, "lastName");
+                        }}
+                      />
                     </div>
                   </div>
                   <div className="login-form">
                     <label>Password</label>
-                    <input type="password" placeholder="•••••••••••••••••" />
+                    <input
+                      type="password"
+                      placeholder="•••••••••••••••••"
+                      onChange={(e) => {
+                        handleChange(e, "password");
+                      }}
+                    />
                   </div>
                   <div className="forgot-passsign signup-btn">
-                    <button class="btn btn-search sign-up" data-dismiss="modal">
+                    <button class="btn btn-search sign-up" onClick={signUpUser}>
                       Sign Up
                     </button>
                   </div>
+                  {loading ? (
+                    <div class="loader-wrapper">
+                      <div class="loader"></div>
+                    </div>
+                  ) : null}
                   <div className="login-with">
                     <span></span>
                     <p>or Sign Up with</p>
@@ -448,8 +624,8 @@ const Header = ({ get }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (data) => dispatch(loginUser(data)),
-    get: (data) => dispatch(getUser(data)),
+    signUp: (url, data) => dispatch(signUpUser(url, data)),
+    login: (url, data) => dispatch(loginUser(url, data)),
   };
 };
 
