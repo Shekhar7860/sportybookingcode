@@ -47,7 +47,7 @@ function Profile() {
                                                 <label>Phone Number</label>
                                                 <input type="text" autocomplete="off" placeholder="+1 234 567 8900" />
                                             </div>
-                                            <div className="col-md-5 ml-4 verification-code">
+                                            <div className="col-md-4 ml-4 verification-code">
                                                 <label>Verification Code</label>
                                                 <input type="text" autocomplete="off" placeholder="1" />
                                                 <input type="text" autocomplete="off" placeholder="2" />
@@ -58,7 +58,7 @@ function Profile() {
                                         </div>
                                         <div className="row mt-4">
                                             <div className="col-md-3">
-                                                <h4>Connect Social Profile</h4>
+                                                <h4>Confirm your changes</h4>
                                                 <button className="btn-google">
                                                     <img src={google} />
                                                     {/* <i class="fab fa-google"></i> */}
@@ -82,7 +82,7 @@ function Profile() {
 
                                             <div className="col-md-3">
                                                 <label>Password</label>
-                                                <input type="password" autocomplete="off" placeholder="*********" />
+                                                <input type="password" autocomplete="off" placeholder="•••••••••••••" />
                                             </div>
 
                                         </div>
@@ -241,12 +241,12 @@ function Profile() {
                                             <div className="radio-btn">
                                                 <label>
                                                 <input className="checkbox-custom" type="checkbox" />
-                                                <label for="checkbox-1" className="checkbox-custom-label"></label><span>I would like to receive SMS Text Messages for Status Changes to my Booking (ex. Confirmations, ?Cancellations, etc)</span>
+                                                <label for="checkbox-1" className="checkbox-custom-label"></label><span>I would like to receive SMS Text Messages for Status Changes to my Booking (ex. Confirmations, Cancellations, etc)</span>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row mt-4">
+                                    <div className="row mt-3">
                                         <div className="col-md-12">
                                             <div className="billing-details">
                                                 <h4>Newsletter</h4>
@@ -262,7 +262,7 @@ function Profile() {
                                         </div>
 
                                     </div>
-                                    <div className="row mt-4">
+                                    <div className="row mt-3">
                                         <div className="col-md-12">
                                             <button className="update-btn">Save</button>
                                         </div>
@@ -290,21 +290,21 @@ function Profile() {
                                                     <td scope="row">+</td>
                                                     <td>124123</td>
                                                     <td>11 May 2021, 10:36:02 AM</td>
-                                                    <td>@North Rink • 1 May 2021, 12AM–3PM • Refund</td>
+                                                    <td>North Rink • 1 May 2021, 12AM–3PM • Refund</td>
                                                     <td>$95.00</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">+</td>
                                                     <td>124123</td>
                                                     <td>11 May 2021, 10:36:02 AM</td>
-                                                    <td>@North Rink • 1 May 2021, 12AM–3PM • Refund</td>
+                                                    <td>North Rink • 1 May 2021, 12AM–3PM • Refund</td>
                                                     <td>$95.00</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">+</td>
                                                     <td>124123</td>
                                                     <td>11 May 2021, 10:36:02 AM</td>
-                                                    <td>@North Rink • 1 May 2021, 12AM–3PM • Refund</td>
+                                                    <td>North Rink • 1 May 2021, 12AM–3PM • Refund</td>
                                                     <td>$95.00</td>
                                                 </tr>
                                             </tbody>

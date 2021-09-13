@@ -62,7 +62,9 @@ header {
   display: flex;
   align-items: center;
 }
-
+.modal{
+  z-index: 99999;
+}
 .manage-facility .nav-link:hover {
   color: #fff;
   background: #182a8cdb;
@@ -339,7 +341,7 @@ ul {
   width: 20px;
 }
 
-.footer-links ul li {
+.footer-links ul li a {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -799,7 +801,7 @@ button.btn.btn-black.btn-filter:focus {
 }
 
 .listing-box {
-  padding: 15px;
+  padding: 6px 15px;
   margin: 10px 15px 10px 15px;
   background: #ffffff;
   border-radius: 6px;
@@ -831,12 +833,18 @@ button.btn.btn-black.btn-filter:focus {
   font-size: 14px;
   line-height: 22px;
   color: #000000;
+  margin-bottom: 0px;
 }
 
 .listing-box ul li strong {
   margin-left: 5px;
+  font-weight: 700;
 }
-
+.booking-text h3 span {
+  opacity: 0.4;
+  font-weight: 500;
+  margin-left: 3px;
+}
 .listing-box ul {
   display: flex;
   justify-content: space-between;
@@ -863,7 +871,9 @@ button.btn.btn-black.btn-filter:focus {
   margin-top: 72px;
   padding-top: 20px;
 }
-
+.footer-links ul li a:hover {
+  color: #65c87a;
+}
 .footer-links ul li i:hover {
   color: #65c87a;
   cursor: pointer;
@@ -1168,6 +1178,15 @@ button:focus {
   color: #080808;
   display: inline-block;
 }
+p.date-messg {
+  color: #999999;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+.messages-name span.pull-right {
+  font-weight: 400;
+}
 
 .messages-name h5 {
   font-weight: 400;
@@ -1394,7 +1413,7 @@ button#dropdownMenuButton:focus {
 
 .verification-code input {
   display: inline-block;
-  width: 10%;
+  width: 7%;
   margin: 10px 5px;
   text-align: center;
   background: transparent;
@@ -1414,6 +1433,7 @@ button#dropdownMenuButton:focus {
   color: #080808;
   margin-bottom: 0;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 button.btn-google {
@@ -1537,6 +1557,7 @@ button:focus {
 
 .payment-heading.wallet p {
   opacity: 1;
+  font-weight: 500;
 }
 
 .wallet h4 {
@@ -1595,8 +1616,11 @@ button:focus {
   border-bottom: 2px solid #666666;
   width: 100%;
   padding: 6px 0 4px;
+  font-weight: 500;
 }
-
+.forgot-passsign p span {
+  color: #080808;
+}
 .forgot-pass p,
 .forgot-passsign p {
   font-weight: normal;
@@ -1651,13 +1675,20 @@ button:focus {
   border-color: #080808;
   color: #080808;
 }
-
+.transition .table thead th {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #080808;
+}
 .login-with span {
   position: relative;
   display: inline-block;
   width: 100%;
 }
-
+.payment-method.notification .radio-btn label{
+  display: block;
+}
 .login-with span:before {
   position: absolute;
   content: "";
@@ -2144,6 +2175,9 @@ button.select-btn {
   font-size: 14px;
   line-height: 22px;
   color: #080808;
+}
+.all-room-right button.btn.btn-black.btn-filter {
+  margin-right: 7px;
 }
 .listing-page .all-room-right {
   width: 49%;
@@ -2863,6 +2897,9 @@ span.tooltips-cont {
   font-size: 35px;
   opacity: 1;
 }
+.footer-links.footer-icons p.english {
+  padding-bottom: 7px !important;
+}
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
 body.modal-open {
@@ -2967,6 +3004,15 @@ body.modal-open {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  footer{
+    padding: 40px 0 15px;
+  }
+  .mobileViwe.testimonial button.slick-arrow {
+    display: none !important;
+}
+.mobileViwe.testimonial .box-one p{
+  padding-right: 0;
+}
 }
 
 @media only screen and (max-width: 767px) {

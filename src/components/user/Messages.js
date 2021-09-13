@@ -29,10 +29,10 @@ function Messages() {
                                 <h5>You: Ok</h5>
                             </div>
                             <div className="messages-name">
-                                <h6>Mike S.</h6>
-                                <span className="pull-right">1:16 PM</span>
-                                <p>Wayne Gretzky Sports Centre</p>
-                                <h5>You: Ok</h5>
+                                <h6>John</h6>
+                                <span className="pull-right">12:15 AM</span>
+                                <p>GTA Sportsplex</p>
+                                <h5>Mike: I will send you promocode in a</h5>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ function Messages() {
                                 </div>
                             </div>
                             <div className="chat-right">
-                                <p>9 May, 10:03 AM</p>
+                                <p className="date-messg">9 May, 10:03 AM</p>
                             </div>
                         </div>
                         <div className="text-center date-text">
@@ -71,7 +71,7 @@ function Messages() {
                                 </div>
                             </div>
                             <div className="chat-right">
-                                <p>Just now</p>
+                                <p className="date-messg">Just now</p>
                             </div>
                         </div>
                     

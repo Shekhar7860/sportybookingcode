@@ -77,7 +77,7 @@ function Mybooking() {
                                                     </li>
                                                     <li>
                                                         <p>Start Time</p>
-                                                        <h3>1:00<span>PM</span></h3>
+                                                        <h3>1:00<span>AM</span></h3>
                                                     </li>
                                                     <li>
                                                         <p>End Time</p>

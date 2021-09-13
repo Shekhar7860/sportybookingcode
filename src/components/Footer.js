@@ -19,36 +19,39 @@ const Footer = () => {
             <div className="col-md-2 desktopViwe">
               <div className="footer-links">
                 <ul>
-                  <Link to=""><li>Sign Up For Free</li></Link>
-                  <Link to=""><li>Pricing</li></Link>
-                  <Link to=""><li>About</li></Link>
-                  <Link to=""><li>FAQ</li></Link>
-                  <Link to=""><li>Help</li></Link>
-                  <Link to=""><li>Contact</li></Link>
+                  <li><Link to="">Sign Up For Free</Link></li>
+                  <li><Link to="">Pricing</Link></li>
+                  <li><Link to="">About</Link></li>
+                  <li><Link to="">FAQ</Link></li>
+                  <li><Link to="">Help</Link></li>
+                  <li><Link to="">Contact</Link></li>
                 </ul>
               </div>
             </div>
             <div className="col-md-3 pl-5 desktopViwe">
               <div className="footer-links">
                 <ul>
-                <Link to=""><li>Ice Rinks</li></Link>
-                <Link to=""><li>Fields</li></Link>
-                <Link to=""><li>Indoor Courts</li></Link>
-                <Link to=""><li>Swimming Pools</li></Link>
-                <Link to=""><li>Tennis Courts</li></Link>
-                <Link to=""><li>Fitness Rooms</li></Link>
+                <li><Link to="">Ice Rinks</Link></li>
+                <li><Link to="">Fields</Link></li>
+                <li><Link to="">Indoor Courts</Link></li>
+                <li><Link to="">Swimming Pools</Link></li>
+                <li><Link to="">Tennis Courts</Link></li>
+                <li><Link to="">Fitness Rooms</Link></li>
                 </ul>
               </div>
             </div>
             <div className="col-md-2 desktopViwe">
               <div className="footer-links">
                 <ul>
-                <Link to=""><li>Climbing Walls</li></Link>
-                <Link to=""><li>Yoga Studios</li></Link>
-                <Link to=""><li>Baseball</li></Link>
-                <Link to=""><li>Squash Courts</li></Link>
-                <Link to=""><li>Tracks</li></Link>
-                <Link to=""><li>Cricket</li></Link>
+                <li><Link to="">Climbing Walls</Link></li>
+                <li> <Link to="">Yoga Studios</Link></li>
+                <li><Link to="">Baseball</Link></li>
+                <li><Link to="">Squash Courts</Link></li>
+                <li><Link to="">Tracks</Link></li>
+                <li><Link to="">Cricket</Link></li>
+                </ul>
+                <ul>
+                
                 </ul>
               </div>
             </div>
@@ -62,8 +65,8 @@ const Footer = () => {
                 <p className="mt-4 pt-4 english">
                   English
                 </p>
-                <p className="">Terms of Service<br/>
-                    Privacy policy</p>
+                <p className="">Terms of Service</p>
+                    <p className="mt-0">Privacy policy</p>
               </div>
             </div>
           </div>
