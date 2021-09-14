@@ -64,29 +64,29 @@ function Favorite() {
                                         <div className="listing-box">
                                             <h4>Wayne Gretzky Sports Centre<span>• North Rink</span></h4>
                                             <ul>
-                                                <li>30 May<strong>9</strong><span>AM</span>--<strong>3</strong><span>PM</span></li>
-                                                <li>$100+</li>
+                                                <li>30 May<strong>9</strong><span>AM</span>—<strong>3</strong><span>PM</span></li>
+                                                <li>$100<span className="ml-0">+</span></li>
                                             </ul>
                                         </div>
                                         <div className="listing-box">
                                             <h4>Wayne Gretzky Sports Centre<span>• North Rink</span></h4>
                                             <ul>
-                                                <li>30 May<strong>9</strong><span>AM</span>--<strong>3</strong><span>PM</span></li>
-                                                <li>$100+</li>
+                                                <li>30 May<strong>9</strong><span>AM</span>—<strong>3</strong><span>PM</span></li>
+                                                <li>$100<span className="ml-0">+</span></li>
                                             </ul>
                                         </div>
                                         <div className="listing-box">
                                             <h4>Wayne Gretzky Sports Centre<span>• North Rink</span></h4>
                                             <ul>
-                                                <li>30 May<strong>9</strong><span>AM</span>--<strong>3</strong><span>PM</span></li>
-                                                <li>$100+</li>
+                                                <li>30 May<strong>9</strong><span>AM</span>—<strong>3</strong><span>PM</span></li>
+                                                <li>$100<span className="ml-0">+</span></li>
                                             </ul>
                                         </div>
                                         <div className="listing-box">
                                             <h4>Wayne Gretzky Sports Centre<span>• North Rink</span></h4>
                                             <ul>
-                                                <li>30 May<strong>9</strong><span>AM</span>--<strong>3</strong><span>PM</span></li>
-                                                <li>$100+</li>
+                                                <li>30 May<strong>9</strong><span>AM</span>—<strong>3</strong><span>PM</span></li>
+                                                <li>$100<span className="ml-0">+</span></li>
                                             </ul>
                                         </div>
                                     </div>

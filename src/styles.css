@@ -100,7 +100,7 @@ h3 {
 header {
   height: 72px;
   line-height: 46px;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 9999;
@@ -109,7 +109,9 @@ header {
   display: flex;
   align-items: center;
 }
-
+.modal{
+  z-index: 99999;
+}
 .manage-facility .nav-link:hover {
   color: #fff;
   background: #182a8cdb;
@@ -128,7 +130,7 @@ header li.nav-item.manage-facility {
   background-position: 50% 65%;
   background-size: 130%;
   position: relative;
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 
 .banner:after {
@@ -257,7 +259,7 @@ button.btn.btn-search:hover {
   width: 100%;
   position: relative;
   border-radius: 6px;
-  height: 210px;
+  height: 265px;
   object-fit: cover;
 }
 
@@ -386,7 +388,7 @@ ul {
   width: 20px;
 }
 
-.footer-links ul li {
+.footer-links ul li a {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -477,9 +479,9 @@ ul {
 
 /*********** Inner Header End here *****************/
 
-.search-main-page {
+/* .search-main-page {
   padding-top: 70px;
-}
+} */
 
 .left-search {
   padding-top: 20px;
@@ -846,7 +848,7 @@ button.btn.btn-black.btn-filter:focus {
 }
 
 .listing-box {
-  padding: 15px;
+  padding: 6px 15px;
   margin: 10px 15px 10px 15px;
   background: #ffffff;
   border-radius: 6px;
@@ -878,12 +880,18 @@ button.btn.btn-black.btn-filter:focus {
   font-size: 14px;
   line-height: 22px;
   color: #000000;
+  margin-bottom: 0px;
 }
 
 .listing-box ul li strong {
   margin-left: 5px;
+  font-weight: 700;
 }
-
+.booking-text h3 span {
+  opacity: 0.4;
+  font-weight: 500;
+  margin-left: 3px;
+}
 .listing-box ul {
   display: flex;
   justify-content: space-between;
@@ -910,7 +918,9 @@ button.btn.btn-black.btn-filter:focus {
   margin-top: 72px;
   padding-top: 20px;
 }
-
+.footer-links ul li a:hover {
+  color: #65c87a;
+}
 .footer-links ul li i:hover {
   color: #65c87a;
   cursor: pointer;
@@ -920,18 +930,22 @@ button.btn.btn-black.btn-filter:focus {
   color: #65c87a;
 }
 .facility-banner {
-  background-image: url("./assets/images/facility.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 440px;
-  padding: 40px;
   border-radius: 15px;
   position: relative;
-  display: flex;
-  justify-content: space-between;
 }
-
+.full-img{
+  width: 100%;
+}
+.facilty-logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.heart-white {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
 button.white-btn.btn {
   font-weight: 500;
   font-size: 12px;
@@ -940,8 +954,9 @@ button.white-btn.btn {
   color: #080808;
   height: 36px;
   position: absolute;
-  right: 40px;
+  right: 30px;
   bottom: 40px;
+  background: #fff;
 }
 
 .swining-pol-text h6 {
@@ -969,6 +984,7 @@ button.white-btn.btn {
   line-height: 18px;
   text-align: right;
   color: #666666;
+  padding-top: 5px;
 }
 
 .swining-pol-text p {
@@ -981,6 +997,10 @@ button.white-btn.btn {
 
 .all-room button.btn.btn-black.btn-filter.more-btn {
   border: 1px solid #aaaaaa;
+}
+
+svg.change {
+  display: none;
 }
 
 .more-btn span {
@@ -1067,7 +1087,7 @@ button.btn.btn-black.btn-filter.more-btn i {
 }
 
 .mybooking {
-  margin-top: 72px;
+  /* margin-top: 72px; */
   background: #fafafa;
 }
 
@@ -1204,6 +1224,15 @@ button:focus {
   line-height: 22px;
   color: #080808;
   display: inline-block;
+}
+p.date-messg {
+  color: #999999;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+.messages-name span.pull-right {
+  font-weight: 400;
 }
 
 .messages-name h5 {
@@ -1431,7 +1460,7 @@ button#dropdownMenuButton:focus {
 
 .verification-code input {
   display: inline-block;
-  width: 10%;
+  width: 7%;
   margin: 10px 5px;
   text-align: center;
   background: transparent;
@@ -1451,6 +1480,7 @@ button#dropdownMenuButton:focus {
   color: #080808;
   margin-bottom: 0;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 button.btn-google {
@@ -1573,6 +1603,7 @@ button:focus {
 
 .payment-heading.wallet p {
   opacity: 1;
+  font-weight: 500;
 }
 
 .wallet h4 {
@@ -1631,8 +1662,11 @@ button:focus {
   border-bottom: 2px solid #666666;
   width: 100%;
   padding: 6px 0 4px;
+  font-weight: 500;
 }
-
+.forgot-passsign p span {
+  color: #080808;
+}
 .forgot-pass p,
 .forgot-passsign p {
   font-weight: normal;
@@ -1687,13 +1721,20 @@ button:focus {
   border-color: #080808;
   color: #080808;
 }
-
+.transition .table thead th {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #080808;
+}
 .login-with span {
   position: relative;
   display: inline-block;
   width: 100%;
 }
-
+.payment-method.notification .radio-btn label{
+  display: block;
+}
 .login-with span:before {
   position: absolute;
   content: "";
@@ -1791,10 +1832,10 @@ span.message-notification {
 
 /************** Owner css start here ****************/
 
-.owner-home {
+/* .owner-home {
   margin-top: 30px;
   padding-top: 40px;
-}
+} */
 /* .onwer-left {
   background: #fafafa;
   width: 100px;
@@ -1814,8 +1855,8 @@ span.message-notification {
   border-right: 1px solid #eeeeee;
   position: sticky;
   height: 100vh;
-  top: 70px;
-  margin-bottom: 72px;
+  top: 0px;
+  /* margin-bottom: 72px; */
 }
 .owner-right {
   width: calc(100% - 100px);
@@ -2182,6 +2223,9 @@ button.select-btn {
   font-size: 14px;
   line-height: 22px;
   color: #080808;
+}
+.all-room-right button.btn.btn-black.btn-filter {
+  margin-right: 7px;
 }
 .listing-page .all-room-right {
   width: 49%;
@@ -2880,6 +2924,28 @@ span.tooltips-cont {
 .booked-open.Open-booked .dropdown-menu.show {
   left: -95px !important;
 }
+.heart-white path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.heart-white path:hover {
+  stroke: rgb(237, 76, 63);
+}
+.facility .slick-prev {
+  left: 20px;
+  z-index: 99;
+}
+.slick-next {
+  right: 37px;
+}
+.slick-prev:before, .slick-next:before{
+  font-size: 35px;
+  opacity: 1;
+}
+.footer-links.footer-icons p.english {
+  padding-bottom: 7px !important;
+}
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
   body.modal-open {
@@ -2984,6 +3050,15 @@ span.tooltips-cont {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  footer{
+    padding: 40px 0 15px;
+  }
+  .mobileViwe.testimonial button.slick-arrow {
+    display: none !important;
+}
+.mobileViwe.testimonial .box-one p{
+  padding-right: 0;
+}
 }
 
 @media only screen and (max-width: 767px) {
