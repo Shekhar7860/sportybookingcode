@@ -1,20 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import Footer from "./../Footer";
 import InnerHeader from "./../InnerHeader";
 import google from "../../assets/images/Google.png";
 import { connect } from "react-redux";
-import { getUserProfile } from "../../redux/actions/user";
-function Profile({ getUser, userData }) {
+import { getUserProfile, updateUserProfile } from "../../redux/actions/user";
+const initialData = {
+  email: "",
+  phone_number: "",
+  first_name: "",
+  last_name: "",
+  password: "",
+};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "EMAIL":
+      return { ...state, email: action.payload };
+    case "PHONE":
+      return { ...state, phone_number: action.payload };
+    case "FIRSTNAME":
+      return { ...state, first_name: action.payload };
+    case "LASTNAME":
+      return { ...state, last_name: action.payload };
+    case "PASSWORD":
+      return { ...state, password: action.payload };
+    default:
+      return state;
+  }
+};
+function Profile({ getUser, userData, updateLoggedInUserProfile }) {
   const [loggedUser, setLoggedUser] = useState({});
+  const [state, dispatch] = useReducer(reducer, initialData);
   useEffect(() => {
     const userProfile = async () => {
-      const res = await getUser("/user/detail");
+      const res = await getUser(
+        "/user/detail",
+        userData.userData ? userData.userData.token : null
+      );
       if (res.status == 200) {
-        setLoggedUser(res.data);
+        // setLoggedUser(res.data);
+        dispatch({ type: "FIRSTNAME", payload: res.data.first_name });
+        dispatch({ type: "LASTNAME", payload: res.data.last_name });
+        dispatch({ type: "PHONE", payload: res.data.phone_number });
+        dispatch({ type: "EMAIL", payload: res.data.email });
       }
     };
     userProfile();
   }, [userData]);
+
+  const updateProfile = async () => {
+    const res = await updateLoggedInUserProfile(
+      "/user/profile",
+      userData.userData ? userData.userData.token : null,
+      {
+        first_name: "shanky",
+        last_name: "chugh",
+      }
+    );
+    console.log("res", res);
+  };
+
+  const handleChange = (e, param) => {
+    if (param == "email") {
+      dispatch({ type: "EMAIL", payload: e.target.value });
+    } else if (param == "phone") {
+      dispatch({ type: "PHONE", payload: e.target.value });
+    } else if (param == "firstName") {
+      dispatch({ type: "FIRSTNAME", payload: e.target.value });
+    } else if (param == "lastName") {
+      dispatch({ type: "LASTNAME", payload: e.target.value });
+    } else if (param == "password") {
+      dispatch({ type: "PASSWORD", payload: e.target.value });
+    }
+  };
   return (
     <div>
       <InnerHeader />
@@ -114,7 +171,10 @@ function Profile({ getUser, userData }) {
                           type="text"
                           autocomplete="off"
                           placeholder="John"
-                          value={loggedUser ? loggedUser.first_name : null}
+                          onChange={(e) => {
+                            handleChange(e, "firstName");
+                          }}
+                          value={state ? state.first_name : null}
                         />
                       </div>
                       <div className="col-md-2">
@@ -123,7 +183,10 @@ function Profile({ getUser, userData }) {
                           type="text"
                           autocomplete="off"
                           placeholder="Johnson"
-                          value={loggedUser ? loggedUser.last_name : null}
+                          onChange={(e) => {
+                            handleChange(e, "lastName");
+                          }}
+                          value={state ? state.last_name : null}
                         />
                       </div>
                     </div>
@@ -134,7 +197,10 @@ function Profile({ getUser, userData }) {
                           type="text"
                           autocomplete="off"
                           placeholder="john.j@gmail.com"
-                          value={loggedUser ? loggedUser.email : null}
+                          onChange={(e) => {
+                            handleChange(e, "email");
+                          }}
+                          value={state ? state.email : null}
                         />
                       </div>
                     </div>
@@ -145,7 +211,10 @@ function Profile({ getUser, userData }) {
                           type="text"
                           autocomplete="off"
                           placeholder="+1 234 567 8900"
-                          value={loggedUser ? loggedUser.phone_number : null}
+                          value={state ? state.phone_number : null}
+                          onChange={(e) => {
+                            handleChange(e, "phone");
+                          }}
                         />
                       </div>
                       <div className="col-md-5 ml-4 verification-code">
@@ -192,7 +261,9 @@ function Profile({ getUser, userData }) {
                     </div>
                     <div className="row mt-4">
                       <div className="col-md-12">
-                        <button className="update-btn">Update Profile</button>
+                        <button className="update-btn" onClick={updateProfile}>
+                          Update Profile
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -503,7 +574,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUser: (url, data) => dispatch(getUserProfile(url, data)),
+    getUser: (url, token) => dispatch(getUserProfile(url, token)),
+    updateLoggedInUserProfile: (url, token, params) =>
+      dispatch(updateUserProfile(url, token, params)),
   };
 };
 

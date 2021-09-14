@@ -6,9 +6,15 @@ import mobilelogo from "../assets/images/Logotype.png";
 import google from "../assets/images/Google.png";
 import { useGoogleLogin } from "react-google-login";
 import PhoneInput from "react-phone-input-2";
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "react-phone-input-2/lib/style.css";
 import { connect } from "react-redux";
-import { loginUser, getUser, signUpUser } from "../redux/actions/user";
+import {
+  loginUser,
+  forgotUserPassword,
+  signUpUser,
+} from "../redux/actions/user";
 import { getFaceBookData } from "../services/service";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -37,9 +43,17 @@ const reducer = (state, action) => {
       return state;
   }
 };
-const Header = ({ signUp, login }) => {
+
+const Header = ({ signUp, login, forgotPassword }) => {
+  // $("document").ready(function () {
+  //   $("#resetPass").modal("show");
+  // });
   const [loading, showLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [resetPasswordModal, showResetPasswordModal] = useState(false);
+  const [forgotPasswordModal, showforgotPasswordModal] = useState(false);
+  const [loginModal, showLoginModal] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState(91);
   const [state, dispatch] = useReducer(reducer, initialData);
@@ -60,6 +74,28 @@ const Header = ({ signUp, login }) => {
       dispatch({ type: "LASTNAME", payload: e.target.value });
     } else if (param == "password") {
       dispatch({ type: "PASSWORD", payload: e.target.value });
+    }
+  };
+  const resetPassword = async (e) => {
+    e.preventDefault();
+    if (forgotEmail) {
+      if (!validateEmail(forgotEmail)) {
+        toast.error("Please Enter Valid Email Id");
+      }
+      showLoading(true);
+      const res = await forgotPassword("/user/forgot/password", {
+        email: forgotEmail,
+      });
+      showLoading(false);
+      if (res.status == 200) {
+        toast.success(res.data.message);
+        showforgotPasswordModal(false);
+        showResetPasswordModal(true);
+      } else {
+        toast.error(res.data ? res.data.error_description : String(res));
+      }
+    } else {
+      toast.error("Please Enter Email Both");
     }
   };
   const { signIn, loaded } = useGoogleLogin({
@@ -92,12 +128,25 @@ const Header = ({ signUp, login }) => {
   const onSignIn = (googleUser) => {
     // console.log("s", googleUser);
     let profile = googleUser.getBasicProfile();
-    console.log("pr", profile);
   };
 
+  const showLoginModalAgain = () => {
+    showforgotPasswordModal(false);
+    showLoginModal(true);
+  };
+
+  const showForgotPasswordModalAgain = () => {
+    showResetPasswordModal(false);
+    showforgotPasswordModal(true);
+  };
+  const showHideLoginModal = () => {
+    showLoginModal(!loginModal);
+  };
   const update = (e, param) => {
     if (param == "email") {
       setEmail(e.target.value);
+    } else if (param == "forgotemail") {
+      setForgotEmail(e.target.value);
     } else {
       setPassword(e.target.value);
     }
@@ -116,7 +165,7 @@ const Header = ({ signUp, login }) => {
       if (res.status == 200) {
         showLoading(false);
         toast.success(res.data.message);
-        // history.push("/owner");
+        history.push("/owner");
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
@@ -125,12 +174,22 @@ const Header = ({ signUp, login }) => {
       toast.error("Please Enter Email And Password Both");
       showLoading(false);
     }
-    //toast.configure();
-    // toast.error("Wow so easy!");
-    // showLoading(true);
-    // setTimeout(() => {
-    //   history.push("/owner");
-    // }, 2000);
+  };
+
+  const closeResetModal = (e) => {
+    e.preventDefault();
+    showResetPasswordModal(false);
+  };
+
+  const showResetModal = (e) => {
+    e.preventDefault();
+    showLoginModal(false);
+    showforgotPasswordModal(true);
+  };
+
+  const closeForgotModal = (e) => {
+    e.preventDefault();
+    showforgotPasswordModal(false);
   };
 
   const signUpUser = async (e) => {
@@ -154,6 +213,7 @@ const Header = ({ signUp, login }) => {
         country_code: phone,
       };
       const res = await signUp("/user/signup", updatedState);
+
       if (res.status == 200) {
         showLoading(false);
         toast.success(res.data.message);
@@ -218,11 +278,7 @@ const Header = ({ signUp, login }) => {
                         Sign Up
                       </Link>
                     </li>
-                    <li
-                      className="nav-item login"
-                      data-toggle="modal"
-                      data-target="#exampleModalCenter"
-                    >
+                    <li className="nav-item login" onClick={showHideLoginModal}>
                       <Link className="nav-link" to="/">
                         Login
                       </Link>
@@ -238,121 +294,107 @@ const Header = ({ signUp, login }) => {
       {/* Header End here */}
 
       {/* Login Modal here */}
-
-      <div
-        class="login-modal modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">
-                Log In
-              </h5>
-              <button
-                type="button"
-                id="close-modal"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">
-                  <i class="fal fa-times"></i>
-                </span>
-              </button>
-            </div>
-            <div class="modal-body">
-              {loading ? (
-                <div class="loader-wrapper">
-                  <div class="loader"></div>
-                </div>
-              ) : null}
-              <div className="login">
-                <form>
-                  <div className="login-form">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      placeholder="eg: john.j@gmail.com"
-                      onChange={(e) => {
-                        update(e, "email");
-                      }}
-                    />
+      <Modal class="login-modal modal fade" show={loginModal}>
+        <div>
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                  Log In
+                </h5>
+                <button
+                  type="button"
+                  id="close-modal"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span onClick={showHideLoginModal}>
+                    <i class="fal fa-times"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {loading ? (
+                  <div class="loader-wrapper">
+                    <div class="loader"></div>
                   </div>
-                  <div className="login-form">
-                    <label>Password</label>
-                    <input
-                      type="password"
-                      placeholder="•••••••••••••••••"
-                      onChange={(e) => {
-                        update(e, "password");
-                      }}
-                    />
-                  </div>
-                  <div className="forgot-pass">
-                    <p>
-                      Forgot password?{" "}
-                      <span
-                        data-bs-dismiss="modal"
-                        data-toggle="modal"
-                        data-target="#forgot"
-                        data-dismiss="modal"
-                      >
-                        Reset password
-                      </span>
-                    </p>
-                    <button class="btn btn-search" onClick={userLogin}>
-                      Log In
-                    </button>
-                  </div>
-                  <div className="login-with">
-                    <span></span>
-                    <p>or Log In with</p>
-                    <div className="google-buttons">
-                      <button
-                        type="button"
-                        class="btn-google"
-                        onClick={loginGoogle}
-                      >
-                        <img src={google} />
-                        Google
-                      </button>
-                      <button
-                        type="button"
-                        class="btn-google"
-                        onClick={loginFb}
-                      >
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
+                ) : null}
+                <div className="login">
+                  <form>
+                    <div className="login-form">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        placeholder="eg: john.j@gmail.com"
+                        onChange={(e) => {
+                          update(e, "email");
+                        }}
+                      />
+                    </div>
+                    <div className="login-form">
+                      <label>Password</label>
+                      <input
+                        type="password"
+                        placeholder="•••••••••••••••••"
+                        onChange={(e) => {
+                          update(e, "password");
+                        }}
+                      />
+                    </div>
+                    <div className="forgot-pass">
+                      <p>
+                        Forgot password?{" "}
+                        <span onClick={showResetModal}>Reset password</span>
+                      </p>
+                      <button class="btn btn-search" onClick={userLogin}>
+                        Log In
                       </button>
                     </div>
-                  </div>
+                    <div className="login-with">
+                      <span></span>
+                      <p>or Log In with</p>
+                      <div className="google-buttons">
+                        <button
+                          type="button"
+                          class="btn-google"
+                          onClick={loginGoogle}
+                        >
+                          <img src={google} />
+                          Google
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-google"
+                          onClick={loginFb}
+                        >
+                          <i class="fab fa-facebook-f"></i>
+                          Facebook
+                        </button>
+                      </div>
+                    </div>
 
-                  <div className="forgot-passsign signup-btn">
-                    <p>
-                      Don't have an account? <span>Sign up for free.</span>
-                    </p>
-                    <button
-                      type="button"
-                      class="btn btn-search sign-up"
-                      data-toggle="modal"
-                      data-target="#signupmodal"
-                      data-dismiss="modal"
-                    >
-                      Sign Up
-                    </button>
-                  </div>
-                </form>
+                    <div className="forgot-passsign signup-btn">
+                      <p>
+                        Don't have an account? <span>Sign up for free.</span>
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-search sign-up"
+                        data-toggle="modal"
+                        data-target="#signupmodal"
+                        data-dismiss="modal"
+                      >
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+      </Modal>
       {/* Signup Modal here */}
 
       <div
@@ -493,10 +535,9 @@ const Header = ({ signUp, login }) => {
 
       {/* Forgot Modal here */}
 
-      <div
+      <Modal
         class="login-modal signup-modal modal fade"
-        id="forgot"
-        tabindex="-1"
+        show={forgotPasswordModal}
         role="dialog"
         aria-labelledby="exampleModalTitle"
         aria-hidden="true"
@@ -507,18 +548,18 @@ const Header = ({ signUp, login }) => {
               <h5 class="modal-title" id="exampleModalCenterTitle">
                 Forgot your password?
               </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
+              <button type="button" class="close" onClick={closeForgotModal}>
                 <span aria-hidden="true">
                   <i class="fal fa-times"></i>
                 </span>
               </button>
             </div>
             <div class="modal-body">
+              {loading ? (
+                <div class="loader-wrapper">
+                  <div class="loader"></div>
+                </div>
+              ) : null}
               <div className="login">
                 <p className="no-worries">
                   No worries! Please enter the email address you used when
@@ -528,28 +569,34 @@ const Header = ({ signUp, login }) => {
                 <form>
                   <div className="login-form">
                     <label>Email</label>
-                    <input type="email" placeholder="eg: john.j@gmail.com" />
+                    <input
+                      type="email"
+                      placeholder="eg: john.j@gmail.com"
+                      onChange={(e) => {
+                        update(e, "forgotemail");
+                      }}
+                    />
                   </div>
                   <div className="forgot-pass">
                     <p>
                       Suddenly remembered your password?{" "}
-                      <span
-                        data-toggle="modal"
-                        data-target="#exampleModalCenter"
-                        data-dismiss="modal"
-                      >
-                        Log In{" "}
-                      </span>
+                      <span onClick={showLoginModalAgain}>Log In </span>
                     </p>
                   </div>
 
                   <div className="forgot-passsign signup-btn">
-                    <button
+                    {/* <button
                       class="btn btn-search sign-up"
                       data-bs-dismiss="modal"
                       data-toggle="modal"
                       data-target="#resetpass"
                       data-dismiss="modal"
+                    >
+                      Reset Password
+                    </button> */}
+                    <button
+                      class="btn btn-search sign-up"
+                      onClick={resetPassword}
                     >
                       Reset Password
                     </button>
@@ -559,17 +606,13 @@ const Header = ({ signUp, login }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Modal>
 
       {/* Reset pass Modal here */}
 
-      <div
+      <Modal
         class="reset-pass login-modal signup-modal modal fade"
-        id="resetpass"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
+        show={resetPasswordModal}
       >
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -577,35 +620,42 @@ const Header = ({ signUp, login }) => {
               <h5 class="modal-title" id="exampleModalCenterTitle">
                 Check your inbox
               </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
+              <button type="button" class="close" onClick={closeResetModal}>
                 <span aria-hidden="true">
                   <i class="fal fa-times"></i>
                 </span>
               </button>
             </div>
             <div class="modal-body">
+              {loading ? (
+                <div class="loader-wrapper">
+                  <div class="loader"></div>
+                </div>
+              ) : null}
               <div className="login">
                 <p className="no-worries">
                   The instructions for resetting your password have been sent to{" "}
-                  <b>john.j@gmail.com</b>
+                  <b>{forgotEmail}</b>
                 </p>
                 <form>
                   <div className="forgot-pass">
                     <p>
-                      Didn't get the email? <span>Send another email. </span>
+                      Didn't get the email?{" "}
+                      <span onClick={resetPassword}>Send another email. </span>
                     </p>
                     <p>
-                      Whoops, typo in your email? <span>Fix it. </span>
+                      Whoops, typo in your email?{" "}
+                      <span onClick={showForgotPasswordModalAgain}>
+                        Fix it.{" "}
+                      </span>
                     </p>
                   </div>
 
                   <div className="forgot-passsign close-btn signup-btn">
-                    <button class="btn btn-search sign-up" data-dismiss="modal">
+                    <button
+                      class="btn btn-search sign-up"
+                      onClick={closeResetModal}
+                    >
                       Close
                     </button>
                   </div>
@@ -614,7 +664,7 @@ const Header = ({ signUp, login }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Modal>
     </div>
   );
 };
@@ -623,6 +673,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     signUp: (url, data) => dispatch(signUpUser(url, data)),
     login: (url, data) => dispatch(loginUser(url, data)),
+    forgotPassword: (url, data) => dispatch(forgotUserPassword(url, data)),
   };
 };
 
