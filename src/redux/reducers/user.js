@@ -14,7 +14,7 @@ export function user(state = initialState, action) {
     case LOG_OUT_USER:
       return {
         ...state,
-        data: null,
+        userData: {},
       };
     default:
       return state;

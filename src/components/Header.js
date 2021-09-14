@@ -95,7 +95,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email Both");
+      toast.error("Please Enter Email First");
     }
   };
   const { signIn, loaded } = useGoogleLogin({
@@ -171,7 +171,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email And Password Both");
+      toast.error("Please Enter Email And Password");
       showLoading(false);
     }
   };
@@ -194,35 +194,40 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
   const signUpUser = async (e) => {
     e.preventDefault();
-    if (
-      state.email &&
-      state.phone_number &&
-      state.first_name &&
-      state.last_name &&
-      state.password
-    ) {
-      if (!validatePhone(state.phone_number)) {
-        toast.error("Please Enter Valid Phone Number");
-      }
-      if (!validateEmail(state.email)) {
-        toast.error("Please Enter Valid Email Id");
-      }
-      showLoading(true);
-      let updatedState = {
-        ...state,
-        country_code: phone,
-      };
-      const res = await signUp("/user/signup", updatedState);
+    if (state.email == "") {
+      return toast.error("Please Enter Email Id");
+    }
+    if (state.phone_number == "") {
+      return toast.error("Please Enter Phone Number");
+    }
+    if (state.first_name == "") {
+      return toast.error("Please Enter First Name");
+    }
+    if (state.last_name == "") {
+      return toast.error("Please Enter Last Name");
+    }
+    if (state.password == "") {
+      return toast.error("Please Enter Password");
+    }
+    if (!validatePhone(state.phone_number)) {
+      return toast.error("Please Enter Valid Phone Number");
+    }
+    if (!validateEmail(state.email)) {
+      return toast.error("Please Enter Valid Email Id");
+    }
+    showLoading(true);
+    let updatedState = {
+      ...state,
+      country_code: phone,
+    };
+    const res = await signUp("/user/signup", updatedState);
 
-      if (res.status == 200) {
-        showLoading(false);
-        toast.success(res.data.message);
-      } else {
-        showLoading(false);
-        toast.error(res.data ? res.data.error_description : String(res));
-      }
+    if (res.status == 200) {
+      showLoading(false);
+      toast.success(res.data.message);
     } else {
-      toast.error("Please Enter All Details");
+      showLoading(false);
+      toast.error(res.data ? res.data.error_description : String(res));
     }
   };
   return (

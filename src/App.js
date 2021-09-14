@@ -26,7 +26,6 @@ import OwnerAddFacility from "./components/owner/OwnerAddfacility";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const App = ({ userData }) => {
-  const loggedIn = true;
   useEffect(() => {
     toast.configure();
   }, [userData]);
@@ -35,11 +34,13 @@ const App = ({ userData }) => {
       <Router>
         <Switch>
           <Route exact path="/">
-            {userData.userData.id != undefined ? (
-              <Redirect to="/owner" />
-            ) : (
-              <Home />
-            )}
+            {userData.userData ? (
+              userData.userData.user != undefined ? (
+                <Redirect to="/owner" />
+              ) : (
+                <Home />
+              )
+            ) : null}
           </Route>
           {/* <Route path="/" exact component={Home} /> */}
           <Route path="/search">

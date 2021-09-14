@@ -3,7 +3,13 @@ import Footer from "./../Footer";
 import InnerHeader from "./../InnerHeader";
 import google from "../../assets/images/Google.png";
 import { connect } from "react-redux";
-import { getUserProfile, updateUserProfile } from "../../redux/actions/user";
+import { toast } from "react-toastify";
+import {
+  getUserProfile,
+  updateUserProfile,
+  sendUserCode,
+  verifyUserCode,
+} from "../../redux/actions/user";
 const initialData = {
   email: "",
   phone_number: "",
@@ -11,6 +17,7 @@ const initialData = {
   last_name: "",
   password: "",
 };
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "EMAIL":
@@ -27,8 +34,20 @@ const reducer = (state, action) => {
       return state;
   }
 };
-function Profile({ getUser, userData, updateLoggedInUserProfile }) {
+function Profile({
+  getUser,
+  userData,
+  updateLoggedInUserProfile,
+  sendUserOtp,
+  verifyUserOtp,
+}) {
+  const [emailOtp, showEmailOtp] = useState(false);
+  const [phoneOtp, showPhoneOtp] = useState(false);
   const [loggedUser, setLoggedUser] = useState({});
+  const [firstText, setFirstText] = useState("");
+  const [secondText, setSecondText] = useState("");
+  const [thirdText, setThirdText] = useState("");
+  const [fourthText, setFourthText] = useState("");
   const [state, dispatch] = useReducer(reducer, initialData);
   useEffect(() => {
     const userProfile = async () => {
@@ -37,7 +56,7 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
         userData.userData ? userData.userData.token : null
       );
       if (res.status == 200) {
-        // setLoggedUser(res.data);
+        setLoggedUser(res.data);
         dispatch({ type: "FIRSTNAME", payload: res.data.first_name });
         dispatch({ type: "LASTNAME", payload: res.data.last_name });
         dispatch({ type: "PHONE", payload: res.data.phone_number });
@@ -47,22 +66,110 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
     userProfile();
   }, [userData]);
 
-  const updateProfile = async () => {
-    const res = await updateLoggedInUserProfile(
-      "/user/profile",
+  const sendOtp = async (mode) => {
+    let selected = state.email;
+    if (mode == "phone") {
+      selected = state.phone_number;
+    }
+    const res = await sendUserOtp(
+      "/user/otp",
       userData.userData ? userData.userData.token : null,
-      {
-        first_name: "shanky",
-        last_name: "chugh",
-      }
+      selected,
+      mode
     );
-    console.log("res", res);
+    if (res.status == 200) {
+      toast.success(res.data.message);
+    } else {
+      toast.error("NetWork Error");
+    }
   };
 
+  const verifyOtp = async (mode) => {
+    let obj = {
+      email: state.email,
+      otp: firstText + secondText + thirdText + fourthText,
+    };
+    if (mode == "phone") {
+      obj = {
+        phone_number: state.phone_number,
+        otp: firstText + secondText + thirdText + fourthText,
+      };
+    }
+    const res = await verifyUserOtp(
+      "/user/setotp",
+      userData.userData ? userData.userData.token : null,
+      obj
+    );
+    if (res.status == 200) {
+      toast.success(res.data.message);
+    } else {
+      toast.error("NetWork Error");
+    }
+  };
+
+  const updateProfile = async () => {
+    if (state.first_name && state.last_name && state.password) {
+      let obj = {
+        first_name: state.first_name,
+        last_name: state.last_name,
+        password: state.password,
+      };
+      if (loggedUser.phone_number != state.phone_number) {
+        obj = {
+          first_name: state.first_name,
+          last_name: state.last_name,
+          password: state.password,
+          phone_number: state.phone_number,
+        };
+      }
+      if (loggedUser.email != state.email) {
+        obj = {
+          first_name: state.first_name,
+          last_name: state.last_name,
+          password: state.password,
+          email: state.email,
+        };
+      }
+      const res = await updateLoggedInUserProfile(
+        "/user/profile",
+        userData.userData ? userData.userData.token : null,
+        obj
+      );
+      if (res.status == 200) {
+        toast.success(res.data.message);
+      } else {
+        toast.error(res.data ? res.data.error_description : String(res));
+      }
+    } else {
+      toast.error("Please Enter First Name, Last Name And Password");
+    }
+  };
+
+  const setText = (e, param) => {
+    if (param == "first") {
+      setFirstText(e.target.value);
+    } else if (param == "second") {
+      setSecondText(e.target.value);
+    } else if (param == "third") {
+      setThirdText(e.target.value);
+    } else if (param == "fourth") {
+      setFourthText(e.target.value);
+    }
+  };
   const handleChange = (e, param) => {
     if (param == "email") {
+      if (loggedUser.email != e.target.value) {
+        showEmailOtp(true);
+      } else {
+        showEmailOtp(false);
+      }
       dispatch({ type: "EMAIL", payload: e.target.value });
     } else if (param == "phone") {
+      if (loggedUser.phone_number != e.target.value) {
+        showPhoneOtp(true);
+      } else {
+        showPhoneOtp(false);
+      }
       dispatch({ type: "PHONE", payload: e.target.value });
     } else if (param == "firstName") {
       dispatch({ type: "FIRSTNAME", payload: e.target.value });
@@ -75,7 +182,6 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
   return (
     <div>
       <InnerHeader />
-
       <section className="mybooking">
         <div className="mybookin-fluid">
           <div className="commoan-left">
@@ -203,6 +309,47 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
                           value={state ? state.email : null}
                         />
                       </div>
+                      {emailOtp == true ? (
+                        <div className="col-md-5 ml-4 verification-code">
+                          <label>Verification Code</label>
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            placeholder="1"
+                            onChange={(e) => {
+                              setText(e, "first");
+                            }}
+                          />
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            placeholder="2"
+                            onChange={(e) => {
+                              setText(e, "second");
+                            }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="3"
+                            autocomplete="off"
+                            onChange={(e) => {
+                              setText(e, "third");
+                            }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="4"
+                            autocomplete="off"
+                            onChange={(e) => {
+                              setText(e, "fourth");
+                            }}
+                          />
+                          <span onClick={() => verifyOtp("email")}>OK</span>{" "}
+                          <span onClick={() => sendOtp("email")}>
+                            Send Again
+                          </span>
+                        </div>
+                      ) : null}
                     </div>
                     <div className="row mt-4 align-items-center">
                       <div className="col-md-2">
@@ -217,14 +364,35 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
                           }}
                         />
                       </div>
-                      <div className="col-md-5 ml-4 verification-code">
-                        <label>Verification Code</label>
-                        <input type="text" autocomplete="off" placeholder="1" />
-                        <input type="text" autocomplete="off" placeholder="2" />
-                        <input type="text" placeholder="3" autocomplete="off" />
-                        <input type="text" placeholder="4" autocomplete="off" />
-                        <span>OK</span> <span>Send Again</span>
-                      </div>
+                      {phoneOtp == true ? (
+                        <div className="col-md-5 ml-4 verification-code">
+                          <label>Verification Code</label>
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            placeholder="1"
+                          />
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            placeholder="2"
+                          />
+                          <input
+                            type="text"
+                            placeholder="3"
+                            autocomplete="off"
+                          />
+                          <input
+                            type="text"
+                            placeholder="4"
+                            autocomplete="off"
+                          />
+                          <span onClick={() => verifyOtp("phone")}>OK</span>{" "}
+                          <span onClick={() => sendOtp("phone")}>
+                            Send Again
+                          </span>
+                        </div>
+                      ) : null}
                     </div>
                     <div className="row mt-4">
                       <div className="col-md-3">
@@ -256,6 +424,9 @@ function Profile({ getUser, userData, updateLoggedInUserProfile }) {
                           type="password"
                           autocomplete="off"
                           placeholder="*********"
+                          onChange={(e) => {
+                            handleChange(e, "password");
+                          }}
                         />
                       </div>
                     </div>
@@ -577,6 +748,10 @@ const mapDispatchToProps = (dispatch) => {
     getUser: (url, token) => dispatch(getUserProfile(url, token)),
     updateLoggedInUserProfile: (url, token, params) =>
       dispatch(updateUserProfile(url, token, params)),
+    sendUserOtp: (url, token, params, mode) =>
+      dispatch(sendUserCode(url, token, params, mode)),
+    verifyUserOtp: (url, token, params) =>
+      dispatch(verifyUserCode(url, token, params)),
   };
 };
 

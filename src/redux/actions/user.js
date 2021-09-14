@@ -17,10 +17,23 @@ export const forgotUserPassword = (url, params) => async (dispatch) => {
 };
 export const updateUserProfile = (url, token, params) => async (dispatch) => {
   const response = await putApi(url, token, params);
+  if (response.status == 200) {
+    dispatch(setUserData(response.data));
+  }
   return response;
 };
 export const getUserProfile = (url, token) => async (dispatch) => {
   const response = await getApi(url, token);
+  return response;
+};
+
+export const sendUserCode = (url, token, params, mode) => async (dispatch) => {
+  const response = await getApi(url, token, params, mode);
+  return response;
+};
+
+export const verifyUserCode = (url, token, params) => async (dispatch) => {
+  const response = await putApi(url, token, params);
   return response;
 };
 export function clearData(data) {

@@ -13,26 +13,46 @@ export const postApi = async (url, params) => {
   }
 };
 
-export const getApi = (url, token) => {
+export const getApi = (url, token, params, mode) => {
   const config = {
     headers: {
       authorization: `Bearer ${token}`,
     },
   };
-  return axios.get(apiUrl + url, config).then((response) => {
-    return response;
-  });
+
+  if (params != undefined) {
+    if (mode == "email") {
+      return axios
+        .get(apiUrl + url + "?email=" + params, config)
+        .then((response) => {
+          return response;
+        });
+    } else {
+      return axios
+        .get(apiUrl + url + "?phone_number=" + params, config)
+        .then((response) => {
+          return response;
+        });
+    }
+  } else {
+    return axios.get(apiUrl + url, config).then((response) => {
+      return response;
+    });
+  }
 };
 
-export const putApi = (url, token, params) => {
+export const putApi = async (url, token, params) => {
   const config = {
     headers: {
       authorization: `Bearer ${token}`,
     },
   };
-  return axios.put(apiUrl + url, config, params).then((response) => {
-    return response;
-  });
+  try {
+    let x = await axios.put(apiUrl + url, params, config);
+    return x;
+  } catch (error) {
+    return error.response;
+  }
 };
 
 export const getFaceBookData = (token) => {
