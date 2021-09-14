@@ -53,7 +53,7 @@ h3 {
 header {
   height: 72px;
   line-height: 46px;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 9999;
@@ -83,7 +83,7 @@ header li.nav-item.manage-facility {
   background-position: 50% 65%;
   background-size: 130%;
   position: relative;
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 
 .banner:after {
@@ -432,9 +432,9 @@ ul {
 
 /*********** Inner Header End here *****************/
 
-.search-main-page {
+/* .search-main-page {
   padding-top: 70px;
-}
+} */
 
 .left-search {
   padding-top: 20px;
@@ -1040,7 +1040,7 @@ button.btn.btn-black.btn-filter.more-btn i {
 }
 
 .mybooking {
-  margin-top: 72px;
+  /* margin-top: 72px; */
   background: #fafafa;
 }
 
@@ -1786,10 +1786,10 @@ span.message-notification {
 
 /************** Owner css start here ****************/
 
-.owner-home {
+/* .owner-home {
   margin-top: 30px;
   padding-top: 40px;
-}
+} */
 /* .onwer-left {
   background: #fafafa;
   width: 100px;
@@ -1809,8 +1809,8 @@ span.message-notification {
   border-right: 1px solid #eeeeee;
   position: sticky;
   height: 100vh;
-  top: 70px;
-  margin-bottom: 72px;
+  top: 0px;
+  /* margin-bottom: 72px; */
 }
 .owner-right {
   width: calc(100% - 100px);
