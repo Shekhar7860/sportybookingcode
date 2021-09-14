@@ -74,7 +74,7 @@ const Home = () => {
             <div className="col-md-4 mb-4">
               <div className="box">
               <Link to="/search">
-                <img src={tennis} />
+                <img src={indoor} />
                 <p>Tennis Courts</p>
                 </Link>
               </div>
@@ -82,7 +82,7 @@ const Home = () => {
             <div className="col-md-4 mb-4">
               <div className="box">
               <Link to="/search">
-                <img src={indoor} />
+                <img src={tennis} />
                 <p>Fitness</p>
                 </Link>
               </div>
