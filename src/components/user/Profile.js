@@ -48,6 +48,10 @@ function Profile({
   const [secondText, setSecondText] = useState("");
   const [thirdText, setThirdText] = useState("");
   const [fourthText, setFourthText] = useState("");
+  const [firstMobileText, setFirstMobileText] = useState("");
+  const [secondMobileText, setSecondMobileText] = useState("");
+  const [thirdMobileText, setThirdMobileText] = useState("");
+  const [fourthMobileText, setFourthMobileText] = useState("");
   const [state, dispatch] = useReducer(reducer, initialData);
   useEffect(() => {
     const userProfile = async () => {
@@ -92,7 +96,11 @@ function Profile({
     if (mode == "phone") {
       obj = {
         phone_number: state.phone_number,
-        otp: firstText + secondText + thirdText + fourthText,
+        otp:
+          firstMobileText +
+          secondMobileText +
+          thirdMobileText +
+          fourthMobileText,
       };
     }
     const res = await verifyUserOtp(
@@ -146,6 +154,18 @@ function Profile({
   };
 
   const setText = (e, param) => {
+    if (param == "first") {
+      setFirstMobileText(e.target.value);
+    } else if (param == "second") {
+      setSecondMobileText(e.target.value);
+    } else if (param == "third") {
+      setThirdMobileText(e.target.value);
+    } else if (param == "fourth") {
+      setFourthMobileText(e.target.value);
+    }
+  };
+
+  const setMobileText = (e, param) => {
     if (param == "first") {
       setFirstText(e.target.value);
     } else if (param == "second") {
@@ -371,21 +391,33 @@ function Profile({
                             type="text"
                             autocomplete="off"
                             placeholder="1"
+                            onChange={(e) => {
+                              setMobileText(e, "first");
+                            }}
                           />
                           <input
                             type="text"
                             autocomplete="off"
                             placeholder="2"
+                            onChange={(e) => {
+                              setMobileText(e, "second");
+                            }}
                           />
                           <input
                             type="text"
                             placeholder="3"
                             autocomplete="off"
+                            onChange={(e) => {
+                              setMobileText(e, "third");
+                            }}
                           />
                           <input
                             type="text"
                             placeholder="4"
                             autocomplete="off"
+                            onChange={(e) => {
+                              setMobileText(e, "fourth");
+                            }}
                           />
                           <span onClick={() => verifyOtp("phone")}>OK</span>{" "}
                           <span onClick={() => sendOtp("phone")}>
