@@ -95,8 +95,7 @@ const InnerHeader = ({ clearRedux }) => {
                             My Bookings
                           </Link>
                           <div className="dropdown-item" onClick={logOut}>
-                            <img src={profile} />
-                            Log Out
+                            <img src={profile} /> {"   "} {"   "}Log Out
                           </div>
                         </div>
                       </div>

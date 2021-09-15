@@ -52,6 +52,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
   const [email, setEmail] = useState("");
   const [resetPasswordModal, showResetPasswordModal] = useState(false);
   const [forgotPasswordModal, showforgotPasswordModal] = useState(false);
+  const [signUpModal, showSignUpModal] = useState(false);
   const [loginModal, showLoginModal] = useState(false);
   const [forgotEmail, setForgotEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,6 +104,10 @@ const Header = ({ signUp, login, forgotPassword }) => {
   });
   const selected = (phone) => {
     setPhone(phone);
+  };
+
+  const showHideSignUpModal = () => {
+    showSignUpModal(!signUpModal);
   };
   const loginFb = async () => {
     window.FB.login(
@@ -221,9 +226,10 @@ const Header = ({ signUp, login, forgotPassword }) => {
       country_code: phone,
     };
     const res = await signUp("/user/signup", updatedState);
-
     if (res.status == 200) {
       showLoading(false);
+      showSignUpModal(false);
+      showLoginModal(true);
       toast.success(res.data.message);
     } else {
       showLoading(false);
@@ -276,8 +282,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
                     </li>
                     <li
                       className="nav-item login"
-                      data-toggle="modal"
-                      data-target="#signupmodal"
+                      onClick={showHideSignUpModal}
                     >
                       <Link className="nav-link" to="/">
                         Sign Up
@@ -401,142 +406,144 @@ const Header = ({ signUp, login, forgotPassword }) => {
         </div>
       </Modal>
       {/* Signup Modal here */}
-
-      <div
-        class="login-modal signup-modal modal fade"
-        id="signupmodal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenter"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">
-                Sign Up
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">
-                  <i class="fal fa-times"></i>
-                </span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div className="login">
-                <form>
-                  <div className="login-form">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      placeholder="eg: john.j@gmail.com"
-                      onChange={(e) => {
-                        handleChange(e, "email");
-                      }}
-                    />
-                  </div>
-
-                  <div className="login-form">
-                    <label>Phone Number</label>
-                    <div className="rowAlign">
-                      <PhoneInput
-                        className="phonewidth"
-                        country={"in"}
-                        onChange={(phone) => selected(phone)}
-                      />
-                      <input
-                        type="number"
-                        placeholder="eg: +1 234 567 8900"
-                        onChange={(e) => {
-                          handleChange(e, "phone");
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="full-div">
-                    <div className="login-form half">
-                      <label>First Name</label>
+      <Modal class="login-modal signup-modal modal fade" show={signUpModal}>
+        <div
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenter"
+          aria-hidden="false"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                  Sign Up
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true" onClick={showHideSignUpModal}>
+                    <i class="fal fa-times"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className="login">
+                  <form>
+                    <div className="login-form">
+                      <label>Email</label>
                       <input
                         type="email"
-                        placeholder="eg: John"
+                        placeholder="eg: john.j@gmail.com"
                         onChange={(e) => {
-                          handleChange(e, "firstName");
+                          handleChange(e, "email");
                         }}
                       />
                     </div>
-                    <div className="login-form half">
-                      <label>Last Name</label>
+
+                    <div className="login-form">
+                      <label>Phone Number</label>
+                      <div className="rowAlign">
+                        <PhoneInput
+                          className="phonewidth"
+                          country={"in"}
+                          onChange={(phone) => selected(phone)}
+                        />
+                        <input
+                          type="number"
+                          placeholder="eg: +1 234 567 8900"
+                          onChange={(e) => {
+                            handleChange(e, "phone");
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="full-div">
+                      <div className="login-form half">
+                        <label>First Name</label>
+                        <input
+                          type="email"
+                          placeholder="eg: John"
+                          onChange={(e) => {
+                            handleChange(e, "firstName");
+                          }}
+                        />
+                      </div>
+                      <div className="login-form half">
+                        <label>Last Name</label>
+                        <input
+                          type="email"
+                          placeholder="eg: John"
+                          onChange={(e) => {
+                            handleChange(e, "lastName");
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="login-form">
+                      <label>Password</label>
                       <input
-                        type="email"
-                        placeholder="eg: John"
+                        type="password"
+                        placeholder="•••••••••••••••••"
                         onChange={(e) => {
-                          handleChange(e, "lastName");
+                          handleChange(e, "password");
                         }}
                       />
                     </div>
-                  </div>
-                  <div className="login-form">
-                    <label>Password</label>
-                    <input
-                      type="password"
-                      placeholder="•••••••••••••••••"
-                      onChange={(e) => {
-                        handleChange(e, "password");
-                      }}
-                    />
-                  </div>
-                  <div className="forgot-passsign signup-btn">
-                    <button class="btn btn-search sign-up" onClick={signUpUser}>
-                      Sign Up
-                    </button>
-                  </div>
-                  {loading ? (
-                    <div class="loader-wrapper">
-                      <div class="loader"></div>
-                    </div>
-                  ) : null}
-                  <div className="login-with">
-                    <span></span>
-                    <p>or Sign Up with</p>
-
-                    <div className="google-buttons">
+                    <div className="forgot-passsign signup-btn">
                       <button
-                        type="button"
-                        class="btn-google"
-                        onClick={loginGoogle}
+                        class="btn btn-search sign-up"
+                        onClick={signUpUser}
                       >
-                        <img src={google} />
-                        Google
-                      </button>
-                      <button
-                        type="button"
-                        class="btn-google"
-                        onClick={loginFb}
-                      >
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
+                        Sign Up
                       </button>
                     </div>
-                  </div>
+                    {loading ? (
+                      <div class="loader-wrapper">
+                        <div class="loader"></div>
+                      </div>
+                    ) : null}
+                    <div className="login-with">
+                      <span></span>
+                      <p>or Sign Up with</p>
 
-                  <div className="forgot-pass">
-                    <p>
-                      By signing up you accept the{" "}
-                      <span>terms and conditions </span>and{" "}
-                      <span>privacy policy </span>
-                    </p>
-                  </div>
-                </form>
+                      <div className="google-buttons">
+                        <button
+                          type="button"
+                          class="btn-google"
+                          onClick={loginGoogle}
+                        >
+                          <img src={google} />
+                          Google
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-google"
+                          onClick={loginFb}
+                        >
+                          <i class="fab fa-facebook-f"></i>
+                          Facebook
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="forgot-pass">
+                      <p>
+                        By signing up you accept the{" "}
+                        <span>terms and conditions </span>and{" "}
+                        <span>privacy policy </span>
+                      </p>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Modal>
 
       {/* Forgot Modal here */}
 
