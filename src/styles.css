@@ -109,7 +109,7 @@ header {
   display: flex;
   align-items: center;
 }
-.modal{
+.modal {
   z-index: 99999;
 }
 .manage-facility .nav-link:hover {
@@ -187,6 +187,11 @@ header li.nav-item.manage-facility {
 nav.navbar.navbar-expand-lg {
   padding-left: 0;
   padding-right: 0;
+}
+.common-button {
+  background: #65c87a;
+  border-radius: 4px;
+  border: 1px solid #65c87a;
 }
 
 a.navbar-brand {
@@ -354,6 +359,28 @@ button.btn.btn-search:hover {
 
 .spotywork {
   padding-bottom: 60px;
+}
+.demo-app {
+  display: flex;
+  min-height: 100%;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.demo-app-sidebar {
+  width: 300px;
+  line-height: 1.5;
+  background: #eaf9ff;
+  border-right: 1px solid #d3e2e8;
+}
+
+.demo-app-sidebar-section {
+  padding: 2em;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 3em;
 }
 
 .mobileViwe {
@@ -933,7 +960,7 @@ button.btn.btn-black.btn-filter:focus {
   border-radius: 15px;
   position: relative;
 }
-.full-img{
+.full-img {
   width: 100%;
 }
 .facilty-logo {
@@ -1732,7 +1759,7 @@ button:focus {
   display: inline-block;
   width: 100%;
 }
-.payment-method.notification .radio-btn label{
+.payment-method.notification .radio-btn label {
   display: block;
 }
 .login-with span:before {
@@ -2939,7 +2966,8 @@ span.tooltips-cont {
 .slick-next {
   right: 37px;
 }
-.slick-prev:before, .slick-next:before{
+.slick-prev:before,
+.slick-next:before {
   font-size: 35px;
   opacity: 1;
 }
@@ -3050,15 +3078,15 @@ span.tooltips-cont {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  footer{
+  footer {
     padding: 40px 0 15px;
   }
   .mobileViwe.testimonial button.slick-arrow {
     display: none !important;
-}
-.mobileViwe.testimonial .box-one p{
-  padding-right: 0;
-}
+  }
+  .mobileViwe.testimonial .box-one p {
+    padding-right: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {

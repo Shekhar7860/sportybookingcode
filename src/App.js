@@ -36,7 +36,7 @@ const App = ({ userData }) => {
           <Route exact path="/">
             {userData.userData ? (
               userData.userData.user != undefined ? (
-                <Redirect to="/owner" />
+                <Redirect to="/home" />
               ) : (
                 <Home />
               )
@@ -58,7 +58,7 @@ const App = ({ userData }) => {
           <Route path="/profile">
             <Profile />
           </Route>
-          <Route path="/owner">
+          <Route path="/home">
             <OwnerHome />{" "}
           </Route>
           <Route path="/calender">

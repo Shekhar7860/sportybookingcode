@@ -61,7 +61,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
   const history = useHistory();
   const onSuccess = (googleUser) => {
     let profile = googleUser.getBasicProfile();
-    history.push("/owner");
+    history.push("/home");
   };
 
   const handleChange = (e, param) => {
@@ -125,7 +125,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
   const getCurrentUserInfo = async (response) => {
     const fbResponse = await getFaceBookData(response.authResponse.accessToken);
     console.log("fb", fbResponse);
-    history.push("/owner");
+    history.push("/home");
   };
   const loginGoogle = () => {
     signIn();
@@ -170,7 +170,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
       if (res.status == 200) {
         showLoading(false);
         toast.success(res.data.message);
-        history.push("/owner");
+        history.push("/home");
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
