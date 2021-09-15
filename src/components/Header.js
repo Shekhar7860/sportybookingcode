@@ -233,7 +233,14 @@ const Header = ({ signUp, login, forgotPassword }) => {
       toast.success(res.data.message);
     } else {
       showLoading(false);
-      toast.error(res.data ? res.data.error_description : String(res));
+      console.log("res", res.data);
+      toast.error(
+        res.data
+          ? Object.keys(res.data.error_description).length !== 0
+            ? res.data.error_description
+            : "NetWork Error"
+          : String(res)
+      );
     }
   };
   return (
