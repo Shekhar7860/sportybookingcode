@@ -36,12 +36,18 @@ export const verifyUserCode = (url, token, params) => async (dispatch) => {
   const response = await putApi(url, token, params);
   return response;
 };
+
+export const updatePassword = (url, token, params) => async (dispatch) => {
+  const response = await putApi(url, token, params);
+  return response;
+};
 export function clearData(data) {
   return {
     type: LOG_OUT_USER,
     data,
   };
 }
+
 export function setUserData(data) {
   return {
     type: SET_USER_DATA,

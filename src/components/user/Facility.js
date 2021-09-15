@@ -3,6 +3,7 @@ import Footer from "./../Footer";
 import InnerHeader from "./../InnerHeader";
 import facilityLogo from "../../assets/images/facilityLogo.png";
 import facilitys from "../../assets/images/facility.png";
+import Photo from "../../assets/images/Photo.png";
 import calender from "../../assets/images/Calendar.png";
 import bell from "../../assets/images/bell.svg";
 import Slider from "react-slick";
@@ -14,14 +15,16 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import Modal from "react-bootstrap/Modal";
 import { TabPanel, useTabs } from "react-headless-tabs";
+import "./user-module.css";
+import { toast } from "react-toastify";
 function Facility() {
   const [bookingView, showBookingView] = useState(false);
   const [bookingModal, showBookingModal] = useState(false);
+  const [checkboxChecked, setCheckBox] = useState(false);
   const items = ["1. Date & Time", "2. Terms & Conditions", "3. Confirm"];
   const [selectedTab, setSelectedTab] = useTabs(items);
   const changeTab = (e) => {
     e.preventDefault();
-    console.log("e", e);
     setSelectedTab(e.target.dataset.tab);
   };
   const getSelectedTabIndex = () =>
@@ -56,6 +59,9 @@ function Facility() {
     },
   ];
 
+  const confirmBooking = () => {
+    toast.success("Booking is confirmed");
+  };
   const handleEventClick = (clickInfo) => {
     console.log("h", clickInfo);
     showBookingView(true);
@@ -336,7 +342,7 @@ function Facility() {
           </section>
         </>
       ) : (
-        <section className="swining-pool pt-4">
+        <section className="swining-poolbooking pt-4">
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-7 pl-5">
@@ -348,56 +354,98 @@ function Facility() {
                       Arena with four NHL sized rinks. Goalie warm-up rink.
                       Press box (main rink only). Change rooms with showers.
                     </div>
-                    <span>About facility</span>
+                    <div className="light-text">About Facility</div>
                   </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Rink Size</div>
+                  <div className="col-md-4 ">
+                    <span className="boldFont">200*800</span>
+                    <span className="light-text small-text">
+                      &nbsp; NHL Sized
+                    </span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Max Capacity</div>
+                  <div className="col-md-4 boldFont">20</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Insurance Provided</div>
+                  <div className="col-md-4 boldFont">Yes</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Change Rooms</div>
+                  <div className="col-md-4 boldFont">Yes</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Change Rooms Locks Provided</div>
+                  <div className="col-md-4 boldFont">Yes</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Waiver</div>
+                  <div className="col-md-4 boldFont">Details</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">COVID Waiver</div>
+                  <div className="col-md-4 boldFont">Details</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Shower Available</div>
+                  <div className="col-md-4 boldFont">Yes</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 ">Washroom</div>
+                  <div className="col-md-4 boldFont">Yes</div>
                 </div>
               </div>
-              <div className="col-md-5 text-right">
-                <div className="swining-text">
-                  {/* <i class="fal fa-bell"></i> */}
-                  <svg
-                    className="not-change"
-                    width="16"
-                    height="22"
-                    viewBox="0 0 16 22"
-                    fill="#000"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10 2V2.28988C12.8915 3.15043 15 5.82898 15 9V16H16V18H0V16H1V9C1 5.82898 3.10851 3.15043 6 2.28988V2C6 0.895431 6.89543 0 8 0C9.10457 0 10 0.895431 10 2ZM3 16H13V9C13 6.23858 10.7614 4 8 4C5.23858 4 3 6.23858 3 9V16ZM10 20V19H6V20C6 21.1046 6.89543 22 8 22C9.10457 22 10 21.1046 10 20Z"
-                      fill="black"
-                    />
-                  </svg>
 
-                  <svg
-                    className="change"
-                    width="16"
-                    height="22"
-                    viewBox="0 0 16 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10 2V2.28988C12.8915 3.15043 15 5.82898 15 9V16H16V18H0V16H1V9C1 5.82898 3.10851 3.15043 6 2.28988V2C6 0.895431 6.89543 0 8 0C9.10457 0 10 0.895431 10 2ZM10 20V19H6V20C6 21.1046 6.89543 22 8 22C9.10457 22 10 21.1046 10 20Z"
-                      fill="black"
-                    />
-                  </svg>
-
-                  <span>Notifications</span>
-                  <div>
-                    {" "}
-                    <button
-                      className="common-button"
-                      onClick={showHideBookingModal}
-                    >
-                      Book Now
-                    </button>
+              <div className="col-md-5">
+                <div className="row">
+                  <div className="col-md-4 ">Total Price</div>
+                  <div className="col-md-4">Total Time</div>
+                </div>
+                <div className="row">
+                  <div className="col-md-4 boldFont largeFont">$75</div>
+                  <div className="col-md-4 boldFont largeFont">1:30</div>
+                </div>
+                <div className="commonSpace">
+                  <div>Date</div>
+                </div>
+                <div className="commonSpace">
+                  <h5>Monday 10, May</h5>
+                </div>
+                <div className="commonSpace">
+                  <div className="row">
+                    <div className="col-md-4 ">Start Time</div>
+                    <div className="col-md-4">End Time</div>
                   </div>
                 </div>
+                <div className="commonSpace">
+                  <div className="row">
+                    <h6 className="col-md-4">
+                      10:00 <span className="light-text">AM</span>
+                    </h6>
+                    <h6 className="col-md-4">
+                      11:30 <span className="light-text">AM</span>
+                    </h6>
+                  </div>
+                </div>
+                <div className="commonSpace">
+                  <h6>Choose another time</h6>
+                </div>
+                <div>
+                  <button
+                    className="common-button"
+                    onClick={showHideBookingModal}
+                  >
+                    <span className="button-text-color">Book Now</span>
+                  </button>
+                  <div className="items-center">
+                    <p>You wont be charged yet</p>
+                  </div>
+                </div>
+                <div></div>
               </div>
             </div>
           </div>
@@ -419,13 +467,15 @@ function Facility() {
                 }) * ${getSelectedTabIndex()})`,
                 height: "2px",
                 width: `calc(100% / ${items.length})`,
-                background: "red",
+
                 transition: "all ease 0.2s",
               }}
             />
+
             <div
               style={{
                 display: "flex",
+                justifyContent: "space-around",
               }}
             >
               {items.map((item) => {
@@ -434,11 +484,11 @@ function Facility() {
                     href="#tab"
                     key={item}
                     style={{
-                      flexGrow: 1,
+                      flexGrow: 0.1,
                       display: "block",
                       padding: "1rem",
                       textDecoration: "none",
-                      color: selectedTab === item ? "red" : "black",
+                      color: selectedTab === item ? "black" : "#b2bec3",
                       background: selectedTab === item ? "#fcfcfc" : "#fff",
                     }}
                     onClick={changeTab}
@@ -448,7 +498,7 @@ function Facility() {
                   </a>
                 );
               })}
-              <span onClick={showHideBookingModal}>
+              <span onClick={showHideBookingModal} className="cross-icon-style">
                 <i class="fal fa-times"></i>
               </span>
             </div>
@@ -462,7 +512,427 @@ function Facility() {
             {items.map((item) => {
               return (
                 <TabPanel key={item} hidden={selectedTab !== item}>
-                  {item}
+                  {selectedTab == "1. Date & Time" ? (
+                    <section className="swining-poolbooking pt-4">
+                      <div className="container-fluid">
+                        <div className="row">
+                          <div className="col-md-7 pl-5">
+                            <div className="swining-text1">
+                              <div className="swining-pol-text">
+                                <h6>Wayne Gretzky Sports Centre</h6>
+                                <h2>Northern Rink</h2>
+                                <div>
+                                  Arena with four NHL sized rinks. Goalie
+                                  warm-up rink. Press box (main rink only).
+                                  Change rooms with showers.
+                                </div>
+                                <div className="light-text">About Facility</div>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Rink Size</div>
+                              <div className="col-md-4 ">
+                                <span className="boldFont">200*800</span>
+                                <span className="light-text small-text">
+                                  &nbsp; NHL Sized
+                                </span>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Max Capacity</div>
+                              <div className="col-md-4 boldFont">20</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">
+                                Insurance Provided
+                              </div>
+                              <div className="col-md-4 boldFont">Yes</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Change Rooms</div>
+                              <div className="col-md-4 boldFont">Yes</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">
+                                Change Rooms Locks Provided
+                              </div>
+                              <div className="col-md-4 boldFont">Yes</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Waiver</div>
+                              <div className="col-md-4 boldFont">Details</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">COVID Waiver</div>
+                              <div className="col-md-4 boldFont">Details</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Shower Available</div>
+                              <div className="col-md-4 boldFont">Yes</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">Washroom</div>
+                              <div className="col-md-4 boldFont">Yes</div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 ">
+                                Cancellation Policy
+                              </div>
+                              <div className="col-md-4 boldFont">14 Days</div>
+                            </div>
+                          </div>
+
+                          <div className="col-md-5">
+                            <img src={Photo} />
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Total Price</div>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-4 boldFont largeFont">
+                                $50
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div>Date</div>
+                            </div>
+                            <div className="commonSpace">
+                              <h5>Monday 10, May</h5>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Start Time</div>
+                                <div className="col-md-4">End Time</div>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <h6 className="col-md-4">
+                                  10:00 <span className="light-text">AM</span>
+                                </h6>
+                                <h6 className="col-md-4">
+                                  11:30 <span className="light-text">AM</span>
+                                </h6>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <h6>Choose another time</h6>
+                            </div>
+                            <div>
+                              <button className="common-button-black">
+                                <span className="button-text-color">
+                                  Learn More
+                                </span>
+                              </button>
+                              <button
+                                className="common-button"
+                                onClick={() => {
+                                  setSelectedTab("2. Terms & Conditions");
+                                }}
+                              >
+                                <span className="button-text-color">
+                                  Continue
+                                </span>
+                              </button>
+                            </div>
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  ) : selectedTab == "2. Terms & Conditions" ? (
+                    <section className="swining-poolbooking pt-4">
+                      <div className="container-fluid">
+                        <div className="row">
+                          <div className="col-md-7 pl-5">
+                            <div className="swining-text1">
+                              <div className="swining-pol-text">
+                                <h6>Wayne Gretzky Sports Centre</h6>
+                                <h2>Northern Rink</h2>
+                                <div>
+                                  Please read and accept facility’s terms &
+                                  conditions.
+                                </div>
+                                <div>
+                                  Welcome to the Wayne Gretzky Sports Centre
+                                  (WGSC)! Please find some helpful information
+                                  below to help ensure everyone who uses the
+                                  facility enjoys their visit. Pass Inclusions
+                                  Fitness Pass: includes all fitness classes
+                                  (except registered programs) including: warm
+                                  water workout classes; aqua fit; use of the
+                                  weight room (orientations are included in your
+                                  pass at no additional costs by appointment);
+                                  gymnasium; 65m pool and 25m pool (as outlined
+                                  in the Pool Pass information). Gymnasium Pass:
+                                  includes use of the gymnasium during open
+                                  program times. Pool Pass: includes use of the
+                                  pools during any length swim, adult, family or
+                                  public swim time. *Note: Children must be
+                                  accompanied by an adult in the water during
+                                </div>
+                              </div>
+                            </div>
+                            <input
+                              type="checkbox"
+                              checked={checkboxChecked}
+                              onChange={(e) => {
+                                setCheckBox(!checkboxChecked);
+                              }}
+                            />
+                            &nbsp;
+                            <label for="checkbox-1">
+                              I agree with terms and conditions
+                            </label>
+                          </div>
+
+                          <div className="col-md-5">
+                            <img src={Photo} />
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Price</div>
+                                <div className="col-md-4">Tax</div>
+                                <div className="col-md-4">Total</div>
+                              </div>
+
+                              <div className="row">
+                                <div className="col-md-4 boldFont largeFont">
+                                  $50
+                                </div>
+                                <div className="col-md-4 boldFont largeFont">
+                                  $5
+                                </div>
+                                <div className="col-md-4 boldFont largeFont">
+                                  $55
+                                </div>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div>Date</div>
+                            </div>
+                            <div className="commonSpace">
+                              <h5>Monday 10, May</h5>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Start Time</div>
+                                <div className="col-md-4">End Time</div>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <h6 className="col-md-4">
+                                  10:00 <span className="light-text">AM</span>
+                                </h6>
+                                <h6 className="col-md-4">
+                                  11:30 <span className="light-text">AM</span>
+                                </h6>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <h6>Choose another time</h6>
+                            </div>
+                            <div>
+                              <button
+                                className="common-button"
+                                onClick={() => {
+                                  if (checkboxChecked == true) {
+                                    setSelectedTab("3. Confirm");
+                                  } else {
+                                    toast.error(
+                                      "Please accept terms and conditions"
+                                    );
+                                  }
+                                }}
+                              >
+                                <span className="button-text-color">
+                                  Continue
+                                </span>
+                              </button>
+                              <button
+                                className="common-button-black"
+                                onClick={() => {
+                                  setSelectedTab("1. Date & Time");
+                                }}
+                              >
+                                <span className="button-text-color">Back</span>
+                              </button>
+                            </div>
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  ) : (
+                    <section className="swining-poolbooking pt-4">
+                      <div className="container-fluid">
+                        <div className="row">
+                          <div className="col-md-7 pl-5">
+                            <div className="swining-text1">
+                              <div className="swining-pol-text">
+                                <h6>Wayne Gretzky Sports Centre</h6>
+                                <h2>Northern Rink</h2>
+                                <div>
+                                  Arena with four NHL sized rinks. Goalie
+                                  warm-up rink. Press box (main rink only).
+                                  Change rooms with showers.
+                                </div>
+                                <div className="light-text-facility">
+                                  Add Payment Method
+                                </div>
+                              </div>
+                              <div className="facility-form">
+                                <label>Credit Card Number</label>
+                                <input
+                                  type="number"
+                                  placeholder="XXXX XXXX XXXX XXXX"
+                                />
+                              </div>
+                              <div className="commonSpace">
+                                <input type="checkbox" />
+                                &nbsp;
+                                <label for="checkbox-1">
+                                  Save Card Details For Future Bookings
+                                </label>
+                              </div>
+                              <div className="light-text-facility">
+                                Billing Details
+                              </div>
+                              <div className="commonSpace">
+                                <div className="facility-form">
+                                  <label>Card Holder Name</label>
+                                  <input
+                                    type="text"
+                                    placeholder="eg. John Johnson"
+                                  />
+                                </div>
+                              </div>
+                              <div className="commonSpace">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>Address</label>
+                                      <input
+                                        type="text"
+                                        placeholder="eg. 122 Example Street"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="commonSpace">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>Apt</label>
+                                      <input type="text" placeholder="#" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="commonSpace">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>Postal Code</label>
+                                      <input
+                                        type="text"
+                                        placeholder="eg : 10012"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="commonSpace">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>City</label>
+                                      <input
+                                        type="text"
+                                        placeholder="Select City"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-md-5">
+                            <img src={Photo} />
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Price</div>
+                                <div className="col-md-4">Tax</div>
+                                <div className="col-md-4">Total</div>
+                              </div>
+                              <div className="row">
+                                <div className="col-md-4 boldFont largeFont">
+                                  $50
+                                </div>
+                                <div className="col-md-4 boldFont largeFont">
+                                  $5
+                                </div>
+                                <div className="col-md-4 boldFont largeFont">
+                                  $55
+                                </div>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div>Date</div>
+                            </div>
+                            <div className="commonSpace">
+                              <h5>Monday 10, May</h5>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <div className="col-md-4 ">Start Time</div>
+                                <div className="col-md-4">End Time</div>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <div className="row">
+                                <h6 className="col-md-4">
+                                  10:00 <span className="light-text">AM</span>
+                                </h6>
+                                <h6 className="col-md-4">
+                                  11:30 <span className="light-text">AM</span>
+                                </h6>
+                              </div>
+                            </div>
+                            <div className="commonSpace">
+                              <h6>Choose another time</h6>
+                            </div>
+                            <div className="facility-form">
+                              <label>Promo Code</label>
+                              <input type="email" placeholder="Promo Code" />
+                            </div>
+                            <div>
+                              <button
+                                className="common-button"
+                                onClick={confirmBooking}
+                              >
+                                <span className="button-text-color">
+                                  Confirm Booking
+                                </span>
+                              </button>
+                              <button
+                                className="common-button-black"
+                                onClick={() => {
+                                  setSelectedTab("1. Date & Time");
+                                }}
+                              >
+                                <span className="button-text-color">Back</span>
+                              </button>
+                            </div>
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  )}
                 </TabPanel>
               );
             })}

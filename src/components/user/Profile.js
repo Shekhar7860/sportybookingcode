@@ -9,6 +9,7 @@ import {
   updateUserProfile,
   sendUserCode,
   verifyUserCode,
+  updatePassword,
 } from "../../redux/actions/user";
 const initialData = {
   email: "",
@@ -40,6 +41,7 @@ function Profile({
   updateLoggedInUserProfile,
   sendUserOtp,
   verifyUserOtp,
+  changePassword,
 }) {
   const [emailOtp, showEmailOtp] = useState(false);
   const [phoneOtp, showPhoneOtp] = useState(false);
@@ -53,6 +55,8 @@ function Profile({
   const [thirdMobileText, setThirdMobileText] = useState("");
   const [fourthMobileText, setFourthMobileText] = useState("");
   const [state, dispatch] = useReducer(reducer, initialData);
+  const [changePasswordText, setPasswordText] = useState("");
+  const [changeOldPasswordText, setOldPasswordText] = useState("");
   useEffect(() => {
     const userProfile = async () => {
       const res = await getUser(
@@ -88,6 +92,34 @@ function Profile({
     }
   };
 
+  const updatePasswordFunction = async () => {
+    if (changeOldPasswordText == "") {
+      return toast.error("Please Enter Old Password");
+    }
+    if (changePasswordText == "") {
+      return toast.error("Please Enter New Password");
+    }
+    let obj = {
+      old_password: changePasswordText,
+      new_password: changeOldPasswordText,
+    };
+    const res = await changePassword(
+      "/user/change/password",
+      userData.userData ? userData.userData.token : null,
+      obj
+    );
+    if (res.status == 200) {
+      toast.success(res.data.message);
+    } else {
+      toast.error(
+        res.data
+          ? Object.keys(res.data.error_description).length !== 0
+            ? res.data.error_description
+            : "Network Error"
+          : String(res)
+      );
+    }
+  };
   const verifyOtp = async (mode) => {
     let obj = {
       email: state.email,
@@ -489,6 +521,9 @@ function Profile({
                             type="password"
                             autocomplete="off"
                             placeholder="*********"
+                            onChange={(e) => {
+                              setPasswordText(e.target.value);
+                            }}
                           />
                         </div>
                       </div>
@@ -508,12 +543,20 @@ function Profile({
                             type="password"
                             autocomplete="off"
                             placeholder="*********"
+                            onChange={(e) => {
+                              setOldPasswordText(e.target.value);
+                            }}
                           />
                         </div>
                       </div>
                       <div className="row mt-4">
                         <div className="col-md-12">
-                          <button className="update-btn">Save</button>
+                          <button
+                            className="update-btn"
+                            onClick={updatePasswordFunction}
+                          >
+                            Save
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -757,7 +800,7 @@ function Profile({
                 <div className="payment-heading wallet">
                   <h2>E-Wallet</h2>
                   <p>Your balance</p>
-                  <h4>$100</h4>
+                  <h4>${loggedUser ? loggedUser.wallet : 0}</h4>
                 </div>
               </div>
             </div>
@@ -778,6 +821,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: (url, token) => dispatch(getUserProfile(url, token)),
+    changePassword: (url, token) => dispatch(updatePassword(url, token)),
     updateLoggedInUserProfile: (url, token, params) =>
       dispatch(updateUserProfile(url, token, params)),
     sendUserOtp: (url, token, params, mode) =>

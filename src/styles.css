@@ -9,7 +9,12 @@ body {
   padding-right: 40px;
   padding-left: 40px;
 }
-
+.boldFont {
+  font-weight: bold;
+}
+.small-text {
+  font-size: 12px !important;
+}
 h3 {
   font-weight: 600;
   font-size: 20px;
@@ -22,6 +27,9 @@ h3 {
 }
 .react-tel-input .form-control {
   width: 100px !important;
+}
+.largeFont {
+  font-size: 25px;
 }
 
 /************* header css start here *************/
@@ -112,6 +120,11 @@ header {
 .modal {
   z-index: 99999;
 }
+.light-text {
+  color: #b2bec3;
+  margin-top: 8px;
+  font-size: 14px;
+}
 .manage-facility .nav-link:hover {
   color: #fff;
   background: #182a8cdb;
@@ -191,7 +204,20 @@ nav.navbar.navbar-expand-lg {
 .common-button {
   background: #65c87a;
   border-radius: 4px;
+  width: 220px;
   border: 1px solid #65c87a;
+  margin-top: 20px;
+  align-items: center;
+  height: 50px;
+}
+.common-button-black {
+  background: #000000;
+  border-radius: 4px;
+  width: 220px;
+  border: 1px solid #000000;
+  margin-top: 20px;
+  align-items: center;
+  height: 50px;
 }
 
 a.navbar-brand {

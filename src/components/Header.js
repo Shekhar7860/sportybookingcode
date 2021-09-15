@@ -106,6 +106,11 @@ const Header = ({ signUp, login, forgotPassword }) => {
     setPhone(phone);
   };
 
+  const toggleSignLoginModal = () => {
+    showSignUpModal(!signUpModal);
+    showLoginModal(!loginModal);
+  };
+
   const showHideSignUpModal = () => {
     showSignUpModal(!signUpModal);
   };
@@ -233,12 +238,12 @@ const Header = ({ signUp, login, forgotPassword }) => {
       toast.success(res.data.message);
     } else {
       showLoading(false);
-      console.log("res", res.data);
+      //  console.log("res", res.data);
       toast.error(
         res.data
           ? Object.keys(res.data.error_description).length !== 0
             ? res.data.error_description
-            : "NetWork Error"
+            : "Network Error"
           : String(res)
       );
     }
@@ -398,9 +403,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
                       <button
                         type="button"
                         class="btn btn-search sign-up"
-                        data-toggle="modal"
-                        data-target="#signupmodal"
-                        data-dismiss="modal"
+                        onClick={toggleSignLoginModal}
                       >
                         Sign Up
                       </button>
