@@ -10,11 +10,15 @@ import elebn from '../../assets/images/imageelevn.png'
 import twelb from '../../assets/images/imagetwelbe.png'
 import preium from '../../assets/images/preium.png'
 import { Link } from 'react-router-dom'
-
+import Modal from "react-bootstrap/Modal";
 
 function Search() {
 
     const [list, setList] = useState(false)
+    const [modal, showmodal] = useState(false)
+    const showhidemoremodal = () => {
+        showmodal(!modal);
+    }
     return (
         <div>
             <InnerHeader />
@@ -30,7 +34,8 @@ function Search() {
                                         <button className="btn btn-black btn-filter">10:00 AM — 1:00 PM</button>
                                         <button className="btn btn-black btn-filter more-btn">Weekends</button>
                                         <button className="btn btn-black btn-filter">$10–100</button>
-                                        <button className="btn btn-black btn-filter more-btn">More</button>
+                                        <button className="btn btn-black btn-filter more-btn"
+                                        onClick={showhidemoremodal} >More</button>
                                     </div>
                                     <div className="filters-right">
                                         <div class="anil_nepal">
@@ -223,6 +228,38 @@ function Search() {
                     </div>
                 </div>
             </section>
+
+         <Modal show={modal} className="more-modal">
+            <div className="more-div">
+                <span onClick={showhidemoremodal} className="cross-icon-style">
+                    <i class="fal fa-times"></i>
+                </span>
+                <div className="active-type">
+                    <form>
+                        <div className="col-md-12 mb-4 mt-2">
+                            <div className="facility-form">
+                                <label>Activity Type</label>
+                                <input type="text" placeholder="eg: Basketball" />
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-4 mt-2">
+                            <div className="facility-form">
+                                <label>Filter</label>
+                                <input type="text" placeholder="Placeholder" />
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-4 mt-2">
+                            <div className="facility-form">
+                                <label>Filter</label>
+                                <input type="text" placeholder="Placeholder" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+             </div>
+             </Modal>   
+
+
         </div>
     )
 }

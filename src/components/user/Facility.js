@@ -6,6 +6,7 @@ import facilitys from "../../assets/images/facility.png";
 import Photo from "../../assets/images/Photo.png";
 import calender from "../../assets/images/Calendar.png";
 import bell from "../../assets/images/bell.svg";
+import googlecal from "../../assets/images/google-calendar 1.png"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -62,6 +63,7 @@ function Facility() {
 
   const confirmBooking = () => {
     showHideConfirmedModal();
+    showBookingModal(false);
   };
   const handleEventClick = (clickInfo) => {
     showBookingView(true);
@@ -346,65 +348,50 @@ function Facility() {
           </section>
         </>
       ) : (
-        <section className="swining-poolbooking pt-4">
+        <section className="swining-poolbooking">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-7 pl-5">
-                <div className="swining-text1">
-                  <div className="swining-pol-text">
+              <div className="col-md-8 pl-5">
+                <div className="swining-text1 border-pool">
+                  <div className="swining-pol-text pt-4">
                     <h6>Wayne Gretzky Sports Centre</h6>
-                    <h2>Northern Rink</h2>
+                    <h2>North Rink</h2>
                     <div>
                       Arena with four NHL sized rinks. Goalie warm-up rink.
-                      Press box (main rink only). Change rooms with showers.
+                      Press box (main rink <br/> only). Change rooms with showers.
                     </div>
-                    <div className="light-text">About Facility</div>
+                    <div className="abou-text-fac mt-4">About Facility</div>
+                    <ul className="facility-fac">
+                        <li>Rink Size</li>
+                        <li><strong>200x80</strong> NHL Sized</li>
+                        <li>Max Capacity</li>
+                        <li><strong>20</strong></li>
+                        <li>Insurance Provided</li>
+                        <li><strong>yes</strong></li>
+                        <li>Chhange Rooms</li>
+                        <li><strong>Yes</strong></li>
+                        <li>Chhange Rooms Locks Provided</li>
+                        <li><strong>Yes</strong></li>
+                        <li>Waiver</li>
+                        <li><strong>Details</strong></li>
+                        <li>COVID Waiver</li>
+                        <li><strong>Details</strong></li>
+                        <li>Showers Available</li>
+                        <li><strong>Yes</strong></li>
+                        <li>Washroom</li>
+                        <li><strong>Yes</strong></li>
+                    </ul>
+                    <div className="show-location">
+                      <span>Show Location <i class="fas fa-angle-down"></i></span> 
+                    </div>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-4 ">Rink Size</div>
-                  <div className="col-md-4 ">
-                    <span className="boldFont">200*800</span>
-                    <span className="light-text small-text">
-                      &nbsp; NHL Sized
-                    </span>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Max Capacity</div>
-                  <div className="col-md-4 boldFont">20</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Insurance Provided</div>
-                  <div className="col-md-4 boldFont">Yes</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Change Rooms</div>
-                  <div className="col-md-4 boldFont">Yes</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Change Rooms Locks Provided</div>
-                  <div className="col-md-4 boldFont">Yes</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Waiver</div>
-                  <div className="col-md-4 boldFont">Details</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">COVID Waiver</div>
-                  <div className="col-md-4 boldFont">Details</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Shower Available</div>
-                  <div className="col-md-4 boldFont">Yes</div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4 ">Washroom</div>
-                  <div className="col-md-4 boldFont">Yes</div>
-                </div>
+               
+               
               </div>
 
-              <div className="col-md-5">
+              <div className="col-md-4 pt-4 right-facility-design">
+                <div className="right-content-facility">
                 <div className="row">
                   <div className="col-md-4 ">Total Price</div>
                   <div className="col-md-4">Total Time</div>
@@ -416,21 +403,21 @@ function Facility() {
                 <div className="commonSpace">
                   <div>Date</div>
                 </div>
-                <div className="commonSpace">
+                <div className="big-text">
                   <h5>Monday 10, May</h5>
                 </div>
                 <div className="commonSpace">
                   <div className="row">
-                    <div className="col-md-4 ">Start Time</div>
+                    <div className="col-md-4">Start Time</div>
                     <div className="col-md-4">End Time</div>
                   </div>
                 </div>
-                <div className="commonSpace">
+                <div className="">
                   <div className="row">
-                    <h6 className="col-md-4">
+                    <h6 className="col-md-4 date-big">
                       10:00 <span className="light-text">AM</span>
                     </h6>
-                    <h6 className="col-md-4">
+                    <h6 className="col-md-4 date-big">
                       11:30 <span className="light-text">AM</span>
                     </h6>
                   </div>
@@ -445,17 +432,17 @@ function Facility() {
                   >
                     <span className="button-text-color">Book Now</span>
                   </button>
-                  <div className="items-center">
+                  <div className="charged-yet">
                     <p>You wont be charged yet</p>
                   </div>
                 </div>
-                <div></div>
+                </div>
               </div>
             </div>
           </div>
         </section>
       )}
-      <Modal show={bookingModal}>
+      <Modal show={bookingModal} className="date-time-modal">
         <div className="App">
           <nav
             style={{
@@ -476,10 +463,9 @@ function Facility() {
               }}
             />
 
-            <div
+            <div className="facily-modals"
               style={{
                 display: "flex",
-                justifyContent: "space-around",
               }}
             >
               {items.map((item) => {
@@ -493,7 +479,7 @@ function Facility() {
                       padding: "1rem",
                       textDecoration: "none",
                       color: selectedTab === item ? "black" : "#b2bec3",
-                      background: selectedTab === item ? "#fcfcfc" : "#fff",
+                     
                     }}
                     onClick={changeTab}
                     data-tab={item}
@@ -509,113 +495,82 @@ function Facility() {
           </nav>
           <div
             style={{
-              padding: "2rem",
-              background: "#ececec",
+              padding: "0rem",
+              
             }}
           >
             {items.map((item) => {
               return (
                 <TabPanel key={item} hidden={selectedTab !== item}>
                   {selectedTab == "1. Date & Time" ? (
-                    <section className="swining-poolbooking pt-4">
+                    <section className="swining-poolbooking">
                       <div className="container-fluid">
                         <div className="row">
-                          <div className="col-md-7 pl-5">
-                            <div className="swining-text1">
-                              <div className="swining-pol-text">
-                                <h6>Wayne Gretzky Sports Centre</h6>
-                                <h2>Northern Rink</h2>
-                                <div>
-                                  Arena with four NHL sized rinks. Goalie
-                                  warm-up rink. Press box (main rink only).
-                                  Change rooms with showers.
-                                </div>
-                                <div className="light-text">About Facility</div>
+                          <div className="col-md-8">
+                          <div className="swining-text1 border-pool">
+                            <div className="swining-pol-text pt-4">
+                              <h6>Wayne Gretzky Sports Centre</h6>
+                              <h2>North Rink</h2>
+                              <div>
+                                Arena with four NHL sized rinks. Goalie warm-up rink.
+                                Press box (main rink only). Change rooms with showers.
                               </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Rink Size</div>
-                              <div className="col-md-4 ">
-                                <span className="boldFont">200*800</span>
-                                <span className="light-text small-text">
-                                  &nbsp; NHL Sized
-                                </span>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Max Capacity</div>
-                              <div className="col-md-4 boldFont">20</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">
-                                Insurance Provided
-                              </div>
-                              <div className="col-md-4 boldFont">Yes</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Change Rooms</div>
-                              <div className="col-md-4 boldFont">Yes</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">
-                                Change Rooms Locks Provided
-                              </div>
-                              <div className="col-md-4 boldFont">Yes</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Waiver</div>
-                              <div className="col-md-4 boldFont">Details</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">COVID Waiver</div>
-                              <div className="col-md-4 boldFont">Details</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Shower Available</div>
-                              <div className="col-md-4 boldFont">Yes</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">Washroom</div>
-                              <div className="col-md-4 boldFont">Yes</div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-4 ">
-                                Cancellation Policy
-                              </div>
-                              <div className="col-md-4 boldFont">14 Days</div>
+                              <div className="abou-text-fac mt-4">About Facility</div>
+                              <ul className="facility-fac">
+                                  <li>Rink Size</li>
+                                  <li><strong>200x80</strong> NHL Sized</li>
+                                  <li>Max Capacity</li>
+                                  <li><strong>20</strong></li>
+                                  <li>Insurance Provided</li>
+                                  <li><strong>yes</strong></li>
+                                  <li>Chhange Rooms</li>
+                                  <li><strong>Yes</strong></li>
+                                  <li>Chhange Rooms Locks Provided</li>
+                                  <li><strong>Yes</strong></li>
+                                  <li>Waiver</li>
+                                  <li><strong>Details</strong></li>
+                                  <li>COVID Waiver</li>
+                                  <li><strong>Details</strong></li>
+                                  <li>Showers Available</li>
+                                  <li><strong>Yes</strong></li>
+                                  <li>Washroom</li>
+                                  <li><strong>Yes</strong></li>
+                                  <li>Cancellation Policy</li>
+                                  <li><strong>14 Days</strong></li>
+                              </ul>
+                             
                             </div>
                           </div>
+                          </div>
 
-                          <div className="col-md-5">
+                          <div className="col-md-4 pt-4 right-facility-design">
                             <img src={Photo} />
                             <div className="commonSpace">
                               <div className="row">
-                                <div className="col-md-4 ">Total Price</div>
+                                <div className="col-md-4 boldFont largeFont">
+                                  $50
+                                </div>
                               </div>
                             </div>
-                            <div className="row">
-                              <div className="col-md-4 boldFont largeFont">
-                                $50
-                              </div>
-                            </div>
+                            
                             <div className="commonSpace">
                               <div>Date</div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="big-text">
                               <h5>Monday 10, May</h5>
                             </div>
                             <div className="commonSpace">
                               <div className="row">
-                                <div className="col-md-4 ">Start Time</div>
-                                <div className="col-md-4">End Time</div>
+                                <div className="col-md-6">Start Time</div>
+                                <div className="col-md-6">End Time</div>
                               </div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="">
                               <div className="row">
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   10:00 <span className="light-text">AM</span>
                                 </h6>
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   11:30 <span className="light-text">AM</span>
                                 </h6>
                               </div>
@@ -646,23 +601,27 @@ function Facility() {
                       </div>
                     </section>
                   ) : selectedTab == "2. Terms & Conditions" ? (
-                    <section className="swining-poolbooking pt-4">
+                    <section className="swining-poolbooking pb-3">
                       <div className="container-fluid">
                         <div className="row">
-                          <div className="col-md-7 pl-5">
-                            <div className="swining-text1">
-                              <div className="swining-pol-text">
+                          <div className="col-md-8">
+                            <div className="swining-text1 border-pool">
+                              <div className="swining-pol-text pt-4">
                                 <h6>Wayne Gretzky Sports Centre</h6>
-                                <h2>Northern Rink</h2>
-                                <div>
+                                <h2>North Rink</h2>
+                                <div className="conditions-text pb-2">
                                   Please read and accept facility’s terms &
                                   conditions.
                                 </div>
-                                <div>
+                                <div className="text-conditions">
+                                  <p>
                                   Welcome to the Wayne Gretzky Sports Centre
                                   (WGSC)! Please find some helpful information
                                   below to help ensure everyone who uses the
-                                  facility enjoys their visit. Pass Inclusions
+                                  facility enjoys their visit.</p>
+                                  <br/> 
+                                  <p>Pass Inclusions</p>
+                                  <p>
                                   Fitness Pass: includes all fitness classes
                                   (except registered programs) including: warm
                                   water workout classes; aqua fit; use of the
@@ -674,7 +633,7 @@ function Facility() {
                                   program times. Pool Pass: includes use of the
                                   pools during any length swim, adult, family or
                                   public swim time. *Note: Children must be
-                                  accompanied by an adult in the water during
+                                  accompanied by an adult in the water during</p>
                                 </div>
                               </div>
                             </div>
@@ -691,7 +650,7 @@ function Facility() {
                             </label>
                           </div>
 
-                          <div className="col-md-5">
+                          <div className="col-md-4 right-facility-design pt-4">
                             <img src={Photo} />
                             <div className="commonSpace">
                               <div className="row">
@@ -715,21 +674,21 @@ function Facility() {
                             <div className="commonSpace">
                               <div>Date</div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="big-text">
                               <h5>Monday 10, May</h5>
                             </div>
                             <div className="commonSpace">
                               <div className="row">
-                                <div className="col-md-4 ">Start Time</div>
-                                <div className="col-md-4">End Time</div>
+                                <div className="col-md-6">Start Time</div>
+                                <div className="col-md-6">End Time</div>
                               </div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="">
                               <div className="row">
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   10:00 <span className="light-text">AM</span>
                                 </h6>
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   11:30 <span className="light-text">AM</span>
                                 </h6>
                               </div>
@@ -769,38 +728,37 @@ function Facility() {
                       </div>
                     </section>
                   ) : (
-                    <section className="swining-poolbooking pt-4">
+                    <section className="swining-poolbooking pb-4">
                       <div className="container-fluid">
                         <div className="row">
-                          <div className="col-md-7 pl-5">
-                            <div className="swining-text1">
+                          <div className="col-md-8">
+                            <div className="swining-text1 border-pool pt-4 pr-4">
                               <div className="swining-pol-text">
                                 <h6>Wayne Gretzky Sports Centre</h6>
-                                <h2>Northern Rink</h2>
-                                <div>
-                                  Arena with four NHL sized rinks. Goalie
-                                  warm-up rink. Press box (main rink only).
-                                  Change rooms with showers.
-                                </div>
-                                <div className="light-text-facility">
+                                <h2>North Rink</h2>
+                                <div className="add-paymentss">
                                   Add Payment Method
                                 </div>
                               </div>
                               <div className="facility-form">
+                              <div className="row">
+                                <div className="col-md-6">
                                 <label>Credit Card Number</label>
                                 <input
                                   type="number"
                                   placeholder="XXXX XXXX XXXX XXXX"
                                 />
+                                </div>
+                                </div>
                               </div>
-                              <div className="commonSpace">
+                              <div className="commonSpace mb-3">
                                 <input type="checkbox" />
                                 &nbsp;
                                 <label for="checkbox-1">
                                   Save Card Details For Future Bookings
                                 </label>
                               </div>
-                              <div className="light-text-facility">
+                              <div className="add-paymentss">
                                 Billing Details
                               </div>
                               <div className="commonSpace">
@@ -814,7 +772,7 @@ function Facility() {
                               </div>
                               <div className="commonSpace">
                                 <div className="row">
-                                  <div className="col-md-6">
+                                  <div className="col-md-6 mb-4 mt-2">
                                     <div className="facility-form">
                                       <label>Address</label>
                                       <input
@@ -823,21 +781,13 @@ function Facility() {
                                       />
                                     </div>
                                   </div>
-                                </div>
-                              </div>
-                              <div className="commonSpace">
-                                <div className="row">
-                                  <div className="col-md-6">
+                                  <div className="col-md-6 mb-4 mt-2">
                                     <div className="facility-form">
                                       <label>Apt</label>
                                       <input type="text" placeholder="#" />
                                     </div>
                                   </div>
-                                </div>
-                              </div>
-                              <div className="commonSpace">
-                                <div className="row">
-                                  <div className="col-md-6">
+                                  <div className="col-md-6 mb-4 mt-2">
                                     <div className="facility-form">
                                       <label>Postal Code</label>
                                       <input
@@ -846,28 +796,47 @@ function Facility() {
                                       />
                                     </div>
                                   </div>
-                                </div>
-                              </div>
-                              <div className="commonSpace">
-                                <div className="row">
-                                  <div className="col-md-6">
+                                  <div className="col-md-6 mb-4 mt-2">
                                     <div className="facility-form">
                                       <label>City</label>
                                       <input
                                         type="text"
                                         placeholder="Select City"
                                       />
+                                      <i class="fas fa-angle-down"></i>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>State</label>
+                                      <input
+                                        type="text"
+                                        placeholder="Select State"
+                                      />
+                                      <i class="fas fa-angle-down"></i>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="facility-form">
+                                      <label>Country</label>
+                                      <input
+                                        type="text"
+                                        placeholder="Select Country"
+                                      />
+                                      <i class="fas fa-angle-down"></i>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                             
+                            
                             </div>
                           </div>
 
-                          <div className="col-md-5">
+                          <div className="col-md-4 right-facility-design pt-4">
                             <img src={Photo} />
                             <div className="commonSpace">
-                              <div className="row">
+                              <div className="row mt-4">
                                 <div className="col-md-4 ">Price</div>
                                 <div className="col-md-4">Tax</div>
                                 <div className="col-md-4">Total</div>
@@ -887,29 +856,27 @@ function Facility() {
                             <div className="commonSpace">
                               <div>Date</div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="big-text">
                               <h5>Monday 10, May</h5>
                             </div>
-                            <div className="commonSpace">
+                            <div className="commonSpace mt-4">
                               <div className="row">
-                                <div className="col-md-4 ">Start Time</div>
-                                <div className="col-md-4">End Time</div>
+                                <div className="col-md-6">Start Time</div>
+                                <div className="col-md-6">End Time</div>
                               </div>
                             </div>
-                            <div className="commonSpace">
+                            <div className="">
                               <div className="row">
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   10:00 <span className="light-text">AM</span>
                                 </h6>
-                                <h6 className="col-md-4">
+                                <h6 className="col-md-6 date-big">
                                   11:30 <span className="light-text">AM</span>
                                 </h6>
                               </div>
                             </div>
-                            <div className="commonSpace">
-                              <h6>Choose another time</h6>
-                            </div>
-                            <div className="facility-form">
+                           
+                            <div className="facility-form mt-4 mb-3">
                               <label>Promo Code</label>
                               <input type="email" placeholder="Promo Code" />
                             </div>
@@ -943,9 +910,126 @@ function Facility() {
           </div>
         </div>
       </Modal>
-      <Modal show={confirmedModal}>
-        <div> I am a modal</div>
-        <div onClick={showHideConfirmedModal}>Close</div>
+      <Modal show={confirmedModal} className="final-facily">
+      <div className="swining-pol-text">
+          <h2>Booking Confirmed</h2>
+        </div>
+        <span onClick={showHideConfirmedModal} class="cross-icon-style"><i class="fal fa-times"></i></span>
+      
+          <section className="swining-poolbooking pb-4">
+                      <div className="">
+                        <div className="row">
+                          <div className="col-md-6">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3316.8756987751667!2d-84.3979549!3d33.7638778!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1631821472543!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                          </div>
+
+                          <div className="col-md-6 right-facility-design">
+                            <div className="text-commonn">
+                              <p>An email confirmation of your booking has been sent</p>
+                            </div>
+                            <div className="commonSpace">
+                              <div>Date</div>
+                            </div>
+                            <div className="big-text">
+                              <h5>Monday 10, May</h5>
+                            </div>
+
+                            <div className="commonSpace">
+                              <div>Facility</div>
+                            </div>
+                            <div className="big-text">
+                              <h5>Wayne Gretzky Sports Centre</h5>
+                            </div>
+
+                            <div className="commonSpace mt-3">
+                              <div className="row">
+                                <div className="col-md-6">Room Name</div>
+                                <div className="col-md-6">Room Type</div>
+                              </div>
+                            </div>
+                            <div className="">
+                              <div className="row">
+                                <h6 className="col-md-6 date-big">
+                                North Rink
+                                </h6>
+                                <h6 className="col-md-6 date-big">
+                                Ice Rink
+                                </h6>
+                              </div>
+                            </div>
+
+                            <div className="commonSpace mt-3">
+                              <div className="row">
+                                <div className="col-md-6">Start Time</div>
+                                <div className="col-md-6">End Time</div>
+                              </div>
+                            </div>
+                            <div className="">
+                              <div className="row">
+                                <h6 className="col-md-6 date-big">
+                                  10:00 <span className="light-text">AM</span>
+                                </h6>
+                                <h6 className="col-md-6 date-big">
+                                  11:30 <span className="light-text">AM</span>
+                                </h6>
+                              </div>
+                            </div>
+                           
+                           
+                            <div>
+                            <div className="Questions mt-2">Questions?</div>
+                              <button
+                                className="common-button mb-4 mt-0"
+                                onClick={confirmBooking}
+                              >
+                                <span className="button-text-color">
+                                Send Facility a Message
+                                </span>
+                              </button>
+                              
+                            </div>
+                            <div></div>
+                          </div>
+                         
+                          
+                        </div>
+                        <div className="row border-top">
+                        <div className="col-md-6">
+                          <div className="share-socils">
+                            <div className="socil-text">
+                              <h3>Share</h3>
+                              <div className="social-i">
+                              <i class="fab fa-facebook-f"></i>
+                              <i class="fab fa-twitter"></i>
+                              <i class="fab fa-instagram"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="share-socils pt-2">
+                            <div className="socil-text">
+                              <h3>Add to Calendar</h3>
+                              <div className="social-i">
+                                <img src={googlecal} />
+                              <h3>.ics</h3>
+                              </div>
+                            </div>
+                          </div>
+                            </div>
+                            <div className="col-md-6 mt-3 text-right pr-5">
+                            <button
+                                className="close-btnss common-button mt-0"
+                                onClick={showHideConfirmedModal}
+                              >
+                                <span className="button-text-color">
+                                Close
+                                </span>
+                              </button>
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+        
       </Modal>
       <Footer />
     </div>
