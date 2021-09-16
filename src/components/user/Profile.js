@@ -58,6 +58,7 @@ function Profile({
   const [state, dispatch] = useReducer(reducer, initialData);
   const [changePasswordText, setPasswordText] = useState("");
   const [changeOldPasswordText, setOldPasswordText] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const userProfile = async () => {
       const res = await getUser(
@@ -80,16 +81,18 @@ function Profile({
     if (mode == "phone") {
       selected = state.phone_number;
     }
+    setLoading(true);
     const res = await sendUserOtp(
       "/user/otp",
       userData.userData ? userData.userData.token : null,
       selected,
       mode
     );
+    setLoading(false);
     if (res.status == 200) {
       toast.success(res.data.message);
     } else {
-      toast.error("NetWork Error");
+      toast.error("Network Error");
     }
   };
 
@@ -101,14 +104,16 @@ function Profile({
       return toast.error("Please Enter New Password");
     }
     let obj = {
-      old_password: changePasswordText,
-      new_password: changeOldPasswordText,
+      old_password: changeOldPasswordText,
+      new_password: changePasswordText,
     };
+    setLoading(true);
     const res = await changePassword(
       "/user/change/password",
       userData.userData ? userData.userData.token : null,
       obj
     );
+    setLoading(false);
     if (res.status == 200) {
       toast.success(res.data.message);
     } else {
@@ -136,15 +141,17 @@ function Profile({
           fourthMobileText,
       };
     }
+    setLoading(true);
     const res = await verifyUserOtp(
       "/user/setotp",
       userData.userData ? userData.userData.token : null,
       obj
     );
+    setLoading(false);
     if (res.status == 200) {
-      toast.success(res.data.message);
+      toast.success("User Verified Successfully");
     } else {
-      toast.error("NetWork Error");
+      toast.error("Network Error");
     }
   };
 
@@ -171,34 +178,24 @@ function Profile({
           email: state.email,
         };
       }
+      setLoading(true);
       const res = await updateLoggedInUserProfile(
         "/user/profile",
         userData.userData ? userData.userData.token : null,
         obj
       );
+      setLoading(false);
       if (res.status == 200) {
         toast.success(res.data.message);
       } else {
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter First Name, Last Name And Password");
+      toast.error("Please Enter Password");
     }
   };
 
   const setText = (e, param) => {
-    if (param == "first") {
-      setFirstMobileText(e.target.value);
-    } else if (param == "second") {
-      setSecondMobileText(e.target.value);
-    } else if (param == "third") {
-      setThirdMobileText(e.target.value);
-    } else if (param == "fourth") {
-      setFourthMobileText(e.target.value);
-    }
-  };
-
-  const setMobileText = (e, param) => {
     if (param == "first") {
       setFirstText(e.target.value);
     } else if (param == "second") {
@@ -207,6 +204,18 @@ function Profile({
       setThirdText(e.target.value);
     } else if (param == "fourth") {
       setFourthText(e.target.value);
+    }
+  };
+
+  const setMobileText = (e, param) => {
+    if (param == "first") {
+      setFirstMobileText(e.target.value);
+    } else if (param == "second") {
+      setSecondMobileText(e.target.value);
+    } else if (param == "third") {
+      setThirdMobileText(e.target.value);
+    } else if (param == "fourth") {
+      setFourthMobileText(e.target.value);
     }
   };
   const handleChange = (e, param) => {
@@ -236,6 +245,11 @@ function Profile({
     <div>
       <InnerHeader highLightedUserName={userLabelName} />
       <section className="mybooking">
+        {loading ? (
+          <div class="loader-wrapper">
+            <div class="loader"></div>
+          </div>
+        ) : null}
         <div className="mybookin-fluid">
           <div className="commoan-left">
             <div
@@ -823,7 +837,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: (url, token) => dispatch(getUserProfile(url, token)),
-    changePassword: (url, token) => dispatch(updatePassword(url, token)),
+    changePassword: (url, token, obj) =>
+      dispatch(updatePassword(url, token, obj)),
     updateLoggedInUserProfile: (url, token, params) =>
       dispatch(updateUserProfile(url, token, params)),
     sendUserOtp: (url, token, params, mode) =>

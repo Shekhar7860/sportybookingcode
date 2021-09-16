@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearData } from "../redux/actions/user";
 const InnerHeader = ({ clearRedux, highLightedUserName }) => {
-  const [topLabelName, setTopLabelName] = useState("");
+  const [topLabelName, setTopLabelName] = useState("AA");
   const history = useHistory();
   const logOut = () => {
     history.push("/");
@@ -83,8 +83,10 @@ const InnerHeader = ({ clearRedux, highLightedUserName }) => {
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
-                          {/* <span className="text-color">SSSS</span> */}
-                          <img src={profile} />
+                          <div className="circle-button">
+                            <span className="text-color">{topLabelName}</span>
+                          </div>
+                          {/* <img src={profile} /> */}
                         </button>
                         <div
                           class="dropdown-menu"
@@ -103,7 +105,10 @@ const InnerHeader = ({ clearRedux, highLightedUserName }) => {
                             My Bookings
                           </Link>
                           <div className="dropdown-item" onClick={logOut}>
-                            <img src={profile} /> {"   "} {"   "}Log Out
+                            <div className="circle-button">
+                              <span className="text-color">{topLabelName}</span>
+                            </div>
+                            &nbsp;&nbsp;Log Out
                           </div>
                         </div>
                       </div>

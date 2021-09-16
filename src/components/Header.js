@@ -19,7 +19,11 @@ import { getFaceBookData } from "../services/service";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { validateEmail, validatePhone } from "../helpers/commonFunctions";
+import {
+  validateEmail,
+  validatePhone,
+  checkifOnlyNumbers,
+} from "../helpers/commonFunctions";
 const initialData = {
   email: "",
   phone_number: "",
@@ -96,7 +100,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email First");
+      toast.error("Please Enter Email");
     }
   };
   const { signIn, loaded } = useGoogleLogin({
@@ -165,7 +169,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
     e.preventDefault();
     if (email && password) {
       if (!validateEmail(email)) {
-        toast.error("Please Enter Valid Email Id");
+        return toast.error("Please Enter Valid Email");
       }
       showLoading(true);
       const res = await login("/user/login", {
@@ -218,6 +222,12 @@ const Header = ({ signUp, login, forgotPassword }) => {
     }
     if (state.password == "") {
       return toast.error("Please Enter Password");
+    }
+    if (checkifOnlyNumbers(state.first_name)) {
+      return toast.error("Please Enter Valid First Name");
+    }
+    if (checkifOnlyNumbers(state.last_name)) {
+      return toast.error("Please Enter Valid Last Name");
     }
     if (!validatePhone(state.phone_number)) {
       return toast.error("Please Enter Valid Phone Number");

@@ -9,8 +9,22 @@ import Payments from "../../assets/owner/Payments.png";
 import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
-
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css";
 const OwnerListing = () => {
+  const deleteListing = () => {
+    confirmAlert({
+      message: "Are you sure",
+      buttons: [
+        {
+          label: "Yes",
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
+  };
   return (
     <div>
       <Ownerheader />
@@ -259,7 +273,12 @@ const OwnerListing = () => {
                         <div className="sendmessege">
                           <button className="btn btn-cancal">Cancel</button>
                           <button className="btn btn-cancal">Refund</button>
-                          <button className="btn btn-cancal">Delete</button>
+                          <button
+                            className="btn btn-cancal"
+                            onClick={deleteListing}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                       <div className="col-md-3 text-right">
