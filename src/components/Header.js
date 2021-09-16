@@ -133,7 +133,6 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
   const getCurrentUserInfo = async (response) => {
     const fbResponse = await getFaceBookData(response.authResponse.accessToken);
-    console.log("fb", fbResponse);
     history.push("/home");
   };
   const loginGoogle = () => {
@@ -179,13 +178,14 @@ const Header = ({ signUp, login, forgotPassword }) => {
       if (res.status == 200) {
         showLoading(false);
         toast.success(res.data.message);
-        history.push("/home");
+        showLoginModal(false);
+        // history.push("/home");
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email And Password");
+      toast.error("Please Enter Email and Password");
       showLoading(false);
     }
   };
@@ -408,7 +408,10 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
                     <div className="forgot-passsign signup-btn">
                       <p>
-                        Don't have an account? <span>Sign up for free.</span>
+                        Don't have an account?{" "}
+                        <span onClick={toggleSignLoginModal}>
+                          Sign up for free.
+                        </span>
                       </p>
                       <button
                         type="button"

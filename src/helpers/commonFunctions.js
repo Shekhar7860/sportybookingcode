@@ -13,6 +13,13 @@ export const validatePhone = (phone) => {
 
 export const checkifOnlyNumbers = (name) => {
   let isnum = /^\d+$/.test(name);
-  console.log("is", isnum);
   return isnum;
+};
+
+export const validatePassword = (password) => {
+  let passwordValidate =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/.test(
+      password
+    );
+  return passwordValidate;
 };
