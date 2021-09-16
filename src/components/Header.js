@@ -327,7 +327,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
       {/* Login Modal here */}
       <Modal class="login-modal modal fade" show={loginModal}>
-        <div>
+        <div class="login-modal">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -429,12 +429,13 @@ const Header = ({ signUp, login, forgotPassword }) => {
         </div>
       </Modal>
       {/* Signup Modal here */}
-      <Modal class="login-modal signup-modal modal fade" show={signUpModal}>
+      <Modal class="modal fade" show={signUpModal}>
         <div
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenter"
           aria-hidden="false"
+          class="login-modal signup-modal"
         >
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -576,8 +577,9 @@ const Header = ({ signUp, login, forgotPassword }) => {
         role="dialog"
         aria-labelledby="exampleModalTitle"
         aria-hidden="true"
+        id="forgot"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered login-modal signup-modal" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">
