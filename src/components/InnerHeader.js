@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearData } from "../redux/actions/user";
 const InnerHeader = ({ clearRedux, highLightedUserName }) => {
-  const [topLabelName, setTopLabelName] = useState("AA");
+  const [topLabelName, setTopLabelName] = useState("");
   const history = useHistory();
   const logOut = () => {
     history.push("/");
