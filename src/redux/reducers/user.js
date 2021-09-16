@@ -1,8 +1,9 @@
-import { SET_USER_DATA, LOG_OUT_USER } from "../actionTypes";
+import { SET_USER_DATA, LOG_OUT_USER, SET_USER_NAME } from "../actionTypes";
 const initialState = {
   data: null,
   userData: {},
   status: false,
+  userLabelName: null,
 };
 export function user(state = initialState, action) {
   switch (action.type) {
@@ -15,6 +16,11 @@ export function user(state = initialState, action) {
       return {
         ...state,
         userData: {},
+      };
+    case SET_USER_NAME:
+      return {
+        ...state,
+        userLabelName: action.data,
       };
     default:
       return state;

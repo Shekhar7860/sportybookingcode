@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logoheader from "../assets/images/logo-small-transparent.svg";
 import { Link } from "react-router-dom";
 import profile from "../assets/images/Avatar.png";
@@ -7,12 +7,19 @@ import Searchmain from "../assets/images/Search.png";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearData } from "../redux/actions/user";
-const InnerHeader = ({ clearRedux }) => {
+const InnerHeader = ({ clearRedux, highLightedUserName }) => {
+  const [topLabelName, setTopLabelName] = useState("");
   const history = useHistory();
   const logOut = () => {
     history.push("/");
     clearRedux(null);
   };
+  useEffect(() => {
+    if (highLightedUserName != null) {
+      setTopLabelName(highLightedUserName);
+    }
+  }, [highLightedUserName]);
+
   return (
     <div>
       {/* Header start here */}
@@ -76,6 +83,7 @@ const InnerHeader = ({ clearRedux }) => {
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
+                          {/* <span className="text-color">SSSS</span> */}
                           <img src={profile} />
                         </button>
                         <div

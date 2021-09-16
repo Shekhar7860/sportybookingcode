@@ -1,5 +1,9 @@
 import { postApi, getApi, putApi } from "../../services/service";
-import { SET_USER_DATA, LOG_OUT_USER } from "../../redux/actionTypes";
+import {
+  SET_USER_DATA,
+  LOG_OUT_USER,
+  SET_USER_NAME,
+} from "../../redux/actionTypes";
 export const loginUser = (url, params) => async (dispatch) => {
   const response = await postApi(url, params);
   if (response.status == 200) {
@@ -51,6 +55,13 @@ export function clearData(data) {
 export function setUserData(data) {
   return {
     type: SET_USER_DATA,
+    data,
+  };
+}
+
+export function setUserName(data) {
+  return {
+    type: SET_USER_NAME,
     data,
   };
 }

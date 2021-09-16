@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 function Facility() {
   const [bookingView, showBookingView] = useState(false);
   const [bookingModal, showBookingModal] = useState(false);
+  const [confirmedModal, showConfirmedModal] = useState(false);
   const [checkboxChecked, setCheckBox] = useState(false);
   const items = ["1. Date & Time", "2. Terms & Conditions", "3. Confirm"];
   const [selectedTab, setSelectedTab] = useTabs(items);
@@ -60,11 +61,14 @@ function Facility() {
   ];
 
   const confirmBooking = () => {
-    toast.success("Booking is confirmed");
+    showHideConfirmedModal();
   };
   const handleEventClick = (clickInfo) => {
-    console.log("h", clickInfo);
     showBookingView(true);
+  };
+
+  const showHideConfirmedModal = () => {
+    showConfirmedModal(!confirmedModal);
   };
   return (
     <div>
@@ -938,6 +942,10 @@ function Facility() {
             })}
           </div>
         </div>
+      </Modal>
+      <Modal show={confirmedModal}>
+        <div> I am a modal</div>
+        <div onClick={showHideConfirmedModal}>Close</div>
       </Modal>
       <Footer />
     </div>

@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logoheader from "../assets/images/logo-small-transparent.svg";
 import { Link } from "react-router-dom";
 import profile from "../assets/images/Avatar.png";
 import mobilelogo from "../assets/images/Logotype.png";
 import Searchmain from "../assets/images/Search.png";
-
-const Ownerheader = () => {
+import { connect } from "react-redux";
+import { setUserName } from "../redux/actions/user";
+const Ownerheader = ({ userData, setNameLabel }) => {
+  const [userLabel, setUserLabel] = useState("");
+  useEffect(() => {
+    if (userData.userData.user != undefined) {
+      const first = userData.userData.user.first_name.charAt(0).toUpperCase();
+      const last = userData.userData.user.last_name.charAt(0).toUpperCase();
+      setUserLabel(first + last);
+      setNameLabel(first + last);
+    }
+  }, [userData.userData]);
   return (
     <div>
       {/* Header start here */}
@@ -61,7 +71,12 @@ const Ownerheader = () => {
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
-                          <img src={profile} />
+                          <div className="circle-button">
+                            <span className="text-color">
+                              {userLabel ? userLabel : null}
+                            </span>
+                          </div>
+                          {/* <img src={profile} /> */}
                         </button>
                         <div
                           class="dropdown-menu"
@@ -91,4 +106,15 @@ const Ownerheader = () => {
   );
 };
 
-export default Ownerheader;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setNameLabel: (name) => dispatch(setUserName(name)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ownerheader);

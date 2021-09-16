@@ -42,6 +42,7 @@ function Profile({
   sendUserOtp,
   verifyUserOtp,
   changePassword,
+  userLabelName,
 }) {
   const [emailOtp, showEmailOtp] = useState(false);
   const [phoneOtp, showPhoneOtp] = useState(false);
@@ -72,7 +73,7 @@ function Profile({
       }
     };
     userProfile();
-  }, [userData]);
+  }, [userData.userData]);
 
   const sendOtp = async (mode) => {
     let selected = state.email;
@@ -233,7 +234,7 @@ function Profile({
   };
   return (
     <div>
-      <InnerHeader />
+      <InnerHeader highLightedUserName={userLabelName} />
       <section className="mybooking">
         <div className="mybookin-fluid">
           <div className="commoan-left">
@@ -816,6 +817,7 @@ function Profile({
 const mapStateToProps = (state) => {
   return {
     userData: state.user,
+    userLabelName: state.user.userLabelName,
   };
 };
 const mapDispatchToProps = (dispatch) => {
