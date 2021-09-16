@@ -16,23 +16,9 @@
   margin-top: 10px;
   color: #b2bec3;
 }
-.dropdown-item {
-  display: flex;
-  width: 100%;
-  padding: 0.25rem 1rem;
-  clear: both;
-  font-weight: 400;
-  color: #212529;
-  text-align: inherit;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0;
-}
-
-.modal-dialog {
+/* .modal-dialog {
   max-width: 900px;
-}
+} */
 .cross-icon-style {
   margin-top: 16px;
   font-size: 19px;
@@ -67,5 +53,49 @@
   background: #ffffff;
   box-shadow: 0px 0px 16px rgb(0 0 0 / 16%);
   border-radius: 4px;
-  max-width: 275px;
+  max-width: 475px;
+}
+.more-div span.cross-icon-style {
+  justify-content: flex-end;
+}
+.more-div .facility-form label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+.more-div .facility-form input::placeholder {
+  color: #bbbbbb;
+}
+.more-div {
+  padding: 0 15px;
+}
+.dots {
+  text-align: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.more-filter-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.more-filter-btn button.Clear {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #bbbbbb;
+}
+button.Clear.apply-btn {
+  color: #080808;
+  margin: 0 0px 0 10px;
+}
+span.cross-icon-style {
+  cursor: pointer;
 }
