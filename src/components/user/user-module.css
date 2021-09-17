@@ -105,3 +105,143 @@ button.Clear.apply-btn {
 span.cross-icon-style {
   cursor: pointer;
 }
+.add-listing-modal .modal-dialog {
+  max-width: 560px;
+}
+.add-list {
+  padding: 20px 15px 0;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 20px;
+}
+.add-listing-modal span.cross-icon-style {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+.add-list p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #080808;
+  margin: 0;
+}
+.add-list h2 {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 54px;
+  color: #080808;
+  padding-bottom: 5px;
+}
+button.listing, button.save-btns {
+  background: #080808;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  border: 1px solid #080808;
+  height: 64px;
+  padding: 0 25px;
+}
+.add-listing-modal .more-filter-btn {
+  border-top: 1px solid #eeeeee;
+  padding: 0 18px 15px;
+}
+.add-listing-modal .facility-form.full-width select {
+  width: 90%;
+}
+.add-listing-modal .facility-form.half-div label {
+  display: inline-block;
+}
+button.save-btns {
+  background: #65C87A;
+  border-color: #65C87A;
+}
+
+
+.add-listing-modal .facility-form.half-div input {
+  width: 100%;
+  text-align: left;
+}
+.add-listing-modal .more-div label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #080808;
+}
+button.btn-room {
+  background: #FFFFFF;
+  border: 1px solid #080808;
+  box-sizing: border-box;
+  border-radius: 100px;
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 0 10px;
+  height: 34px;
+}
+button.btn-room.active {
+  background: #080808;
+  color: #fff;
+}
+.add-listsss {
+  width: 19%;
+  display: inline-block;
+}
+.Recurring-modal .add-listsss {
+  width: 30%;
+}
+.Recurring-modal.add-listing-modal .facility-form .add-listsss label{
+  display: block;
+}
+.weeks-days {
+  display: flex;
+}
+.sunday-monday {
+  margin-right: 15px;
+}
+.Recurring-modal .add-list-rink button {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #080808;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.confirmation .add-list p {
+  font-weight: 500;
+  font-size: 16px;
+}
+.heading-body h4 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+.confirm-add-body {
+  padding: 0 15px;
+}
+.confirmation .listing-boxss h4{
+  margin-left: 0;
+}
+.body-heading {
+  height: 150px;
+  overflow: auto;
+}
+.confirmation .booking-box.listing-boxss.booked-list {
+  margin-top: 14px;
+  box-shadow: none;
+}
+.confirmation .add-list-rink button {
+  background: #EEEEEE;
+  border-radius: 4px;
+  height: 64px;
+  padding: 0 25px;
+}
