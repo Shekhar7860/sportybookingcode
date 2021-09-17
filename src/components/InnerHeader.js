@@ -59,6 +59,9 @@ const InnerHeader = ({ clearRedux, highLightedUserName }) => {
                       <Link className="nav-link" to="/owner">Manage Facility</Link>
                     </li> */}
                     <li className="nav-item">
+                      <Link className="nav-link" to="/home">
+                        Dashboard
+                      </Link>
                       <Link className="nav-link" to="/mybooking">
                         My Bookings
                       </Link>

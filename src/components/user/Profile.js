@@ -12,6 +12,8 @@ import {
   updatePassword,
   setUserName,
 } from "../../redux/actions/user";
+import { saveCard } from "../../redux/actions/card";
+import Cards from "react-credit-cards";
 import { validatePassword } from "../../helpers/commonFunctions";
 const initialData = {
   email: "",
@@ -19,6 +21,16 @@ const initialData = {
   first_name: "",
   last_name: "",
   password: "",
+  card: "",
+  expiry: "",
+  cvc: "",
+  name: "",
+  address: "",
+  apt: "",
+  city: "",
+  state: "",
+  country: "",
+  number: "",
 };
 
 const reducer = (state, action) => {
@@ -33,6 +45,26 @@ const reducer = (state, action) => {
       return { ...state, last_name: action.payload };
     case "PASSWORD":
       return { ...state, password: action.payload };
+    case "CARDNUMBER":
+      return { ...state, number: action.payload };
+    case "EXPIRY":
+      return { ...state, expiry: action.payload };
+    case "CARDHOLDERNAME":
+      return { ...state, name: action.payload };
+    case "CVV":
+      return { ...state, cvc: action.payload };
+    case "ADDRESS":
+      return { ...state, address: action.payload };
+    case "APT":
+      return { ...state, apt: action.payload };
+    case "POSTALCODE":
+      return { ...state, postal_code: action.payload };
+    case "CITY":
+      return { ...state, city: action.payload };
+    case "STATE":
+      return { ...state, state: action.payload };
+    case "COUNTRY":
+      return { ...state, country: action.payload };
     default:
       return state;
   }
@@ -46,9 +78,11 @@ function Profile({
   changePassword,
   userLabelName,
   changeUserName,
+  saveUserCard,
 }) {
   const [emailOtp, showEmailOtp] = useState(false);
   const [phoneOtp, showPhoneOtp] = useState(false);
+  const [bookingChecked, toggleCheckbox] = useState(false);
   const [loggedUser, setLoggedUser] = useState({});
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
@@ -153,6 +187,54 @@ function Profile({
           : String(res)
       );
     }
+  };
+
+  const savePaymentInformation = async (e) => {
+    if (state.number == "") {
+      return toast.error("Please Enter Card Number");
+    }
+    if (state.expiry == "") {
+      return toast.error("Please Enter Card Expiry Date");
+    }
+    if (state.cvc == "") {
+      return toast.error("Please Enter CVC");
+    }
+    let splitData = state.expiry.split("/");
+    const expiryMonth = splitData[0];
+    const expiryYear = splitData[1];
+    const payload = {
+      card: state.number,
+      exp_month: expiryMonth,
+      exp_year: expiryYear,
+      cvc: state.cvc,
+      save: bookingChecked == true ? 1 : 0,
+      name: state.name,
+      address: state.address,
+      postal_code: state.postal_code,
+      city: state.city,
+      state: state.state,
+      country: state.country,
+      apt: state.apt,
+    };
+    setLoading(true);
+    const res = await saveUserCard(
+      "/card",
+      userData.userData ? userData.userData.token : null,
+      payload
+    );
+    console.log("res", res);
+    if (res.status == 200) {
+      toast.success(res.data.message);
+      // history.push("/home");
+    } else {
+      toast.error(res.data ? res.data.error_description : String(res));
+    }
+    setLoading(false);
+    // const cardElement = elements.getElement(CardElement);
+  };
+
+  const getCardData = (e) => {
+    console.log("e", e);
   };
   const verifyOtp = async (mode) => {
     let obj = {
@@ -283,8 +365,33 @@ function Profile({
       dispatch({ type: "LASTNAME", payload: e.target.value });
     } else if (param == "password") {
       dispatch({ type: "PASSWORD", payload: e.target.value });
+    } else if (param == "cardNumber") {
+      dispatch({ type: "CARDNUMBER", payload: e.target.value });
+    } else if (param == "expiry") {
+      let selected = e.target.value;
+      if (selected.length == 3) {
+        selected = selected.slice(0, 2) + "/" + selected.slice(2, 4);
+      }
+      dispatch({ type: "EXPIRY", payload: selected });
+    } else if (param == "cvv") {
+      dispatch({ type: "CVV", payload: e.target.value });
+    } else if (param == "cardholderName") {
+      dispatch({ type: "CARDHOLDERNAME", payload: e.target.value });
+    } else if (param == "address") {
+      dispatch({ type: "ADDRESS", payload: e.target.value });
+    } else if (param == "apt") {
+      dispatch({ type: "APT", payload: e.target.value });
+    } else if (param == "postalcode") {
+      dispatch({ type: "POSTALCODE", payload: e.target.value });
+    } else if (param == "city") {
+      dispatch({ type: "CITY", payload: e.target.value });
+    } else if (param == "state") {
+      dispatch({ type: "STATE", payload: e.target.value });
+    } else if (param == "country") {
+      dispatch({ type: "COUNTRY", payload: e.target.value });
     }
   };
+
   return (
     <div>
       <InnerHeader highLightedUserName={userLabelName} />
@@ -644,16 +751,70 @@ function Profile({
                 role="tabpanel"
                 aria-labelledby="v-pills-messages-tab"
               >
+                {/**/}
+
                 <div className="payment-method">
                   <div className="payment-heading">
                     <h2>Payment Methods</h2>
                     <p>Add Payment Method</p>
                   </div>
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-5">
                       <div className="card-number">
-                        <label>Credit Card Number</label>
-                        <input type="text" placeholder="XXXX XXXX XXXX XXXX" />
+                        <label>Credit Card Information</label>
+                        <div className="mt-3">
+                          <Cards
+                            cvc={state.cvc}
+                            expiry={state.expiry}
+                            focused={""}
+                            name={state.name}
+                            number={state.number}
+                          />
+                        </div>
+                        <div className="form-group mt-3">
+                          <input
+                            type="tel"
+                            name="number"
+                            className="form-control"
+                            placeholder="Card Number"
+                            pattern="[\d| ]{16,22}"
+                            required
+                            onChange={(e) => {
+                              handleChange(e, "cardNumber");
+                            }}
+                          />
+                          {/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
+                        </div>
+                        <div className="row">
+                          <div className="col-6">
+                            <input
+                              type="tel"
+                              name="expiry"
+                              className="form-control"
+                              placeholder="Valid Thru"
+                              pattern="\d\d/\d\d"
+                              required
+                              value={state.expiry}
+                              maxlength={5}
+                              onChange={(e) => {
+                                handleChange(e, "expiry");
+                              }}
+                            />
+                          </div>
+                          <div className="col-6">
+                            <input
+                              type="tel"
+                              name="cvc"
+                              className="form-control"
+                              placeholder="CVC"
+                              pattern="\d{3,4}"
+                              required
+                              onChange={(e) => {
+                                handleChange(e, "cvv");
+                              }}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -661,7 +822,14 @@ function Profile({
                     <div className="col-md-6">
                       <div className="radio-btn">
                         <label>
-                          <input className="checkbox-custom" type="checkbox" />
+                          <input
+                            className="checkbox-custom"
+                            type="checkbox"
+                            checked={bookingChecked}
+                            onChange={(e) => {
+                              toggleCheckbox(!bookingChecked);
+                            }}
+                          />
                           <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
@@ -680,7 +848,13 @@ function Profile({
                     <div className="col-md-6">
                       <div className="card-number">
                         <label>Cardholder Name</label>
-                        <input type="text" placeholder="eg: John Johnson" />
+                        <input
+                          type="text"
+                          placeholder="eg: John Johnson"
+                          onChange={(e) => {
+                            handleChange(e, "cardholderName");
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -691,13 +865,22 @@ function Profile({
                         <input
                           type="text"
                           placeholder="eg: 122 Example Street"
+                          onChange={(e) => {
+                            handleChange(e, "address");
+                          }}
                         />
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="card-number">
                         <label>Apt #</label>
-                        <input type="text" placeholder="eg: 42" />
+                        <input
+                          type="text"
+                          placeholder="eg: 42"
+                          onChange={(e) => {
+                            handleChange(e, "apt");
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -705,17 +888,31 @@ function Profile({
                     <div className="col-md-3">
                       <div className="card-number">
                         <label>Postal Code</label>
-                        <input type="text" placeholder="eg: 10012" />
+                        <input
+                          type="text"
+                          placeholder="eg: 10012"
+                          onChange={(e) => {
+                            handleChange(e, "postalcode");
+                          }}
+                          maxlength={6}
+                        />
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="card-number">
                         <label>City</label>
-                        <select name="cars" id="cars" placeholder="Select City">
+                        <select
+                          name="cars"
+                          id="cars"
+                          placeholder="Select City"
+                          onChange={(e) => {
+                            handleChange(e, "city");
+                          }}
+                        >
                           <option value="volvo">Select City</option>
-                          <option value="saab">Saab</option>
-                          <option value="mercedes">Mercedes</option>
-                          <option value="audi">Audi</option>
+                          <option value="New York">New York</option>
+                          <option value="Los Angeles">Los Angeles</option>
+                          <option value="Chicago">Chicago</option>
                         </select>
                       </div>
                     </div>
@@ -728,11 +925,14 @@ function Profile({
                           name="cars"
                           id="cars"
                           placeholder="Select State"
+                          onChange={(e) => {
+                            handleChange(e, "state");
+                          }}
                         >
                           <option value="volvo">Select State</option>
-                          <option value="saab">Saab</option>
-                          <option value="mercedes">Mercedes</option>
-                          <option value="audi">Audi</option>
+                          <option value="California">California</option>
+                          <option value="Washington">Washington</option>
+                          <option value="Alaska">Alaska</option>
                         </select>
                       </div>
                     </div>
@@ -743,20 +943,33 @@ function Profile({
                           name="cars"
                           id="cars"
                           placeholder="Select Country"
+                          onChange={(e) => {
+                            handleChange(e, "country");
+                          }}
                         >
                           <option value="volvo">Select Country</option>
-                          <option value="saab">Saab</option>
-                          <option value="mercedes">Mercedes</option>
-                          <option value="audi">Audi</option>
+                          <option value="India">India</option>
+                          <option value="United States">United States</option>
+                          <option value="Australia">Australia</option>
                         </select>
                       </div>
                     </div>
                   </div>
                   <div className="row mt-4">
                     <div className="col-md-12">
-                      <button className="update-btn">Save</button>
+                      <button
+                        className="update-btn"
+                        onClick={savePaymentInformation}
+                      >
+                        Save
+                      </button>
                     </div>
                   </div>
+                  {loading ? (
+                    <div class="loader-wrapper">
+                      <div class="loader"></div>
+                    </div>
+                  ) : null}
                 </div>
               </div>
               <div
@@ -906,6 +1119,8 @@ const mapDispatchToProps = (dispatch) => {
     verifyUserOtp: (url, token, params) =>
       dispatch(verifyUserCode(url, token, params)),
     changeUserName: (name) => dispatch(setUserName(name)),
+    saveUserCard: (url, token, params) =>
+      dispatch(saveCard(url, token, params)),
   };
 };
 
