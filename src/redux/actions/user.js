@@ -1,4 +1,4 @@
-import { postApi, getApi, putApi } from "../../services/service";
+import { postApi, getApi, putApi, deleteApi } from "../../services/service";
 import {
   SET_USER_DATA,
   LOG_OUT_USER,
@@ -68,3 +68,8 @@ export function setUserName(data) {
     data,
   };
 }
+
+export const deleteUser = (url, token) => async (dispatch) => {
+  const response = await deleteApi(url, token);
+  return response;
+};

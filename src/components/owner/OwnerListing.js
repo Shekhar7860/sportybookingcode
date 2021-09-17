@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import "../user/user-module.css";
 
 const OwnerListing = () => {
+  const [markChecked, setChecked] = useState(true);
   const deleteListing = () => {
     confirmAlert({
       message: "Are you sure",
@@ -30,22 +31,22 @@ const OwnerListing = () => {
     });
   };
 
-  const [modal, showmodal] = useState(false)
+  const [modal, showmodal] = useState(false);
   const showhideaddmodal = () => {
     showmodal(!modal);
-  }
+  };
 
-  const [modal1, showmodal1] = useState(false)
+  const [modal1, showmodal1] = useState(false);
   const showhideaddrecurringmodal = () => {
     showhideaddmodal();
     showmodal1(!modal1);
-  }
-  const [modalconfirm, showmodalconfirm] = useState(false)
+  };
+  const [modalconfirm, showmodalconfirm] = useState(false);
   const showhideconfirmmodal = () => {
     showhideaddrecurringmodal();
     showhideaddmodal();
     showmodalconfirm(!modalconfirm);
-  }
+  };
 
   return (
     <div>
@@ -266,8 +267,10 @@ const OwnerListing = () => {
                       <button class="btn btn-black btn-filter green">
                         Import
                       </button>
-                      <button class="btn btn-black btn-filter more-btn green"
-                        onClick={showhideaddmodal} >
+                      <button
+                        class="btn btn-black btn-filter more-btn green"
+                        onClick={showhideaddmodal}
+                      >
                         Add
                       </button>
                     </div>
@@ -459,7 +462,6 @@ const OwnerListing = () => {
         </div>
       </section>
 
-
       <Modal show={modal} className="more-modal price-modal add-listing-modal">
         <div className="more-div">
           <span onClick={showhideaddmodal} className="cross-icon-style">
@@ -481,7 +483,6 @@ const OwnerListing = () => {
                     <option value="mercedes">Wayne Gretzky</option>
                     <option value="audi">Gretzky Sports</option>
                   </select>
-
                 </div>
               </div>
               <div className="col-md-12 mb-4 mt-2">
@@ -523,13 +524,13 @@ const OwnerListing = () => {
                   </div>
                 </div>
               </div>
-
             </form>
 
             <div className="more-filter-btn pt-4">
               <div className="add-list-rink">
-                <button className="listing"
-                  onClick={showhideaddrecurringmodal} >Add Recurring Listing</button>
+                <button className="listing" onClick={showhideaddrecurringmodal}>
+                  Add Recurring Listing
+                </button>
               </div>
               <div className="more-clear">
                 <button className="save-btns">Save</button>
@@ -539,9 +540,15 @@ const OwnerListing = () => {
         </div>
       </Modal>
 
-      <Modal show={modal1} className="more-modal Recurring-modal price-modal add-listing-modal">
+      <Modal
+        show={modal1}
+        className="more-modal Recurring-modal price-modal add-listing-modal"
+      >
         <div className="more-div">
-          <span onClick={showhideaddrecurringmodal} className="cross-icon-style">
+          <span
+            onClick={showhideaddrecurringmodal}
+            className="cross-icon-style"
+          >
             <i class="fal fa-times"></i>
           </span>
           <div className="add-list">
@@ -550,8 +557,6 @@ const OwnerListing = () => {
           </div>
           <div className="active-type">
             <form>
-
-
               <div className="col-md-12 mb-3 mt-2">
                 <div className="facility-form half-div">
                   <div className="add-listsss mr-4">
@@ -582,7 +587,6 @@ const OwnerListing = () => {
                       <option value="audi">400</option>
                     </select>
                   </div>
-
                 </div>
               </div>
 
@@ -593,7 +597,8 @@ const OwnerListing = () => {
                     <label
                       for="checkbox-1"
                       className="checkbox-custom-label"
-                    ></label>Create listing every
+                    ></label>
+                    Create listing every
                   </label>
                   <select name="cars" id="cars" className="ml-2">
                     <option value="volvo">60 </option>
@@ -605,7 +610,6 @@ const OwnerListing = () => {
                 </div>
               </div>
 
-
               <div className="col-md-12 mb-3 mt-2">
                 <div className="facility-form half-div">
                   <div className="add-listsss mr-4">
@@ -613,8 +617,16 @@ const OwnerListing = () => {
                     <div className="weeks-days">
                       <div className="sunday-monday">
                         <label>
-                          <input className="checkbox-custom" type="checkbox" />
-                          Su<label
+                          <input
+                            className="checkbox-custom"
+                            type="checkbox"
+                            checked={markChecked}
+                            onChange={() => {
+                              setChecked(false);
+                            }}
+                          />
+                          Su
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -624,7 +636,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          Mo<label
+                          Mo
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -634,7 +647,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          Tu<label
+                          Tu
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -644,7 +658,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          We<label
+                          We
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -654,7 +669,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          Th<label
+                          Th
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -664,7 +680,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          Fr<label
+                          Fr
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -674,7 +691,8 @@ const OwnerListing = () => {
                       <div className="sunday-monday">
                         <label>
                           <input className="checkbox-custom" type="checkbox" />
-                          Sa<label
+                          Sa
+                          <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
                           ></label>
@@ -682,10 +700,6 @@ const OwnerListing = () => {
                       </div>
                     </div>
                   </div>
-
-
-
-
                 </div>
               </div>
               <div className="col-md-12 mb-5 mt-2">
@@ -696,7 +710,6 @@ const OwnerListing = () => {
                   </div>
                 </div>
               </div>
-
             </form>
 
             <div className="more-filter-btn pt-4">
@@ -704,16 +717,19 @@ const OwnerListing = () => {
                 <button className="">Back</button>
               </div>
               <div className="more-clear">
-                <button className="save-btns"
-                onClick={showhideconfirmmodal} >Save</button>
+                <button className="save-btns" onClick={showhideconfirmmodal}>
+                  Save
+                </button>
               </div>
             </div>
           </div>
         </div>
       </Modal>
 
-
-      <Modal show={modalconfirm} className="Recurring-modal confirmation add-listing-modal">
+      <Modal
+        show={modalconfirm}
+        className="Recurring-modal confirmation add-listing-modal"
+      >
         <div className="more-div">
           <span onClick={showhideconfirmmodal} className="cross-icon-style">
             <i class="fal fa-times"></i>
@@ -724,133 +740,101 @@ const OwnerListing = () => {
           </div>
 
           <div className="confirm-add-body mb-5">
-              <div className="heading-body">
-                <h4>1 May, Monday</h4>
-              </div>
-              <div className="body-heading">
+            <div className="heading-body">
+              <h4>1 May, Monday</h4>
+            </div>
+            <div className="body-heading">
               <div className="booking-box listing-boxss booked-list">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="booking-img">
-                          
-                          <h4>
-                            11:30 <span>AM</span> — 10 <span>PM</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div className="col-md-3 mid-list">
-                        <div className="booking-text">
-                          <h4>
-                            North Rink 
-                          </h4>
-                          
-                        </div>
-                      </div>
-
-                      <div className="col-md-3 mid-list">
-                      <div className="booking-text">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="booking-img">
                       <h4>
-                            $50
-                          </h4>
-                      </div>
-                      </div>
-                      
+                        11:30 <span>AM</span> — 10 <span>PM</span>
+                      </h4>
                     </div>
-                    
                   </div>
-                  <div className="booking-box listing-boxss booked-list">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="booking-img">
-                          
-                          <h4>
-                            11:30 <span>AM</span> — 10 <span>PM</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div className="col-md-3 mid-list">
-                        <div className="booking-text">
-                          <h4>
-                            North Rink 
-                          </h4>
-                          
-                        </div>
-                      </div>
-
-                      <div className="col-md-3 mid-list">
-                      <div className="booking-text">
-                      <h4>
-                            $50
-                          </h4>
-                      </div>
-                      </div>
-                      
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>North Rink</h4>
                     </div>
-                    
                   </div>
 
-                  <div className="booking-box listing-boxss booked-list">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="booking-img">
-                          
-                          <h4>
-                            11:30 <span>AM</span> — 10 <span>PM</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div className="col-md-3 mid-list">
-                        <div className="booking-text">
-                          <h4>
-                            North Rink 
-                          </h4>
-                          
-                        </div>
-                      </div>
-
-                      <div className="col-md-3 mid-list">
-                      <div className="booking-text">
-                      <h4>
-                            $50
-                          </h4>
-                      </div>
-                      </div>
-                      
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>$50</h4>
                     </div>
-                    
                   </div>
-
-                  <div className="booking-box listing-boxss booked-list">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="booking-img">
-                          
-                          <h4>
-                            11:30 <span>AM</span> — 10 <span>PM</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div className="col-md-3 mid-list">
-                        <div className="booking-text">
-                          <h4>
-                            North Rink 
-                          </h4>
-                          
-                        </div>
-                      </div>
-
-                      <div className="col-md-3 mid-list">
-                      <div className="booking-text">
-                      <h4>
-                            $50
-                          </h4>
-                      </div>
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
+                </div>
               </div>
+              <div className="booking-box listing-boxss booked-list">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="booking-img">
+                      <h4>
+                        11:30 <span>AM</span> — 10 <span>PM</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>North Rink</h4>
+                    </div>
+                  </div>
+
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>$50</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="booking-box listing-boxss booked-list">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="booking-img">
+                      <h4>
+                        11:30 <span>AM</span> — 10 <span>PM</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>North Rink</h4>
+                    </div>
+                  </div>
+
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>$50</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="booking-box listing-boxss booked-list">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="booking-img">
+                      <h4>
+                        11:30 <span>AM</span> — 10 <span>PM</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>North Rink</h4>
+                    </div>
+                  </div>
+
+                  <div className="col-md-3 mid-list">
+                    <div className="booking-text">
+                      <h4>$50</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="active-type">
             <div className="more-filter-btn pt-4">
@@ -864,7 +848,6 @@ const OwnerListing = () => {
           </div>
         </div>
       </Modal>
-
     </div>
   );
 };

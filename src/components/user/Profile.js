@@ -216,6 +216,8 @@ function Profile({
       country: state.country,
       apt: state.apt,
     };
+    console.log("pa", payload);
+
     setLoading(true);
     const res = await saveUserCard(
       "/card",
@@ -310,7 +312,7 @@ function Profile({
       userData.userData ? userData.userData.token : null,
       obj
     );
-    console.log("s", res);
+    // console.log("s", res);
     setLoading(false);
     if (res.status == 200) {
       toast.success(res.data.message);
@@ -398,7 +400,7 @@ function Profile({
 
   return (
     <div>
-      <InnerHeader highLightedUserName={userLabelName} />
+      <InnerHeader highLightedUserName={userLabelName} userData={userData} />
       <section className="mybooking">
         {loading ? (
           <div class="loader-wrapper">
@@ -952,9 +954,9 @@ function Profile({
                           }}
                         >
                           <option value="volvo">Select Country</option>
-                          <option value="India">India</option>
-                          <option value="United States">United States</option>
-                          <option value="Australia">Australia</option>
+                          <option value="IN">India</option>
+                          <option value="US">United States</option>
+                          <option value="AU">Australia</option>
                         </select>
                       </div>
                     </div>
