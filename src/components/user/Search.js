@@ -11,6 +11,7 @@ import twelb from '../../assets/images/imagetwelbe.png'
 import preium from '../../assets/images/preium.png'
 import { Link } from 'react-router-dom'
 import Modal from "react-bootstrap/Modal";
+import "./user-module.css";
 
 function Search() {
 
@@ -18,6 +19,18 @@ function Search() {
     const [modal, showmodal] = useState(false)
     const showhidemoremodal = () => {
         showmodal(!modal);
+    }
+    const [numbermodal, numbershowmodal] = useState(false)
+    const showhidenumbermodal = () => {
+        numbershowmodal(!numbermodal);
+    }
+    const [numberpricemodal, priceshowmodal] = useState(false)
+    const showhidenumberpricemodal = () => {
+        priceshowmodal(!numberpricemodal);
+    }
+    const [numberhourmodal, hourshowmodal] = useState(false)
+    const showhidehourpricemodal = () => {
+        hourshowmodal(!numberhourmodal);
     }
     return (
         <div>
@@ -31,9 +44,12 @@ function Search() {
                                 <div className="buttons-filters">
                                     <div className="filters-left">
                                         <button className="btn btn-black btn-filter">20 May</button>
-                                        <button className="btn btn-black btn-filter">10:00 AM — 1:00 PM</button>
-                                        <button className="btn btn-black btn-filter more-btn">Weekends</button>
-                                        <button className="btn btn-black btn-filter">$10–100</button>
+                                        <button className="btn btn-black btn-filter"
+                                        onClick={showhidehourpricemodal}>10:00 AM — 1:00 PM</button>
+                                        <button className="btn btn-black btn-filter more-btn"
+                                        onClick={showhidenumbermodal} >Weekends</button>
+                                        <button className="btn btn-black btn-filter"
+                                          onClick={showhidenumberpricemodal} >$10–100</button>
                                         <button className="btn btn-black btn-filter more-btn"
                                         onClick={showhidemoremodal} >More</button>
                                     </div>
@@ -255,10 +271,244 @@ function Search() {
                             </div>
                         </div>
                     </form>
+                    <div className="dots">
+                    ...
+                    </div>
+                    <div className="more-filter-btn">
+                        <div className="more-clear">
+                            <button className="Clear">Clear</button>
+                        </div>
+                        <div className="more-clear">
+                            <button className="Clear">Cancel</button>
+                            <button className="Clear apply-btn">Apply</button>
+                        </div>
+                    </div>
                 </div>
              </div>
              </Modal>   
 
+
+             <Modal show={numbermodal} className="more-modal numbermodal">
+            <div className="more-div">
+                <span onClick={showhidenumbermodal} className="cross-icon-style">
+                    <i class="fal fa-times"></i>
+                </span>
+                <div className="active-type">
+                    <form>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <h4 className="mb-3">Room Type</h4>
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Ice Rinks
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Fields
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Indoor Courts
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Tennis Courts
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Swimming Pools
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Baseball
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Cricket
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Fitness
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Track
+                            </label>
+                            </div>
+                        </div>
+                        <div className="col-md-12 mb-2">
+                            <div className="facility-form">
+                            <label>    
+                            <input className="checkbox-custom" type="checkbox" />
+                            <label
+                                for="checkbox-1"
+                                className="checkbox-custom-label"
+                            ></label>Meeting/Coaching Room
+                            </label>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div className="more-filter-btn mt-4">
+                        <div className="more-clear">
+                            <button className="Clear">Clear</button>
+                        </div>
+                        <div className="more-clear">
+                            <button className="Clear">Cancel</button>
+                            <button className="Clear apply-btn">Apply</button>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </Modal>
+
+
+            <Modal show={numberpricemodal} className="more-modal price-modal">
+            <div className="more-div">
+                <span onClick={showhidenumberpricemodal} className="cross-icon-style">
+                    <i class="fal fa-times"></i>
+                </span> 
+                <div className="active-type">
+                    <form>
+                        <div className="col-md-12 mb-4 mt-2">
+                            <div className="facility-form half-div">
+                                <label>Price</label>
+                                <input type="text" placeholder="$ 10" />
+                                <span>—</span>
+                                <input type="text" placeholder="100" />
+                                {/* <select name="cars" id="cars">
+                                    <option value="volvo">$ 10</option>
+                                    <option value="saab">20</option>
+                                    <option value="mercedes">30</option>
+                                    <option value="audi">40</option>
+                                </select>
+                                <span>—</span>
+                                <select name="cars" id="cars">
+                                    <option value="volvo">100</option>
+                                    <option value="saab">200</option>
+                                    <option value="mercedes">300</option>
+                                    <option value="audi">400</option>
+                                </select> */}
+                            </div>
+                        </div>
+                        
+                    </form>
+                    
+                    <div className="more-filter-btn pt-4">
+                        <div className="more-clear">
+                            <button className="Clear">Clear</button>
+                        </div>
+                        <div className="more-clear">
+                            <button className="Clear">Cancel</button>
+                            <button className="Clear apply-btn">Apply</button>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </Modal>  
+
+             <Modal show={numberhourmodal} className="more-modal price-modal">
+            <div className="more-div">
+                <span onClick={showhidehourpricemodal} className="cross-icon-style">
+                    <i class="fal fa-times"></i>
+                </span> 
+                <div className="active-type">
+                    <form>
+                        <div className="col-md-12 mb-4 mt-2">
+                            <div className="facility-form half-div">
+                                <label>Hours</label>
+                                {/* <input type="text" placeholder="$ 10" />
+                                <span>—</span>
+                                <input type="text" placeholder="100" /> */}
+                                <select name="cars" id="cars">
+                                    <option value="volvo">$ 10</option>
+                                    <option value="saab">20</option>
+                                    <option value="mercedes">30</option>
+                                    <option value="audi">40</option>
+                                </select>
+                                <span>—</span>
+                                <select name="cars" id="cars">
+                                    <option value="volvo">100</option>
+                                    <option value="saab">200</option>
+                                    <option value="mercedes">300</option>
+                                    <option value="audi">400</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </form>
+                    
+                    <div className="more-filter-btn pt-4">
+                        <div className="more-clear">
+                            <button className="Clear">Clear</button>
+                        </div>
+                        <div className="more-clear">
+                            <button className="Clear">Cancel</button>
+                            <button className="Clear apply-btn">Apply</button>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </Modal>  
 
         </div>
     )

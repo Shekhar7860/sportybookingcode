@@ -53,5 +53,55 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 16px rgb(0 0 0 / 16%);
   border-radius: 4px;
-  max-width: 275px;
+  max-width: 375px;
+}
+.more-div span.cross-icon-style {
+  justify-content: flex-end;
+  margin-right: 0;
+}
+.more-div .facility-form label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #666666;
+  margin-bottom: 4px;
+  position: relative;
+}
+.numbermodal .facility-form label {
+  font-weight: 500;
+  color: #444444;
+}
+.more-div .facility-form input::placeholder{
+  color: #BBBBBB;
+}
+.more-div {
+  padding: 0 15px;
+}
+.dots {
+  text-align: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.more-filter-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.more-filter-btn button.Clear {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #BBBBBB;
+}
+button.Clear.apply-btn {
+  color: #080808;
+  margin: 0 0px 0 10px;
+}
+span.cross-icon-style {
+  cursor: pointer;
 }
