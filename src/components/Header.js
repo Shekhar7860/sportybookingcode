@@ -23,6 +23,7 @@ import {
   validateEmail,
   validatePhone,
   checkifOnlyNumbers,
+  validatePassword,
 } from "../helpers/commonFunctions";
 const initialData = {
   email: "",
@@ -234,6 +235,11 @@ const Header = ({ signUp, login, forgotPassword }) => {
     }
     if (!validateEmail(state.email)) {
       return toast.error("Please Enter Valid Email Id");
+    }
+    if (!validatePassword(state.password)) {
+      return toast.error(
+        "Please Enter Strong Password - one upper, one lower, one number and one special character"
+      );
     }
     showLoading(true);
     let updatedState = {
@@ -579,7 +585,10 @@ const Header = ({ signUp, login, forgotPassword }) => {
         aria-hidden="true"
         id="forgot"
       >
-        <div class="modal-dialog modal-dialog-centered login-modal signup-modal" role="document">
+        <div
+          class="modal-dialog modal-dialog-centered login-modal signup-modal"
+          role="document"
+        >
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">
