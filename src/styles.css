@@ -3364,6 +3364,50 @@ i.fas.fa-angle-down {
 .common-button:hover {
   background: #65c87ac2;
 }
+.more-div label.checkbox-custom-label {
+  left: 0;
+  top: 0px;
+}
+.more-div input.checkbox-custom {
+  margin-right: 4px;
+  display: none;
+  z-index: 9999;
+}
+.facility-form h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #666666;
+}
+.more-div.numbermodal .facility-form label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #080808;
+  position: relative;
+  top: -1px;
+}
+
+.price-modal .facility-form select {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #666666;
+  padding: 6px 0 4px;
+  font-weight: 500;
+}
+.price-modal label{
+  display: block;
+}
+.facility-form.half-div input {
+  width: 15%;
+  text-align: center;
+}
+.facility-form.half-div input::placeholder {
+  color: #080808;
+}
+.facility-form.half-div span {
+  margin: 0 15px 0 10px;
+}
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
   body.modal-open {

@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React, { useState } from 'react'
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
@@ -11,6 +12,9 @@ import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css";
+import Modal from "react-bootstrap/Modal";
+import "../user/user-module.css";
+
 const OwnerListing = () => {
   const deleteListing = () => {
     confirmAlert({
@@ -25,6 +29,24 @@ const OwnerListing = () => {
       ],
     });
   };
+
+  const [modal, showmodal] = useState(false)
+  const showhideaddmodal = () => {
+    showmodal(!modal);
+  }
+
+  const [modal1, showmodal1] = useState(false)
+  const showhideaddrecurringmodal = () => {
+    showhideaddmodal();
+    showmodal1(!modal1);
+  }
+  const [modalconfirm, showmodalconfirm] = useState(false)
+  const showhideconfirmmodal = () => {
+    showhideaddrecurringmodal();
+    showhideaddmodal();
+    showmodalconfirm(!modalconfirm);
+  }
+
   return (
     <div>
       <Ownerheader />
@@ -244,7 +266,8 @@ const OwnerListing = () => {
                       <button class="btn btn-black btn-filter green">
                         Import
                       </button>
-                      <button class="btn btn-black btn-filter more-btn green">
+                      <button class="btn btn-black btn-filter more-btn green"
+                        onClick={showhideaddmodal} >
                         Add
                       </button>
                     </div>
@@ -435,6 +458,413 @@ const OwnerListing = () => {
           </div>
         </div>
       </section>
+
+
+      <Modal show={modal} className="more-modal price-modal add-listing-modal">
+        <div className="more-div">
+          <span onClick={showhideaddmodal} className="cross-icon-style">
+            <i class="fal fa-times"></i>
+          </span>
+          <div className="add-list">
+            <p>Wayne Gretzky Sports Centre</p>
+            <h2>Add Listing</h2>
+          </div>
+          <div className="active-type">
+            <form>
+              <div className="col-md-12 mb-4 mt-2">
+                <div className="facility-form full-width">
+                  <label>Facility</label>
+
+                  <select name="cars" id="cars">
+                    <option value="volvo">Wayne Gretzky Sports Centre</option>
+                    <option value="saab">Sports Centre</option>
+                    <option value="mercedes">Wayne Gretzky</option>
+                    <option value="audi">Gretzky Sports</option>
+                  </select>
+
+                </div>
+              </div>
+              <div className="col-md-12 mb-4 mt-2">
+                <div className="add-lis">
+                  <label>Room</label>
+                  <button className="btn-room active">North Rink</button>
+                  <button className="btn-room">South Rink</button>
+                  <button className="btn-room">Swimming Pool</button>
+                  <button className="btn-room">Gym</button>
+                </div>
+              </div>
+              <div className="col-md-12 mb-4 mt-2">
+                <div className="facility-form half-div">
+                  <div className="add-listsss mr-5">
+                    <label>Date</label>
+                    <input type="text" placeholder="5 June, Wed" />
+                  </div>
+                  <div className="add-listsss mr-2">
+                    <label>From</label>
+                    <select name="cars" id="cars">
+                      <option value="volvo">8:00 AM</option>
+                      <option value="saab">20</option>
+                      <option value="mercedes">30</option>
+                      <option value="audi">40</option>
+                    </select>
+                  </div>
+                  <div className="add-listsss mr-5">
+                    <label>To</label>
+                    <select name="cars" id="cars">
+                      <option value="volvo">8:00 PM</option>
+                      <option value="saab">200</option>
+                      <option value="mercedes">300</option>
+                      <option value="audi">400</option>
+                    </select>
+                  </div>
+                  <div className="add-listsss">
+                    <label>Price</label>
+                    <input type="text" placeholder="$100" />
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+            <div className="more-filter-btn pt-4">
+              <div className="add-list-rink">
+                <button className="listing"
+                  onClick={showhideaddrecurringmodal} >Add Recurring Listing</button>
+              </div>
+              <div className="more-clear">
+                <button className="save-btns">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal show={modal1} className="more-modal Recurring-modal price-modal add-listing-modal">
+        <div className="more-div">
+          <span onClick={showhideaddrecurringmodal} className="cross-icon-style">
+            <i class="fal fa-times"></i>
+          </span>
+          <div className="add-list">
+            <p>Wayne Gretzky Sports Centre</p>
+            <h2>Add Recurring Listing</h2>
+          </div>
+          <div className="active-type">
+            <form>
+
+
+              <div className="col-md-12 mb-3 mt-2">
+                <div className="facility-form half-div">
+                  <div className="add-listsss mr-4">
+                    <label>Start Date</label>
+                    <input type="text" placeholder="5 June, Wed" />
+                  </div>
+                  <div className="add-listsss mr-4">
+                    <label>End Date</label>
+                    <input type="text" placeholder="1 July, Mon" />
+                  </div>
+                </div>
+                <div className="facility-form half-div mt-3">
+                  <div className="add-listsss mr-4">
+                    <label>From</label>
+                    <select name="cars" id="cars">
+                      <option value="volvo">8:00 AM</option>
+                      <option value="saab">20</option>
+                      <option value="mercedes">30</option>
+                      <option value="audi">40</option>
+                    </select>
+                  </div>
+                  <div className="add-listsss mr-4">
+                    <label>To</label>
+                    <select name="cars" id="cars">
+                      <option value="volvo">8:00 PM</option>
+                      <option value="saab">200</option>
+                      <option value="mercedes">300</option>
+                      <option value="audi">400</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="col-md-12 pt-2 mb-4">
+                <div className="facility-form half-div">
+                  <label>
+                    <input className="checkbox-custom" type="checkbox" />
+                    <label
+                      for="checkbox-1"
+                      className="checkbox-custom-label"
+                    ></label>Create listing every
+                  </label>
+                  <select name="cars" id="cars" className="ml-2">
+                    <option value="volvo">60 </option>
+                    <option value="saab">200</option>
+                    <option value="mercedes">300</option>
+                    <option value="audi">400</option>
+                  </select>
+                  <span>mins</span>
+                </div>
+              </div>
+
+
+              <div className="col-md-12 mb-3 mt-2">
+                <div className="facility-form half-div">
+                  <div className="add-listsss mr-4">
+                    <label>Days</label>
+                    <div className="weeks-days">
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Su<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Mo<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Tu<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          We<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Th<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Fr<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+
+                      <div className="sunday-monday">
+                        <label>
+                          <input className="checkbox-custom" type="checkbox" />
+                          Sa<label
+                            for="checkbox-1"
+                            className="checkbox-custom-label"
+                          ></label>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                </div>
+              </div>
+              <div className="col-md-12 mb-5 mt-2">
+                <div className="facility-form half-div">
+                  <div className="add-listsss mr-4">
+                    <label>Price</label>
+                    <input type="text" placeholder="$100" />
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+            <div className="more-filter-btn pt-4">
+              <div className="add-list-rink">
+                <button className="">Back</button>
+              </div>
+              <div className="more-clear">
+                <button className="save-btns"
+                onClick={showhideconfirmmodal} >Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+
+      <Modal show={modalconfirm} className="Recurring-modal confirmation add-listing-modal">
+        <div className="more-div">
+          <span onClick={showhideconfirmmodal} className="cross-icon-style">
+            <i class="fal fa-times"></i>
+          </span>
+          <div className="add-list">
+            <h2 className="pb-0 mb-0">Add Listings</h2>
+            <p className="pb-3">Please carefully review data before saving</p>
+          </div>
+
+          <div className="confirm-add-body mb-5">
+              <div className="heading-body">
+                <h4>1 May, Monday</h4>
+              </div>
+              <div className="body-heading">
+              <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+              </div>
+          </div>
+          <div className="active-type">
+            <div className="more-filter-btn pt-4">
+              <div className="add-list-rink">
+                <button className="">Back</button>
+              </div>
+              <div className="more-clear">
+                <button className="save-btns">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
     </div>
   );
 };
