@@ -310,6 +310,7 @@ function Profile({
       userData.userData ? userData.userData.token : null,
       obj
     );
+    console.log("s", res);
     setLoading(false);
     if (res.status == 200) {
       toast.success(res.data.message);
@@ -321,6 +322,9 @@ function Profile({
     }
   };
 
+  const saveNotifications = () => {
+    toast.success("Notifications Saved Successfully");
+  };
   const setText = (e, param) => {
     if (param == "first") {
       setFirstText(e.target.value);
@@ -1026,7 +1030,12 @@ function Profile({
                   </div>
                   <div className="row mt-4">
                     <div className="col-md-12">
-                      <button className="update-btn">Save</button>
+                      <button
+                        className="update-btn"
+                        onClick={saveNotifications}
+                      >
+                        Save
+                      </button>
                     </div>
                   </div>
                 </div>
