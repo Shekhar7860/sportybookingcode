@@ -12,6 +12,7 @@ import {
   updatePassword,
   setUserName,
 } from "../../redux/actions/user";
+import { updateNotification } from "../../redux/actions/common";
 import { saveCard } from "../../redux/actions/card";
 import Cards from "react-credit-cards";
 import { validatePassword } from "../../helpers/commonFunctions";
@@ -79,6 +80,7 @@ function Profile({
   userLabelName,
   changeUserName,
   saveUserCard,
+  saveNotification,
 }) {
   const [emailOtp, showEmailOtp] = useState(false);
   const [phoneOtp, showPhoneOtp] = useState(false);
@@ -97,6 +99,8 @@ function Profile({
   const [changeOldPasswordText, setOldPasswordText] = useState("");
   const [confirmPassword, setConfirmPasswordText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [smsChecked, setSmsChecked] = useState(false);
+  const [newsletterChecked, setnewsLetterChecked] = useState(false);
   useEffect(() => {
     const userProfile = async () => {
       const res = await getUser(
@@ -216,7 +220,6 @@ function Profile({
       country: state.country,
       apt: state.apt,
     };
-    console.log("pa", payload);
 
     setLoading(true);
     const res = await saveUserCard(
@@ -324,8 +327,23 @@ function Profile({
     }
   };
 
-  const saveNotifications = () => {
-    toast.success("Notifications Saved Successfully");
+  const saveNotifications = async () => {
+    let obj = {
+      user_sms_notification: smsChecked == true ? 1 : 0,
+      user_newsletter_notification: newsletterChecked == true ? 1 : 0,
+    };
+    setLoading(true);
+    const res = await saveNotification(
+      "/user/notification",
+      userData.userData ? userData.userData.token : null,
+      obj
+    );
+    setLoading(false);
+    if (res.status == 200) {
+      toast.success(res.data.message);
+    } else {
+      toast.error(res.data ? res.data.error_description : String(res));
+    }
   };
   const setText = (e, param) => {
     if (param == "first") {
@@ -985,6 +1003,11 @@ function Profile({
                 aria-labelledby="v-notification-tab"
               >
                 <div className="payment-method notification">
+                  {loading ? (
+                    <div class="loader-wrapper">
+                      <div class="loader"></div>
+                    </div>
+                  ) : null}
                   <div className="payment-heading">
                     <h2>Notifications</h2>
                     <p>SMS notifications</p>
@@ -994,7 +1017,14 @@ function Profile({
                     <div className="col-md-12">
                       <div className="radio-btn">
                         <label>
-                          <input className="checkbox-custom" type="checkbox" />
+                          <input
+                            className="checkbox-custom"
+                            checked={smsChecked}
+                            type="checkbox"
+                            onChange={(e) => {
+                              setSmsChecked(!smsChecked);
+                            }}
+                          />
                           <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
@@ -1017,7 +1047,14 @@ function Profile({
                     <div className="col-md-12">
                       <div className="radio-btn">
                         <label>
-                          <input className="checkbox-custom" type="checkbox" />
+                          <input
+                            className="checkbox-custom"
+                            checked={newsletterChecked}
+                            type="checkbox"
+                            onChange={(e) => {
+                              setnewsLetterChecked(!newsletterChecked);
+                            }}
+                          />
                           <label
                             for="checkbox-1"
                             className="checkbox-custom-label"
@@ -1132,6 +1169,8 @@ const mapDispatchToProps = (dispatch) => {
     changeUserName: (name) => dispatch(setUserName(name)),
     saveUserCard: (url, token, params) =>
       dispatch(saveCard(url, token, params)),
+    saveNotification: (url, token, params) =>
+      dispatch(updateNotification(url, token, params)),
   };
 };
 
