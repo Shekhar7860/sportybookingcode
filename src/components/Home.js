@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import InnerHeader from "./InnerHeader";
 import rinks from "../assets/images/landingrinks.png";
 import feilds from "../assets/images/landingfields.png";
 import courts from "../assets/images/landingcourts.png";
@@ -9,11 +10,15 @@ import tennis from "../assets/images/image10.png";
 import indoor from "../assets/images/indoor-tennis-court.png";
 import SimpleSlider from "./SimpleSlider";
 import { Link } from "react-router-dom";
-
-const Home = () => {
+import { connect } from "react-redux";
+const Home = ({ userData, userLabelName }) => {
   return (
     <>
-      <Header />
+      {userData.userData.user ? (
+        <InnerHeader highLightedUserName={userLabelName} />
+      ) : (
+        <Header />
+      )}
       <section className="banner">
         <div className="container-fluid">
           <div className="row">
@@ -28,7 +33,9 @@ const Home = () => {
                     <div className="form-group">
                       <i className="fa fa-search"></i>
                       <input type="search" placeholder="Your Location" />
-                      <Link to="/search"><i className="fas fa-map-marker-alt"></i></Link>
+                      <Link to="/search">
+                        <i className="fas fa-map-marker-alt"></i>
+                      </Link>
                       <Link to="/search">
                         <button className="btn btn-search">Search</button>
                       </Link>
@@ -50,48 +57,48 @@ const Home = () => {
             <div className="col-md-4 mb-4">
               <div className="box">
                 <Link to="/search">
-                <img src={rinks} />
-                <p>Ice Rinks</p>
+                  <img src={rinks} />
+                  <p>Ice Rinks</p>
                 </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
-              <Link to="/search">
-                <img src={feilds} />
-                <p>Fields</p>
+                <Link to="/search">
+                  <img src={feilds} />
+                  <p>Fields</p>
                 </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
-              <Link to="/search">
-                <img src={courts} />
-                <p>Indoor Courts</p>
+                <Link to="/search">
+                  <img src={courts} />
+                  <p>Indoor Courts</p>
                 </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
-              <Link to="/search">
-                <img src={indoor} />
-                <p>Tennis Courts</p>
+                <Link to="/search">
+                  <img src={indoor} />
+                  <p>Tennis Courts</p>
                 </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
-              <Link to="/search">
-                <img src={tennis} />
-                <p>Fitness</p>
+                <Link to="/search">
+                  <img src={tennis} />
+                  <p>Fitness</p>
                 </Link>
               </div>
             </div>
             <div className="col-md-4 mb-4">
               <div className="box">
-              <Link to="/search">
-                <img src={dark} />
-                <p>More</p>
+                <Link to="/search">
+                  <img src={dark} />
+                  <p>More</p>
                 </Link>
               </div>
             </div>
@@ -154,5 +161,11 @@ const Home = () => {
     </>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+    userLabelName: state.user.userLabelName,
+  };
+};
 
-export default Home;
+export default connect(mapStateToProps, null)(Home);

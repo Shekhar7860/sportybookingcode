@@ -19,7 +19,11 @@ import { getFaceBookData } from "../services/service";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { validateEmail, validatePhone } from "../helpers/commonFunctions";
+import {
+  validateEmail,
+  validatePhone,
+  checkifOnlyNumbers,
+} from "../helpers/commonFunctions";
 const initialData = {
   email: "",
   phone_number: "",
@@ -96,7 +100,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email First");
+      toast.error("Please Enter Email");
     }
   };
   const { signIn, loaded } = useGoogleLogin({
@@ -129,7 +133,6 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
   const getCurrentUserInfo = async (response) => {
     const fbResponse = await getFaceBookData(response.authResponse.accessToken);
-    console.log("fb", fbResponse);
     history.push("/home");
   };
   const loginGoogle = () => {
@@ -165,7 +168,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
     e.preventDefault();
     if (email && password) {
       if (!validateEmail(email)) {
-        toast.error("Please Enter Valid Email Id");
+        return toast.error("Please Enter Valid Email");
       }
       showLoading(true);
       const res = await login("/user/login", {
@@ -175,13 +178,14 @@ const Header = ({ signUp, login, forgotPassword }) => {
       if (res.status == 200) {
         showLoading(false);
         toast.success(res.data.message);
-        history.push("/home");
+        showLoginModal(false);
+        // history.push("/home");
       } else {
         showLoading(false);
         toast.error(res.data ? res.data.error_description : String(res));
       }
     } else {
-      toast.error("Please Enter Email And Password");
+      toast.error("Please Enter Email and Password");
       showLoading(false);
     }
   };
@@ -218,6 +222,12 @@ const Header = ({ signUp, login, forgotPassword }) => {
     }
     if (state.password == "") {
       return toast.error("Please Enter Password");
+    }
+    if (checkifOnlyNumbers(state.first_name)) {
+      return toast.error("Please Enter Valid First Name");
+    }
+    if (checkifOnlyNumbers(state.last_name)) {
+      return toast.error("Please Enter Valid Last Name");
     }
     if (!validatePhone(state.phone_number)) {
       return toast.error("Please Enter Valid Phone Number");
@@ -398,7 +408,10 @@ const Header = ({ signUp, login, forgotPassword }) => {
 
                     <div className="forgot-passsign signup-btn">
                       <p>
-                        Don't have an account? <span>Sign up for free.</span>
+                        Don't have an account?{" "}
+                        <span onClick={toggleSignLoginModal}>
+                          Sign up for free.
+                        </span>
                       </p>
                       <button
                         type="button"

@@ -10,7 +10,9 @@ import {
   sendUserCode,
   verifyUserCode,
   updatePassword,
+  setUserName,
 } from "../../redux/actions/user";
+import { validatePassword } from "../../helpers/commonFunctions";
 const initialData = {
   email: "",
   phone_number: "",
@@ -43,6 +45,7 @@ function Profile({
   verifyUserOtp,
   changePassword,
   userLabelName,
+  changeUserName,
 }) {
   const [emailOtp, showEmailOtp] = useState(false);
   const [phoneOtp, showPhoneOtp] = useState(false);
@@ -58,6 +61,8 @@ function Profile({
   const [state, dispatch] = useReducer(reducer, initialData);
   const [changePasswordText, setPasswordText] = useState("");
   const [changeOldPasswordText, setOldPasswordText] = useState("");
+  const [confirmPassword, setConfirmPasswordText] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const userProfile = async () => {
       const res = await getUser(
@@ -80,35 +85,63 @@ function Profile({
     if (mode == "phone") {
       selected = state.phone_number;
     }
+    setLoading(true);
     const res = await sendUserOtp(
       "/user/otp",
       userData.userData ? userData.userData.token : null,
       selected,
       mode
     );
+    setLoading(false);
     if (res.status == 200) {
       toast.success(res.data.message);
     } else {
-      toast.error("NetWork Error");
+      toast.error("Network Error");
     }
   };
 
   const updatePasswordFunction = async () => {
     if (changeOldPasswordText == "") {
+      setOldPasswordText("");
       return toast.error("Please Enter Old Password");
     }
     if (changePasswordText == "") {
+      setPasswordText("");
       return toast.error("Please Enter New Password");
     }
+    if (confirmPassword == "") {
+      setConfirmPasswordText("");
+      return toast.error("Please Enter Confirm Password");
+    }
+    if (changePasswordText != confirmPassword) {
+      setPasswordText("");
+      setConfirmPasswordText("");
+      return toast.error("Passwords Do Not Match");
+    }
+    if (
+      !validatePassword(changePasswordText) ||
+      !validatePassword(confirmPassword) ||
+      !validatePassword(changeOldPasswordText)
+    ) {
+      return toast.error(
+        "Please Enter Strong Password - one upper, one lower, one number and one special character"
+      );
+    }
     let obj = {
-      old_password: changePasswordText,
-      new_password: changeOldPasswordText,
+      old_password: changeOldPasswordText,
+      new_password: changePasswordText,
     };
+    setLoading(true);
+    setOldPasswordText("");
+    setPasswordText("");
+    setConfirmPasswordText("");
     const res = await changePassword(
       "/user/change/password",
       userData.userData ? userData.userData.token : null,
       obj
     );
+    setLoading(false);
+
     if (res.status == 200) {
       toast.success(res.data.message);
     } else {
@@ -136,69 +169,77 @@ function Profile({
           fourthMobileText,
       };
     }
+    setLoading(true);
     const res = await verifyUserOtp(
       "/user/setotp",
       userData.userData ? userData.userData.token : null,
       obj
     );
+    setLoading(false);
     if (res.status == 200) {
-      toast.success(res.data.message);
+      toast.success("User Verified Successfully");
     } else {
-      toast.error("NetWork Error");
+      toast.error("Network Error");
     }
   };
 
   const updateProfile = async () => {
-    if (state.first_name && state.last_name && state.password) {
-      let obj = {
+    if (state.first_name == "") {
+      return toast.error("Please Enter First Name");
+    }
+    if (state.last_name == "") {
+      return toast.error("Please Enter Last Name");
+    }
+
+    let obj = {
+      first_name: state.first_name,
+      last_name: state.last_name,
+      password: state.password,
+    };
+    if (loggedUser.phone_number != state.phone_number) {
+      if (state.phone_number == "") {
+        return toast.error("Please Enter Phone Number");
+      }
+      obj = {
         first_name: state.first_name,
         last_name: state.last_name,
         password: state.password,
+        phone_number: state.phone_number,
       };
-      if (loggedUser.phone_number != state.phone_number) {
-        obj = {
-          first_name: state.first_name,
-          last_name: state.last_name,
-          password: state.password,
-          phone_number: state.phone_number,
-        };
+    }
+    if (loggedUser.email != state.email) {
+      if (state.email == "") {
+        return toast.error("Please Enter Email");
       }
-      if (loggedUser.email != state.email) {
-        obj = {
-          first_name: state.first_name,
-          last_name: state.last_name,
-          password: state.password,
-          email: state.email,
-        };
-      }
-      const res = await updateLoggedInUserProfile(
-        "/user/profile",
-        userData.userData ? userData.userData.token : null,
-        obj
-      );
-      if (res.status == 200) {
-        toast.success(res.data.message);
-      } else {
-        toast.error(res.data ? res.data.error_description : String(res));
-      }
+      obj = {
+        first_name: state.first_name,
+        last_name: state.last_name,
+        password: state.password,
+        email: state.email,
+      };
+    }
+
+    if (state.password == "") {
+      return toast.error("Please Enter Password");
+    }
+    setLoading(true);
+    const res = await updateLoggedInUserProfile(
+      "/user/profile",
+      userData.userData ? userData.userData.token : null,
+      obj
+    );
+    setLoading(false);
+    if (res.status == 200) {
+      toast.success(res.data.message);
+      const first = res.data.user.first_name.charAt(0).toUpperCase();
+      const last = res.data.user.last_name.charAt(0).toUpperCase();
+      changeUserName(first + last);
     } else {
-      toast.error("Please Enter First Name, Last Name And Password");
+      toast.error(res.data ? res.data.error_description : String(res));
     }
   };
 
   const setText = (e, param) => {
-    if (param == "first") {
-      setFirstMobileText(e.target.value);
-    } else if (param == "second") {
-      setSecondMobileText(e.target.value);
-    } else if (param == "third") {
-      setThirdMobileText(e.target.value);
-    } else if (param == "fourth") {
-      setFourthMobileText(e.target.value);
-    }
-  };
-
-  const setMobileText = (e, param) => {
     if (param == "first") {
       setFirstText(e.target.value);
     } else if (param == "second") {
@@ -207,6 +248,18 @@ function Profile({
       setThirdText(e.target.value);
     } else if (param == "fourth") {
       setFourthText(e.target.value);
+    }
+  };
+
+  const setMobileText = (e, param) => {
+    if (param == "first") {
+      setFirstMobileText(e.target.value);
+    } else if (param == "second") {
+      setSecondMobileText(e.target.value);
+    } else if (param == "third") {
+      setThirdMobileText(e.target.value);
+    } else if (param == "fourth") {
+      setFourthMobileText(e.target.value);
     }
   };
   const handleChange = (e, param) => {
@@ -236,6 +289,11 @@ function Profile({
     <div>
       <InnerHeader highLightedUserName={userLabelName} />
       <section className="mybooking">
+        {loading ? (
+          <div class="loader-wrapper">
+            <div class="loader"></div>
+          </div>
+        ) : null}
         <div className="mybookin-fluid">
           <div className="commoan-left">
             <div
@@ -525,6 +583,21 @@ function Profile({
                             onChange={(e) => {
                               setPasswordText(e.target.value);
                             }}
+                            value={changePasswordText}
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-4">
+                        <div className="col-md-5">
+                          <label>Confirm Password</label>
+                          <input
+                            type="password"
+                            autocomplete="off"
+                            placeholder="*********"
+                            onChange={(e) => {
+                              setConfirmPasswordText(e.target.value);
+                            }}
+                            value={confirmPassword}
                           />
                         </div>
                       </div>
@@ -547,6 +620,7 @@ function Profile({
                             onChange={(e) => {
                               setOldPasswordText(e.target.value);
                             }}
+                            value={changeOldPasswordText}
                           />
                         </div>
                       </div>
@@ -823,13 +897,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: (url, token) => dispatch(getUserProfile(url, token)),
-    changePassword: (url, token) => dispatch(updatePassword(url, token)),
+    changePassword: (url, token, obj) =>
+      dispatch(updatePassword(url, token, obj)),
     updateLoggedInUserProfile: (url, token, params) =>
       dispatch(updateUserProfile(url, token, params)),
     sendUserOtp: (url, token, params, mode) =>
       dispatch(sendUserCode(url, token, params, mode)),
     verifyUserOtp: (url, token, params) =>
       dispatch(verifyUserCode(url, token, params)),
+    changeUserName: (name) => dispatch(setUserName(name)),
   };
 };
 

@@ -8,6 +8,9 @@ export const loginUser = (url, params) => async (dispatch) => {
   const response = await postApi(url, params);
   if (response.status == 200) {
     dispatch(setUserData(response.data));
+    const first = response.data.user.first_name.charAt(0).toUpperCase();
+    const last = response.data.user.last_name.charAt(0).toUpperCase();
+    dispatch(setUserName(first + last));
   }
   return response;
 };

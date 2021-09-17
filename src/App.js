@@ -33,7 +33,7 @@ const App = ({ userData }) => {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             {userData.userData ? (
               userData.userData.user != undefined ? (
                 <Redirect to="/home" />
@@ -41,8 +41,8 @@ const App = ({ userData }) => {
                 <Home />
               )
             ) : null}
-          </Route>
-          {/* <Route path="/" exact component={Home} /> */}
+          </Route> */}
+          <Route path="/" exact component={Home} />
           <Route path="/search">
             <Search />
           </Route>

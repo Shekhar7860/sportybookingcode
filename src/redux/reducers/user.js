@@ -16,6 +16,7 @@ export function user(state = initialState, action) {
       return {
         ...state,
         userData: {},
+        userLabelName: "",
       };
     case SET_USER_NAME:
       return {

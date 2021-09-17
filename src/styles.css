@@ -44,7 +44,7 @@ h3 {
   border-bottom: none;
   background: transparent;
 }
-.login-form .react-tel-input .selected-flag{
+.login-form .react-tel-input .selected-flag {
   padding-left: 0;
 }
 /************* header css start here *************/
@@ -132,9 +132,7 @@ header {
   display: flex;
   align-items: center;
 }
-.modal {
-  z-index: 99999;
-}
+
 .light-text {
   color: #b2bec3;
   margin-top: 8px;
@@ -143,10 +141,39 @@ header {
 .text-color {
   color: #ffffff;
 }
+.react-confirm-alert-overlay {
+  background: none;
+  justify-content: flex-end;
+  right: 116px;
+  bottom: 35px;
+}
+.react-confirm-alert-body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 288px;
+  padding: 30px;
+  text-align: left;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgb(0 0 0 / 13%);
+  color: #666;
+  height: 65px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.react-confirm-alert-button-group {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: block;
+  justify-content: flex-start;
+  margin-top: 0px;
+}
 .circle-button {
   border: 1px solid rgba(0, 0, 0, 0.2);
   align-items: center;
   justify-content: center;
+  display: flex;
   width: 50px;
   height: 50px;
   background-color: #000000;
@@ -249,7 +276,7 @@ nav.navbar.navbar-expand-lg {
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
-  color: #AAAAAA;
+  color: #aaaaaa;
   margin-left: 23px;
   margin-top: 10px;
 }
@@ -849,7 +876,19 @@ span.map-text.map {
   color: #080808;
   margin: 0;
 }
-
+.dropdown-item {
+  display: flex;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
 button.popular {
   background: #ffffff;
   border: 1px solid #aaaaaa;
@@ -3040,7 +3079,8 @@ span.tooltips-cont {
 .footer-links.footer-icons p.english {
   padding-bottom: 7px !important;
 }
-.nav-link:focus, .nav-link:hover {
+.nav-link:focus,
+.nav-link:hover {
   color: #fff;
 }
 .login-modal .modal-dialog.modal-dialog-centered {
@@ -3062,14 +3102,14 @@ button.fc-button.fc-button-primary {
   border-color: #080808;
   opacity: 1;
 }
-button.fc-button.fc-button-primary:hover{
+button.fc-button.fc-button-primary:hover {
   background-color: #080808;
 }
 button.fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active {
   background: #080808;
 }
 button.fc-button.fc-button-primary {
-  border: 1px solid #AAAAAA;
+  border: 1px solid #aaaaaa;
   box-sizing: border-box;
   border-radius: 4px !important;
   margin: 0 6px;
@@ -3081,8 +3121,8 @@ h2.fc-toolbar-title {
   display: none;
 } */
 a.fc-timegrid-event.fc-v-event.fc-event.fc-event-draggable.fc-event-resizable.fc-event-start.fc-event-end.fc-event-today.fc-event-future {
-  background: #7DD1F5;
-  border-color: #7DD1F5;
+  background: #7dd1f5;
+  border-color: #7dd1f5;
   color: #000;
 }
 
@@ -3118,7 +3158,7 @@ i.fas.fa-angle-down {
   top: 2px;
 }
 .swining-text1.border-pool {
-  border-right: 1px solid #EEEEEE;
+  border-right: 1px solid #eeeeee;
 }
 .big-text h5 {
   font-weight: 600;
@@ -3126,7 +3166,8 @@ i.fas.fa-angle-down {
   line-height: 30px;
   color: #000000;
 }
-.right-facility-design h6.col-md-4.date-big, .right-facility-design h6.col-md-6.date-big {
+.right-facility-design h6.col-md-4.date-big,
+.right-facility-design h6.col-md-6.date-big {
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
@@ -3149,13 +3190,13 @@ i.fas.fa-angle-down {
 }
 .date-time-modal .modal-dialog {
   max-width: 920px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 20px rgb(0 0 0 / 16%);
   border-radius: 8px;
   border: none;
 }
 .date-time-modal .modal-dialog .modal-content {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 20px rgb(0 0 0 / 16%);
   border-radius: 8px;
   border: none;
@@ -3186,19 +3227,19 @@ i.fas.fa-angle-down {
 
 /* Track */
 .text-conditions::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 .text-conditions::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 .text-conditions::-webkit-scrollbar-thumb:hover {
   background: #080808;
-opacity: 0.4;
-border-radius: 20px;
+  opacity: 0.4;
+  border-radius: 20px;
 }
 .right-facility-design img {
   border-radius: 8px;
@@ -3240,13 +3281,13 @@ border-radius: 20px;
   max-width: 750px;
 }
 .final-facily .modal-dialog {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 20px rgb(0 0 0 / 16%);
   border-radius: 8px;
   overflow: hidden;
 }
 .final-facily .swining-pol-text {
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #eeeeee;
   padding: 0;
 }
 .final-facily .swining-pol-text h2 {
@@ -3258,7 +3299,7 @@ border-radius: 20px;
   margin: 5px;
 }
 .final-facily .row.border-top {
-  border-color: #EEEEEE !important;
+  border-color: #eeeeee !important;
 }
 .final-facily span.cross-icon-style {
   position: absolute;
