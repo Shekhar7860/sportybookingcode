@@ -249,9 +249,13 @@ const Header = ({ signUp, login, forgotPassword }) => {
     const res = await signUp("/user/signup", updatedState);
     if (res.status == 200) {
       showLoading(false);
-      showSignUpModal(false);
-      showLoginModal(true);
-      toast.success(res.data.message);
+      if (res.data.statusCode == 200) {
+        showSignUpModal(false);
+        showLoginModal(true);
+        toast.success(res.data.message);
+      } else {
+        toast.error(res.data.message);
+      }
     } else {
       showLoading(false);
       //  console.log("res", res.data);

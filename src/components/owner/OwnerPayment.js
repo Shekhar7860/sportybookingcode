@@ -9,8 +9,12 @@ import Payments from "../../assets/owner/Payments.png";
 import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
+import { addBank } from "../../redux/actions/owner";
 const OwnerPayment = () => {
+  const saveDetail = () => {
+    alert("hi");
+  };
   return (
     <div>
       <Ownerheader />
@@ -236,7 +240,9 @@ const OwnerPayment = () => {
                       <div className="row mt-2">
                         <div className="col-md-12">
                           <Link to="/billing">
-                            <button className="update-btn">Next</button>
+                            <button className="update-btn" onClick={saveDetail}>
+                              Next
+                            </button>
                           </Link>
                         </div>
                       </div>
@@ -252,4 +258,16 @@ const OwnerPayment = () => {
   );
 };
 
-export default OwnerPayment;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+    userLabelName: state.user.userLabelName,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBankDetail: (url, token, obj) => dispatch(addBank(url, token, obj)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerPayment);
