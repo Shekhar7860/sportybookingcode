@@ -10,8 +10,15 @@ import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import cal from "../../assets/images/Calendar.png";
 import { Link } from "react-router-dom";
-
+import FullCalendar, { formatDate } from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { INITIAL_EVENTS } from "../../constants/constants";
 const OwnerCalendar = () => {
+ const handleEventClick = () => {
+
+ }
   return (
     <div>
       <Ownerheader />
@@ -245,7 +252,24 @@ const OwnerCalendar = () => {
                 </div>
                 <div className="col-md-12 mt-4 mb-4">
                   <div className="calender-owner">
-                    <img src={cal} />
+                  <FullCalendar
+                          plugins={[
+                            dayGridPlugin,
+                            timeGridPlugin,
+                            interactionPlugin,
+                          ]}
+                          headerToolbar={{
+                            left: "prev,next today",
+                            center: "title",
+                            right: "dayGridMonth,timeGridWeek,timeGridDay",
+                          }}
+                          initialView="timeGridDay"
+                          editable={true}
+                          selectable={true}
+                          initialEvents={INITIAL_EVENTS}
+                          eventClick={handleEventClick}
+                        />
+                    {/* <img src={cal} /> */}
                   </div>
                 </div>
               </div>

@@ -11,10 +11,13 @@ import twelb from '../../assets/images/imagetwelbe.png'
 import preium from '../../assets/images/preium.png'
 import { Link } from 'react-router-dom'
 import Modal from "react-bootstrap/Modal";
+import Calendar from 'react-calendar';
 import "./user-module.css";
+import 'react-calendar/dist/Calendar.css';
 
 function Search() {
-
+    const [value, onChange] = useState(new Date());
+    const [calendarPicker, toggleCalendar] = useState(false)
     const [list, setList] = useState(false)
     const [modal, showmodal] = useState(false)
     const showhidemoremodal = () => {
@@ -32,10 +35,18 @@ function Search() {
     const showhidehourpricemodal = () => {
         hourshowmodal(!numberhourmodal);
     }
+
+    const showHideCalendar =() => {
+    toggleCalendar(!calendarPicker)
+    }
     return (
         <div>
             <InnerHeader />
-
+           { calendarPicker == true ?
+            <Calendar
+        onChange={onChange}
+        value={value}
+      /> : null}
             <section className="search-main-page search-page">
                 <div className="container-fluid pr-0">
                     <div className="row mr-0">
@@ -43,7 +54,7 @@ function Search() {
                             <div className="left-search">
                                 <div className="buttons-filters">
                                     <div className="filters-left">
-                                        <button className="btn btn-black btn-filter">20 May</button>
+                                        <button className="btn btn-black btn-filter" onClick={showHideCalendar}>20 May</button>
                                         <button className="btn btn-black btn-filter"
                                         onClick={showhidehourpricemodal}>10:00 AM — 1:00 PM</button>
                                         <button className="btn btn-black btn-filter more-btn"
