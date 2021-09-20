@@ -710,6 +710,7 @@ function Profile({
                       <div className="row mt-4">
                         <div className="col-md-5">
                           <label>New Password</label>
+                          <i class="fas fa-eye"></i>
                           <input
                             type="password"
                             autocomplete="off"
@@ -724,6 +725,7 @@ function Profile({
                       <div className="row mt-4">
                         <div className="col-md-5">
                           <label>Confirm Password</label>
+                          <i class="fas fa-eye"></i>
                           <input
                             type="password"
                             autocomplete="off"
@@ -747,6 +749,7 @@ function Profile({
                       <div className="row mt-4">
                         <div className="col-md-5">
                           <label>Password</label>
+                          <i class="fas fa-eye"></i>
                           <input
                             type="password"
                             autocomplete="off"

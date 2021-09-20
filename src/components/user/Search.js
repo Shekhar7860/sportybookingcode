@@ -686,17 +686,17 @@ function Search({ userLabelName }) {
                                 <span>—</span>
                                 <input type="text" placeholder="100" /> */}
                   <select name="cars" id="cars">
-                    <option value="volvo">$ 10</option>
-                    <option value="saab">20</option>
-                    <option value="mercedes">30</option>
-                    <option value="audi">40</option>
+                    <option value="volvo"> 10 AM</option>
+                    <option value="saab">9 AM</option>
+                    <option value="mercedes">11 AM</option>
+                    <option value="audi">12 AM</option>
                   </select>
                   <span>—</span>
                   <select name="cars" id="cars">
-                    <option value="volvo">100</option>
-                    <option value="saab">200</option>
-                    <option value="mercedes">300</option>
-                    <option value="audi">400</option>
+                    <option value="volvo">1:00 PM</option>
+                    <option value="saab">2:00 PM</option>
+                    <option value="mercedes">3:00 PM</option>
+                    <option value="audi">4:00 PM</option>
                   </select>
                 </div>
               </div>

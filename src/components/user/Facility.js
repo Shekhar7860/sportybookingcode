@@ -664,7 +664,7 @@ function Facility() {
                                 <ul className="facility-fac">
                                   <li>Rink Size</li>
                                   <li>
-                                    <strong>200x80</strong> NHL Sized
+                                    <strong>200x80</strong><span className="light-textaa"> NHL Sized</span>
                                   </li>
                                   <li>Max Capacity</li>
                                   <li>

@@ -856,13 +856,12 @@ const OwnerListing = () => {
                 <button className="">Back</button>
               </div>
               <div className="more-clear">
-                <button className="save-btns">Save</button>
+                <button className="save-btns">Confirm</button>
               </div>
             </div>
           </div>
         </div>
       </Modal>
-
       <Modal
         show={modalimport}
         className="Recurring-modal confirmation add-listing-modal"

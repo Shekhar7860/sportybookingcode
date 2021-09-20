@@ -74,6 +74,12 @@
 .more-div .facility-form input::placeholder{
   color: #BBBBBB;
 }
+.facility-form input::placeholder{
+  color: #BBBBBB;
+}
+span.light-textaa {
+  opacity: 0.7;
+}
 .more-div {
   padding: 0 15px;
 }

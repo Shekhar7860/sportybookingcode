@@ -1353,8 +1353,13 @@ button:focus {
   padding: 0 30px;
   margin-bottom: 10px;
   justify-content: space-between;
+  position: relative;
 }
-
+.messages i.fas.fa-angle-down {
+  right: 30px;
+  position: absolute;
+  top: 4px;
+}
 .messages-name {
   padding: 20px 30px;
   margin: 0;
@@ -1393,6 +1398,8 @@ p.date-messg {
   background: transparent;
   height: 30px;
   border-bottom: 2px solid #080808;
+  appearance: none;
+  width: 40%;
 }
 
 select:focus-visible {
@@ -2144,6 +2151,10 @@ span.message-notification {
   top: 0;
   left: 0;
   margin-right: 13px;
+  
+}
+.booked-one.botton-booked span.size-same {
+  opacity: 0.4;
 }
 .botton-booked h3,
 .botton-booked h2 {
@@ -2726,7 +2737,7 @@ button.btn.btn-black.btn-filter.green:hover {
 .add-facility .tab-content {
   margin-top: 35px;
 }
-.add-facility-form .form-group input::placeholder {
+.add-facility-form .form-group input::placeholder, .add-facility-form .form-group textarea::placeholder {
   color: #bbbbbb;
 }
 .add-facility-form .form-group input,
@@ -3574,6 +3585,26 @@ button.uploads-btns {
   border-radius: 8px !important;
   border: none !important;
 }
+
+.profile-data .col-md-5 {
+  position: relative;
+}
+
+.profile-data i.fas.fa-eye {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.add-listing-modal .sunday-monday input.checkbox-custom {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  height: 20px;
+  top: 23px;
+  left: -5px;
+}
+
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
   body.modal-open {

@@ -14,6 +14,7 @@ function Messages({ userLabelName }) {
           <div className="commoan-left">
             <div className="messages">
               <h3>Messages</h3>
+              <i class="fas fa-angle-down"></i>
               <select name="cars" id="cars">
                 <option value="volvo">Recent</option>
                 <option value="saab">Saab</option>
