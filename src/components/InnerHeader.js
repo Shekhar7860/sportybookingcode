@@ -6,11 +6,16 @@ import mobilelogo from "../assets/images/Logotype.png";
 import Searchmain from "../assets/images/Search.png";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { clearData } from "../redux/actions/user";
-const InnerHeader = ({ clearRedux, highLightedUserName }) => {
+import { clearData, deleteUser } from "../redux/actions/user";
+const InnerHeader = ({
+  clearRedux,
+  highLightedUserName,
+  removeUser,
+  userData,
+}) => {
   const [topLabelName, setTopLabelName] = useState("");
   const history = useHistory();
-  const logOut = () => {
+  const logOut = async () => {
     history.push("/");
     clearRedux(null);
   };
@@ -59,6 +64,9 @@ const InnerHeader = ({ clearRedux, highLightedUserName }) => {
                       <Link className="nav-link" to="/owner">Manage Facility</Link>
                     </li> */}
                     <li className="nav-item">
+                      <Link className="nav-link" to="/home">
+                        Dashboard
+                      </Link>
                       <Link className="nav-link" to="/mybooking">
                         My Bookings
                       </Link>
@@ -128,6 +136,7 @@ const InnerHeader = ({ clearRedux, highLightedUserName }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     clearRedux: (data) => dispatch(clearData(data)),
+    removeUser: (url, token) => dispatch(deleteUser(url, token)),
   };
 };
 

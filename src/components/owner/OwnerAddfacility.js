@@ -710,7 +710,7 @@ const OwnerAddFacility = () => {
                           </div>
                           <div className="col-md-6 mt-5 mb-5 text-right">
                             <button className="continue-btn update-btn">
-                              Continue
+                              Submit
                             </button>
                           </div>
                         </div>
@@ -839,7 +839,7 @@ const OwnerAddFacility = () => {
                                   <div className="select-one">
                                     <i class="far fa-angle-down"></i>
                                     <select name="cars" id="cars">
-                                      <option value="volvo">7 AM </option>
+                                      <option value="volvo">Hockey Rink </option>
                                       <option value="saab">9 AM</option>
                                       <option value="mercedes">13 AM</option>
                                       <option value="audi">7 AM</option>

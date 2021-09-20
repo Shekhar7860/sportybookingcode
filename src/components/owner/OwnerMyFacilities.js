@@ -225,7 +225,7 @@ const OwnerMyFacilities = () => {
                   </div>
                 </div>
 
-                <div className="col-md-11">
+                <div className="col-md-10">
                   <div className="row">
                     <div className="col-md-6 pt-4">
                       <div className="search-box preium">

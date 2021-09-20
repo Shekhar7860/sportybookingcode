@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "react-credit-cards/es/styles-compiled.css";
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +15,21 @@ body {
 }
 .small-text {
   font-size: 12px !important;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
 }
 h3 {
   font-weight: 600;
@@ -1337,8 +1353,13 @@ button:focus {
   padding: 0 30px;
   margin-bottom: 10px;
   justify-content: space-between;
+  position: relative;
 }
-
+.messages i.fas.fa-angle-down {
+  right: 30px;
+  position: absolute;
+  top: 4px;
+}
 .messages-name {
   padding: 20px 30px;
   margin: 0;
@@ -1377,6 +1398,8 @@ p.date-messg {
   background: transparent;
   height: 30px;
   border-bottom: 2px solid #080808;
+  appearance: none;
+  width: 40%;
 }
 
 select:focus-visible {
@@ -1732,7 +1755,37 @@ button:focus {
   line-height: 22px;
   color: #080808;
 }
-
+table,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 50px;
+}
+.firstSelection {
+  background: #9bc7fb;
+  font-weight: 600;
+}
+.secondSelection {
+  background: #7dd1f5;
+  font-weight: 600;
+}
+.thirdSelection {
+  background: #fcd778;
+  font-weight: 600;
+}
+.fourthSelection {
+  background: #c4fd21;
+  font-weight: 600;
+}
+.fifthSelection {
+  background: #dbdbdb;
+  font-weight: 600;
+}
+th {
+  background: #000000;
+  height: 50px;
+  color: #ffffff;
+}
 .payment-heading.wallet p {
   opacity: 1;
   font-weight: 500;
@@ -2098,6 +2151,10 @@ span.message-notification {
   top: 0;
   left: 0;
   margin-right: 13px;
+  
+}
+.booked-one.botton-booked span.size-same {
+  opacity: 0.4;
 }
 .botton-booked h3,
 .botton-booked h2 {
@@ -2680,7 +2737,7 @@ button.btn.btn-black.btn-filter.green:hover {
 .add-facility .tab-content {
   margin-top: 35px;
 }
-.add-facility-form .form-group input::placeholder {
+.add-facility-form .form-group input::placeholder, .add-facility-form .form-group textarea::placeholder {
   color: #bbbbbb;
 }
 .add-facility-form .form-group input,
@@ -3423,7 +3480,7 @@ i.fas.fa-angle-down {
   padding: 6px 0 4px;
   font-weight: 500;
 }
-.price-modal label{
+.price-modal label {
   display: block;
 }
 .facility-form.half-div input {
@@ -3528,6 +3585,26 @@ button.uploads-btns {
   border-radius: 8px !important;
   border: none !important;
 }
+
+.profile-data .col-md-5 {
+  position: relative;
+}
+
+.profile-data i.fas.fa-eye {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.add-listing-modal .sunday-monday input.checkbox-custom {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  height: 20px;
+  top: 23px;
+  left: -5px;
+}
+
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
   body.modal-open {

@@ -13,6 +13,33 @@ export const postApi = async (url, params) => {
   }
 };
 
+export const postApiWithHeaders = async (url, token, params) => {
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    let x = await axios.post(apiUrl + url, params, config);
+    return x;
+  } catch (error) {
+    return error.response;
+  }
+};
+export const deleteApi = async (url, token, params) => {
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    let x = await axios.delete(apiUrl + url, config);
+    return x;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const getApi = (url, token, params, mode) => {
   const config = {
     headers: {
