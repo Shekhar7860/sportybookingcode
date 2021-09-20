@@ -227,11 +227,14 @@ function Profile({
       userData.userData ? userData.userData.token : null,
       payload
     );
-    console.log("res", res);
+    // console.log("res", res);
     if (res.status == 200) {
       toast.success(res.data.message);
       // history.push("/home");
     } else {
+      if (res.data == 403) {
+        toast.error(res.data ? res.data.message : String(res));
+      }
       toast.error(res.data ? res.data.error_description : String(res));
     }
     setLoading(false);

@@ -16,14 +16,8 @@ const InnerHeader = ({
   const [topLabelName, setTopLabelName] = useState("");
   const history = useHistory();
   const logOut = async () => {
-    const res = await removeUser(
-      "/user/logout",
-      userData.userData ? userData.userData.token : null
-    );
-    if (res.status == 200) {
-      history.push("/");
-      clearRedux(null);
-    }
+    history.push("/");
+    clearRedux(null);
   };
   useEffect(() => {
     if (highLightedUserName != null) {
