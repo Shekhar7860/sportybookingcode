@@ -1842,6 +1842,9 @@ th {
   padding: 6px 0 4px;
   font-weight: 500;
 }
+.login-form input::placeholder{
+  color: #BBBBBB;
+}
 .forgot-passsign p span {
   color: #080808;
 }
@@ -3060,6 +3063,7 @@ button.btn.btn-black.btn-filter.more-btn.green:hover {
 .booking-transprnt .sendmessege button.btn.btn-cancal:hover {
   background: #080808c7;
   border-color: #080808c7;
+  color: #fff;
 }
 .sendmessege button.btn.btn-cancal:hover {
   color: #080808;
@@ -3287,6 +3291,31 @@ i.fas.fa-angle-down {
   opacity: 0.4;
   border-radius: 20px;
 }
+
+
+
+
+.body-heading::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.body-heading::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+.body-heading::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+/* Handle on hover */
+.body-heading::-webkit-scrollbar-thumb:hover {
+  background: #080808;
+  opacity: 0.4;
+  border-radius: 20px;
+}
+
 .right-facility-design img {
   border-radius: 8px;
 }
@@ -3452,6 +3481,98 @@ i.fas.fa-angle-down {
 }
 .facility-form.half-div span {
   margin: 0 15px 0 10px;
+}
+.anil_nepal h3 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #080808;
+  padding-bottom: 5px;
+}
+.width-custom .select-one {
+  width: 60%;
+}
+.width-incress .select-one {
+  width: 20%;
+}
+.Insurance-term label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #BBBBBB;
+}
+.Insurance-term textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #666666;
+}
+button.back-btnss.continue-btn.update-btn {
+  background: #EEEEEE;
+  color: #080808;
+}
+.feature-buttons.row {
+  border-top: 1px solid #EEEEEE;
+  margin: 0 auto;
+}
+.waiver-link input::placeholder{
+  color: #080808 !important;
+  opacity: 1;
+}
+.upload-waiver button.btn.btn-black {
+  border-radius: 4px;
+}
+#agree .add-facility-form label {
+  color: #666666;
+  font-weight: 600;
+}
+#agree textarea::placeholder{
+  color: #BBBBBB;
+}
+#agree .fee-section i.far.fa-angle-down {
+  top: 50px;
+}
+button.uploads-btns {
+  background: #65C87A;
+  border-radius: 4px;
+  height: 40px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  border: none;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+.uploads-img img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.impoort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.impoort h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+}
+.import-modal .more-filter-btn {
+  justify-content: flex-end;
+}
+.add-listing-modal .modal-content {
+  box-shadow: 0px 0px 20px #000000 !important;
+  border-radius: 8px !important;
+  border: none !important;
 }
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
