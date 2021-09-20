@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
@@ -11,10 +11,33 @@ import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addBank } from "../../redux/actions/owner";
+import "./owner.css";
 const OwnerPayment = () => {
+  const [frontImage, setFrontImage] = useState(null);
+  const [backImage, setBackImage] = useState(null);
   const saveDetail = () => {
     alert("hi");
   };
+
+  const changeFile = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = (e) => {
+      console.log("e2222", e.target.result);
+      setFrontImage(e.target.result);
+    };
+
+    //  setFrontImage(e.target.files[0]);
+  };
+
+  const selectFile = () => {
+    document.getElementById("my-create-input").click();
+  };
+
+  const selectBackFile = () => {
+    document.getElementById("my-create-input2").click();
+  };
+  console.log("s", frontImage);
   return (
     <div>
       <Ownerheader />
@@ -244,6 +267,52 @@ const OwnerPayment = () => {
                               Next
                             </button>
                           </Link>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="create-single-upload mt-3">
+                          <p>Upload Front Side</p>
+                          <div className="upload-box-container">
+                            <div className="upload-box">
+                              {frontImage ? (
+                                <img src={frontImage} />
+                              ) : (
+                                <div className="upload-input">
+                                  <p>PNG, GIF, MP4 or MP3. Max 30mb</p>
+                                  <input
+                                    id="my-create-input"
+                                    className="upload-box-input"
+                                    onChange={changeFile}
+                                    type="file"
+                                  />
+                                  <button onClick={selectFile}>Upload</button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="create-single-upload mt-3">
+                          <p>Upload Back Side</p>
+                          <div className="upload-box-container">
+                            <div className="upload-box">
+                              {frontImage ? (
+                                <img src={frontImage} />
+                              ) : (
+                                <div className="upload-input">
+                                  <p>PNG, GIF, MP4 or MP3. Max 30mb</p>
+                                  <input
+                                    id="my-create-input2"
+                                    className="upload-box-input"
+                                    onChange={changeFile}
+                                    type="file"
+                                  />
+                                  <button onClick={selectBackFile}>
+                                    Upload
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
