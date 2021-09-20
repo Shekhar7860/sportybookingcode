@@ -3,11 +3,11 @@ import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
 import listings from "../../assets/owner/listings.png";
-import bookings from "../../assets/owner/bookings.png";
-import facilities from "../../assets/owner/facilities.png";
+import photo4 from "../../assets/owner/photo4.png";
+import photo3 from "../../assets/owner/photo3.png";
 import Payments from "../../assets/owner/Payments.png";
-import notifications from "../../assets/owner/notifications.png";
-import subscriptions from "../../assets/owner/subscriptions.png";
+import photo1 from "../../assets/owner/photo1.png";
+import photo2 from "../../assets/owner/photo2.png";
 import upload from "../../assets/owner/Upload.png";
 import nine from "../../assets/images/imagenine.png";
 import { Link } from "react-router-dom";
@@ -756,11 +756,11 @@ const OwnerAddFacility = () => {
                         <li className="nav-item" role="presentation">
                           <a
                             className="nav-link active"
-                            id="home-tab"
+                            id="homess-tab"
                             data-toggle="tab"
-                            href="#home"
+                            href="#homess"
                             role="tab"
-                            aria-controls="home"
+                            aria-controls="homess"
                             aria-selected="true"
                           >
                             <span>1</span> <h2>Profile</h2>
@@ -769,11 +769,11 @@ const OwnerAddFacility = () => {
                         <li className="nav-item" role="presentation">
                           <a
                             className="nav-link"
-                            id="profile-tab"
+                            id="features-tab"
                             data-toggle="tab"
-                            href="#profile"
+                            href="#features"
                             role="tab"
-                            aria-controls="profile"
+                            aria-controls="features"
                             aria-selected="false"
                           >
                             <span>2</span> <h2>Features</h2>
@@ -782,11 +782,11 @@ const OwnerAddFacility = () => {
                         <li className="nav-item" role="presentation">
                           <a
                             className="nav-link"
-                            id="contact-tab"
+                            id="agree-tab"
                             data-toggle="tab"
-                            href="#contact"
+                            href="#agree"
                             role="tab"
-                            aria-controls="contact"
+                            aria-controls="agree"
                             aria-selected="false"
                           >
                             <span>3</span> <h2>Agreements</h2>
@@ -795,11 +795,11 @@ const OwnerAddFacility = () => {
                         <li className="nav-item" role="presentation">
                           <a
                             className="nav-link"
-                            id="contact-tab"
+                            id="photosss-tab"
                             data-toggle="tab"
-                            href="#Photos"
+                            href="#photosss"
                             role="tab"
-                            aria-controls="contact"
+                            aria-controls="photosss-modal"
                             aria-selected="false"
                           >
                             <span>4</span> <h2>Photos</h2>
@@ -811,9 +811,9 @@ const OwnerAddFacility = () => {
                     <div className="tab-content" id="myTabContent">
                       <div
                         className="tab-pane fade show active"
-                        id="home"
+                        id="homess"
                         role="tabpanel"
-                        aria-labelledby="home-tab"
+                        aria-labelledby="homess-tab"
                       >
                         <div className="row">
                           <div className="col-md-6">
@@ -1148,7 +1148,395 @@ const OwnerAddFacility = () => {
                           </div>
                         </div>
                       </div>
+
+
+
+
+
+
+
+
+                      <div
+                        className="tab-pane fade"
+                        id="features"
+                        role="tabpanel"
+                        aria-labelledby="features-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-6">
+                            <div className="row">
+                              <div className="col-md-6">
+                                <div className="location">
+                                  <h6 className="pb-0">Featuers</h6>
+                                </div>
+                                <div className="add-facility-form">
+                                  <div className="form-group width-custom half-select">
+                                    <label for="cars">Room Type</label>
+                                    <div className="select-box">
+                                      <div className="select-one">
+                                        <i class="far fa-angle-down"></i>
+                                        <select name="cars" id="cars">
+                                          <option value="volvo">200 x 85 feet </option>
+                                          <option value="saab">9 AM</option>
+                                          <option value="mercedes">13 AM</option>
+                                          <option value="audi">7 AM</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="form-group width-incress half-select">
+                                    <label>
+                                      Max Participants
+                                    </label>
+                                    <div className="select-box">
+                                      <div className="select-one">
+                                        <i class="far fa-angle-down"></i>
+                                        <select name="cars" id="cars">
+                                          <option value="volvo"> 20</option>
+                                          <option value="saab">9 AM</option>
+                                          <option value="mercedes">13 AM</option>
+                                          <option value="audi">7 AM</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="form-group width-incress half-select">
+                                    <label>
+                                      Total Spectators
+                                    </label>
+                                    <div className="select-box">
+                                      <div className="select-one">
+                                        <i class="far fa-angle-down"></i>
+                                        <select name="cars" id="cars">
+                                          <option value="volvo"> 190 </option>
+                                          <option value="saab">9 AM</option>
+                                          <option value="mercedes">13 AM</option>
+                                          <option value="audi">7 AM</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div className="col-md-6 mt-5">
+                                <div class="anil_nepal mb-2">
+                                  <h3>Change Rooms</h3>
+                                  <span className="map-text mr-2">Yes</span>
+                                  <label class="switch switch-left-right">
+                                    <input
+                                      class="switch-input"
+                                      type="checkbox"
+                                    />
+                                    <span
+                                      class="switch-label"
+                                      data-on="On"
+                                      data-off="Off"
+                                    ></span>{" "}
+                                    <span class="switch-handle"></span>{" "}
+                                  </label>
+                                  <span className="map-text">No</span>
+                                </div>
+
+
+                                <div class="anil_nepal mb-2">
+                                  <h3>Change Rooms Lockers</h3>
+                                  <span className="map-text mr-2">Yes</span>
+                                  <label class="switch switch-left-right">
+                                    <input
+                                      class="switch-input"
+                                      type="checkbox"
+                                    />
+                                    <span
+                                      class="switch-label"
+                                      data-on="On"
+                                      data-off="Off"
+                                    ></span>{" "}
+                                    <span class="switch-handle"></span>{" "}
+                                  </label>
+                                  <span className="map-text">No</span>
+                                </div>
+
+                                <div class="anil_nepal mb-2">
+                                  <h3>Showers</h3>
+                                  <span className="map-text mr-2">Yes</span>
+                                  <label class="switch switch-left-right">
+                                    <input
+                                      class="switch-input"
+                                      type="checkbox"
+                                    />
+                                    <span
+                                      class="switch-label"
+                                      data-on="On"
+                                      data-off="Off"
+                                    ></span>{" "}
+                                    <span class="switch-handle"></span>{" "}
+                                  </label>
+                                  <span className="map-text">No</span>
+                                </div>
+
+
+                                <div class="anil_nepal mb-2">
+                                  <h3>Washroom</h3>
+                                  <span className="map-text mr-2">Yes</span>
+                                  <label class="switch switch-left-right">
+                                    <input
+                                      class="switch-input"
+                                      type="checkbox"
+                                    />
+                                    <span
+                                      class="switch-label"
+                                      data-on="On"
+                                      data-off="Off"
+                                    ></span>{" "}
+                                    <span class="switch-handle"></span>{" "}
+                                  </label>
+                                  <span className="map-text">No</span>
+                                </div>
+
+
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div className="col-md-6 pl-5">
+                            <div className="location">
+                              <h6>Insurance</h6>
+                            </div>
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div class="anil_nepal mb-2">
+                                  <h3>Insurance Provided</h3>
+                                  <span className="map-text mr-2">Yes</span>
+                                  <label class="switch switch-left-right">
+                                    <input
+                                      class="switch-input"
+                                      type="checkbox"
+                                    />
+                                    <span
+                                      class="switch-label"
+                                      data-on="On"
+                                      data-off="Off"
+                                    ></span>{" "}
+                                    <span class="switch-handle"></span>{" "}
+                                  </label>
+                                  <span className="map-text">No</span>
+                                </div>
+
+                                <div className="form-group Insurance-term">
+                                  <label>Insurance terms</label>
+                                  <textarea
+                                    id="w3review"
+                                    name="w3review"
+                                    rows="4"
+                                    cols="50"
+                                  // placeholder="Description"
+                                  ></textarea>
+                                </div>
+
+                              </div>
+
+
+                            </div>
+                          </div>
+                          <div className="feature-buttons row">
+                            <div className="col-md-6 mt-4 mb-2 text-left">
+                              <button
+                                className="back-btnss continue-btn update-btn"
+                                data-toggle="modal"
+                                data-target="#addcongrs"
+                                data-dismiss="modal"
+                              >
+                                Back
+                              </button>
+                            </div>
+                            <div className="col-md-6 mt-4 mb-2 text-right">
+                              <button
+                                className="continue-btn update-btn"
+                                data-toggle="modal"
+                                data-target="#addcongrs"
+                                data-dismiss="modal"
+                              >
+                                Continue
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div
+                        className="tab-pane fade"
+                        id="agree"
+                        role="tabpanel"
+                        aria-labelledby="agree-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="add-facility-form">
+                              {/* <div className="form-group">
+                                <label>Room Name</label>
+                                <input type="text" placeholder="North Rink" />
+                              </div> */}
+                              <div className="form-group">
+                                <label>Terms & Conditions</label>
+                                <textarea
+                                  id="w3review"
+                                  name="w3review"
+                                  rows="4"
+                                  cols="50"
+                                  placeholder="Terms & Conditions Text"
+                                ></textarea>
+                              </div>
+
+                              <div className="form-group">
+                                <label>Wavier</label>
+                                <textarea
+                                  id="w3review"
+                                  name="w3review"
+                                  rows="4"
+                                  cols="50"
+                                  placeholder="Wavier Text"
+                                ></textarea>
+                              </div>
+
+                              <div className="form-group waiver-link half-select">
+                                <label for="cars">Wavier Link</label>
+                                <div className="select-box">
+                                  <div className="select-one">
+                                    <input type="text" placeholder="waynegretzky.ca/wavier.html" />
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div className="form-group upload-waiver buttons-addroom activities-half">
+                                <label>
+                                  Upload Wavier PDF
+                                </label>
+                                <button className="btn btn-black">
+                                  Select File
+                                </button>
+                              </div>
+
+
+                              <div className="form-group mb-5">
+                                <div className="col-md-6 pl-0 pr-0">
+                                  <div className="select-box fee-section">
+                                    <div className="select-one">
+                                      <label for="cars">Cancellation Fee</label>
+                                      <i class="far fa-angle-down"></i>
+                                      <select name="cars" id="cars">
+                                        <option value="volvo">$ 20 </option>
+                                        <option value="saab">9 AM</option>
+                                        <option value="mercedes">13 AM</option>
+                                        <option value="audi">7 AM</option>
+                                      </select>
+                                    </div>
+                                    <span></span>
+                                    <div className="select-one">
+                                      <label for="cars">Cancellation Policy</label>
+                                      <i class="far fa-angle-down"></i>
+                                      <select name="cars" id="cars">
+                                        <option value="volvo">11 days </option>
+                                        <option value="saab">7 AM</option>
+                                        <option value="mercedes">13 AM</option>
+                                        <option value="audi">17 AM</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="feature-buttons row">
+                                <div className="col-md-6 mt-4 mb-2 text-left">
+                                  <button
+                                    className="back-btnss continue-btn update-btn"
+                                    data-toggle="modal"
+                                    data-target="#addcongrs"
+                                    data-dismiss="modal"
+                                  >
+                                    Back
+                                  </button>
+                                </div>
+                                <div className="col-md-6 mt-4 mb-2 text-right">
+                                  <button
+                                    className="continue-btn update-btn"
+                                    data-toggle="modal"
+                                    data-target="#addcongrs"
+                                    data-dismiss="modal"
+                                  >
+                                    Continue
+                                  </button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+
+
+                        </div>
+                      </div>
+
+
+
+                      <div
+                        className="tab-pane fade"
+                        id="photosss"
+                        role="tabpanel"
+                        aria-labelledby="photosss-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="add-facility-form">
+
+                              <div className="uploads-tab">
+                                <button className="uploads-btns">Uploas</button>
+                              </div>
+                              <div className="uploads-img mb-5 pb-4">
+                                <img src={photo1} />
+                                <img src={photo2} />
+                                <img src={photo3} />
+                                <img src={photo4} />
+                              </div>
+                              <div className="feature-buttons row">
+                                <div className="col-md-6 mt-4 mb-2 text-left">
+                                  <button
+                                    className="back-btnss continue-btn update-btn"
+                                    data-toggle="modal"
+                                    data-target="#addcongrs"
+                                    data-dismiss="modal"
+                                  >
+                                    Back
+                                  </button>
+                                </div>
+                                <div className="col-md-6 mt-4 mb-2 text-right">
+                                  <button
+                                    className="continue-btn update-btn"
+                                    data-toggle="modal"
+                                    data-target="#addcongrs"
+                                    data-dismiss="modal"
+                                  >
+                                    Continue
+                                  </button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+
+
+                        </div>
+                      </div>
+
+
+
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -1156,6 +1544,9 @@ const OwnerAddFacility = () => {
           </div>
         </div>
       </div>
+
+
+
 
       <div
         class="modal fade"

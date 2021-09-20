@@ -47,6 +47,18 @@ const OwnerListing = () => {
     showmodalconfirm(!modalconfirm);
   }
 
+
+  const [modalimport, showmodalimport] = useState(false)
+  const showhideimportmodal = () => {
+    showmodalimport(!modalimport);
+  }
+
+  const [modalimportlist, showmodalimportlist] = useState(false)
+  const showhideimportlistmodal = () => {
+    showhideimportmodal();
+    showmodalimportlist(!modalimportlist);
+  }
+
   return (
     <div>
       <Ownerheader />
@@ -263,7 +275,8 @@ const OwnerListing = () => {
                       <button class="btn btn-black btn-filter more-btn mr-5">
                         This Week
                       </button>
-                      <button class="btn btn-black btn-filter green">
+                      <button class="btn btn-black btn-filter green"
+                      onClick={showhideimportmodal} >
                         Import
                       </button>
                       <button class="btn btn-black btn-filter more-btn green"
@@ -864,6 +877,196 @@ const OwnerListing = () => {
           </div>
         </div>
       </Modal>
+
+
+
+
+
+
+
+      <Modal show={modalimport} className="Recurring-modal confirmation add-listing-modal">
+        <div className="more-div">
+          <span onClick={showhideimportmodal} className="cross-icon-style">
+            <i class="fal fa-times"></i>
+          </span>
+          <div className="add-list">
+            <h2 className="pb-0 mb-0">Import Listings</h2>
+            
+          </div>
+
+          <div className="confirm-add-body mb-5">
+             
+              <div className="body-heading">
+                    <div className="impoort">
+                       <h4>Drag CSV here or click to select file</h4>
+                    </div>
+              </div>
+          </div>
+          <div className="active-type import-modal">
+            <div className="more-filter-btn pt-4">
+              <div className="more-clear">
+                <button className="save-btns"
+                onClick={showhideimportlistmodal}>Import</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+
+
+      <Modal show={modalimportlist} className="Recurring-modal confirmation add-listing-modal">
+        <div className="more-div">
+          <span onClick={showhideimportlistmodal} className="cross-icon-style">
+            <i class="fal fa-times"></i>
+          </span>
+          <div className="add-list">
+            <h2 className="pb-0 mb-0">Import Listings</h2>
+            <p className="pb-3">Please carefully review data before saving</p>
+          </div>
+
+          <div className="confirm-add-body mb-5">
+              <div className="heading-body">
+                <h4>1 May, Monday</h4>
+              </div>
+              <div className="body-heading">
+              <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+
+                  <div className="booking-box listing-boxss booked-list">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="booking-img">
+                          
+                          <h4>
+                            11:30 <span>AM</span> — 10 <span>PM</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-md-3 mid-list">
+                        <div className="booking-text">
+                          <h4>
+                            North Rink 
+                          </h4>
+                          
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mid-list">
+                      <div className="booking-text">
+                      <h4>
+                            $50
+                          </h4>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+              </div>
+          </div>
+          <div className="active-type">
+            <div className="more-filter-btn pt-4">
+              <div className="add-list-rink">
+                <button className="">Back</button>
+              </div>
+              <div className="more-clear">
+                <button className="save-btns">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
 
     </div>
   );
