@@ -78,6 +78,7 @@ h3 {
   border-color: #83da95;
 }
 .loader-wrapper {
+  z-index: 9;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -1849,8 +1850,8 @@ th {
   padding: 6px 0 4px;
   font-weight: 500;
 }
-.login-form input::placeholder{
-  color: #BBBBBB;
+.login-form input::placeholder {
+  color: #bbbbbb;
 }
 .forgot-passsign p span {
   color: #080808;
@@ -2047,7 +2048,7 @@ span.message-notification {
   /* margin-bottom: 72px; */
 }
 .owner-right {
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
 }
 .owner-main {
   display: flex;
@@ -2151,7 +2152,6 @@ span.message-notification {
   top: 0;
   left: 0;
   margin-right: 13px;
-  
 }
 .booked-one.botton-booked span.size-same {
   opacity: 0.4;
@@ -2737,7 +2737,8 @@ button.btn.btn-black.btn-filter.green:hover {
 .add-facility .tab-content {
   margin-top: 35px;
 }
-.add-facility-form .form-group input::placeholder, .add-facility-form .form-group textarea::placeholder {
+.add-facility-form .form-group input::placeholder,
+.add-facility-form .form-group textarea::placeholder {
   color: #bbbbbb;
 }
 .add-facility-form .form-group input,
@@ -3303,9 +3304,6 @@ i.fas.fa-angle-down {
   border-radius: 20px;
 }
 
-
-
-
 .body-heading::-webkit-scrollbar {
   width: 5px;
 }
@@ -3510,7 +3508,7 @@ i.fas.fa-angle-down {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #BBBBBB;
+  color: #bbbbbb;
 }
 .Insurance-term textarea {
   width: 100%;
@@ -3519,14 +3517,14 @@ i.fas.fa-angle-down {
   border-bottom: 2px solid #666666;
 }
 button.back-btnss.continue-btn.update-btn {
-  background: #EEEEEE;
+  background: #eeeeee;
   color: #080808;
 }
 .feature-buttons.row {
-  border-top: 1px solid #EEEEEE;
+  border-top: 1px solid #eeeeee;
   margin: 0 auto;
 }
-.waiver-link input::placeholder{
+.waiver-link input::placeholder {
   color: #080808 !important;
   opacity: 1;
 }
@@ -3537,21 +3535,21 @@ button.back-btnss.continue-btn.update-btn {
   color: #666666;
   font-weight: 600;
 }
-#agree textarea::placeholder{
-  color: #BBBBBB;
+#agree textarea::placeholder {
+  color: #bbbbbb;
 }
 #agree .fee-section i.far.fa-angle-down {
   top: 50px;
 }
 button.uploads-btns {
-  background: #65C87A;
+  background: #65c87a;
   border-radius: 4px;
   height: 40px;
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   padding: 0 20px;
   margin-bottom: 30px;

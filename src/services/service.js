@@ -26,6 +26,23 @@ export const postApiWithHeaders = async (url, token, params) => {
     return error.response;
   }
 };
+
+export const postImageApi = async (url, token, params) => {
+  var data = new FormData();
+  data.append("documentfront", params);
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  try {
+    let x = await axios.post(apiUrl + url, data, config);
+    return x;
+  } catch (error) {
+    return error.response;
+  }
+};
 export const deleteApi = async (url, token, params) => {
   const config = {
     headers: {

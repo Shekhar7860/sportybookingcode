@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imagenine from "../../assets/images/imagenine.png";
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
@@ -10,8 +10,48 @@ import Payments from "../../assets/owner/Payments.png";
 import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getCards, subscribeMemberShip } from "../../redux/actions/owner";
+import { toast } from "react-toastify";
+function OwnerSubscriptions({ userData, getUserCards, subscribe }) {
+  const [cards, setCards] = useState([]);
+  const [loading, showLoading] = useState(false);
+  useEffect(() => {
+    const userCards = async () => {
+      const res = await getUserCards(
+        "/cards",
+        userData.userData ? userData.userData.token : null
+      );
+      if (res.status == 200) {
+        if (res.data.data != undefined) {
+          setCards(res.data.data);
+        }
+      }
+    };
+    userCards();
+  }, [userData.userData]);
 
-function OwnerSubscriptions() {
+  const upgradeMemberShip = async () => {
+    if (cards.length > 0) {
+      showLoading(true);
+      const res = await subscribe(
+        "/subscribe",
+        userData.userData ? userData.userData.token : null,
+        {
+          payment_method_id: cards[0].payment_method,
+        }
+      );
+      showLoading(false);
+      if (res.status == 200) {
+        toast.success(res.data.message);
+      } else {
+        if (res.data == 403) {
+          toast.error(res.data ? res.data.message : String(res));
+        }
+        toast.error(res.data ? res.data.error_description : String(res));
+      }
+    }
+  };
   return (
     <div>
       <Ownerheader />
@@ -209,6 +249,11 @@ function OwnerSubscriptions() {
             </div>
           </div>
           <div className="owner-right booking-owner">
+            {loading ? (
+              <div class="loader-wrapper">
+                <div class="loader"></div>
+              </div>
+            ) : null}
             <div className="container">
               <div className="row">
                 <div className="col-md-12 mt-4">
@@ -250,7 +295,12 @@ function OwnerSubscriptions() {
                           <li>Add Instructor Feature</li>
                         </ul>
                         <div className="bottom-plan">
-                          <button className="select-btn">Upgrade Now</button>
+                          <button
+                            className="select-btn"
+                            onClick={upgradeMemberShip}
+                          >
+                            Upgrade Now
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -265,4 +315,18 @@ function OwnerSubscriptions() {
   );
 }
 
-export default OwnerSubscriptions;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+    userLabelName: state.user.userLabelName,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getUserCards: (url, token) => dispatch(getCards(url, token)),
+    subscribe: (url, token, params) =>
+      dispatch(subscribeMemberShip(url, token, params)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerSubscriptions);

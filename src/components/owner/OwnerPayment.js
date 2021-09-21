@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
@@ -10,26 +10,201 @@ import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addBank, uploadDocument} from "../../redux/actions/owner";
+import { addBank, uploadDocument } from "../../redux/actions/owner";
 import "./owner.css";
-const OwnerPayment = ({uploadDoc, userData}) => {
+import { CloseCircleFilled } from "@ant-design/icons";
+import { toast } from "react-toastify";
+const initialData = {
+  name: "",
+  account_number: "",
+  routing_number: "",
+  line1: "",
+  postal_code: "",
+  state: "",
+  country: "",
+  city: "",
+  last4: "",
+  front_image_id: "",
+  back_image_id: "",
+  day: "",
+  month: "",
+  year: "",
+};
+
+// const initialData = {
+//   routingNumber: "110000000",
+//   accountNumber: "000123456789",
+//   name: "dess",
+//   last4: "0000",
+//   day: "01",
+//   month: "02",
+//   year: "1998",
+//   city: "New Richmond",
+//   Address: "880 E 6th St, New Richmond, WI 54017, USA",
+//   postalCode: "54017",
+//   state: "Wisconsin",
+//   country: "US",
+// };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "NAME":
+      return { ...state, name: action.payload };
+    case "ACCOUNTNUMBER":
+      return { ...state, account_number: action.payload };
+    case "ROUTINGNUMBER":
+      return { ...state, routing_number: action.payload };
+    case "ADDRESS":
+      return { ...state, line1: action.payload };
+    case "LASTFOUR":
+      return { ...state, last4: action.payload };
+    case "POSTALCODE":
+      return { ...state, postal_code: action.payload };
+    case "CITY":
+      return { ...state, city: action.payload };
+    case "STATE":
+      return { ...state, state: action.payload };
+    case "COUNTRY":
+      return { ...state, country: action.payload };
+    case "FRONTIMAGE":
+      return { ...state, front_image_id: action.payload };
+    case "BACKIMAGE":
+      return { ...state, back_image_id: action.payload };
+    case "MONTH":
+      return { ...state, month: action.payload };
+    case "DAY":
+      return { ...state, day: action.payload };
+    case "YEAR":
+      return { ...state, year: action.payload };
+    default:
+      return state;
+  }
+};
+const OwnerPayment = ({ uploadDoc, userData, addBankDetail }) => {
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
-  const saveDetail = async () => {
-    const res = await uploadDoc('/upload',userData.userData ? userData.userData.token : null, 
-    {documentfront : frontImage} )
-    console.log('re', res)
+  const [state, dispatch] = useReducer(reducer, initialData);
+  const [loading, showLoading] = useState(false);
+  const saveDetail = async (selectedFile, param) => {
+    const res = await uploadDoc(
+      "/upload",
+      userData.userData ? userData.userData.token : null,
+      selectedFile
+    );
+    if (res.status == 200) {
+      if (param == "front") {
+        dispatch({ type: "FRONTIMAGE", payload: res.data.file.id });
+      } else {
+        dispatch({ type: "BACKIMAGE", payload: res.data.file.id });
+      }
+    } else {
+      toast.error(res.data ? res.data.error_description : String(res));
+    }
   };
 
-  const changeFile = (e) => {
+  const handleChange = (e, param) => {
+    if (param == "name") {
+      dispatch({ type: "NAME", payload: e.target.value });
+    } else if (param == "accountnumber") {
+      dispatch({ type: "ACCOUNTNUMBER", payload: e.target.value });
+    } else if (param == "routingnumber") {
+      dispatch({ type: "ROUTINGNUMBER", payload: e.target.value });
+    } else if (param == "last4") {
+      dispatch({ type: "LASTFOUR", payload: e.target.value });
+    } else if (param == "city") {
+      dispatch({ type: "CITY", payload: e.target.value });
+    } else if (param == "address") {
+      dispatch({ type: "ADDRESS", payload: e.target.value });
+    } else if (param == "expiry") {
+      dispatch({ type: "EXPIRY", payload: e.target.value });
+    } else if (param == "cvv") {
+      dispatch({ type: "CVV", payload: e.target.value });
+    } else if (param == "postalcode") {
+      dispatch({ type: "POSTALCODE", payload: e.target.value });
+    } else if (param == "state") {
+      dispatch({ type: "STATE", payload: e.target.value });
+    } else if (param == "country") {
+      dispatch({ type: "COUNTRY", payload: e.target.value });
+    } else if (param == "date") {
+      var dt = new Date(e.target.value);
+      dispatch({ type: "MONTH", payload: dt.getUTCMonth() + 1 });
+      dispatch({ type: "DAY", payload: dt.getUTCDate() });
+      dispatch({ type: "YEAR", payload: dt.getUTCFullYear() });
+      // dispatch({ type: "COUNTRY", payload: e.target.value });
+    }
+  };
+  const changeFile = (e, param) => {
     let reader = new FileReader();
+    saveDetail(e.target.files[0], param);
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = (e) => {
-      console.log("e2222", e.target.result);
-      setFrontImage(e.target.result);
+      if (param == "front") {
+        setFrontImage(e.target.result);
+      } else {
+        setBackImage(e.target.result);
+      }
     };
 
     //  setFrontImage(e.target.files[0]);
+  };
+
+  const removeFile = (param) => {
+    if (param == "front") {
+      setFrontImage("");
+    } else {
+      setBackImage("");
+    }
+  };
+
+  const save = async () => {
+    if (state.name == "") {
+      return toast.error("Please Enter Name");
+    }
+    if (state.account_number == "") {
+      return toast.error("Please Enter Account Number");
+    }
+    if (state.routing_number == "") {
+      return toast.error("Please Enter Routing Number");
+    }
+    if (state.day == "") {
+      return toast.error("Please Select Date Of Birth");
+    }
+    if (state.last4 == "") {
+      return toast.error("Please Enter Last 4 Digits");
+    }
+    if (state.postal_code == "") {
+      return toast.error("Please Enter Postal Code");
+    }
+    if (state.city == "") {
+      return toast.error("Please Select City");
+    }
+    if (state.state == "") {
+      return toast.error("Please Select State");
+    }
+    if (state.country == "") {
+      return toast.error("Please Select Country");
+    }
+    if (state.front_image_id == "") {
+      return toast.error("Please Upload Front Image");
+    }
+    if (state.back_image_id == "") {
+      return toast.error("Please Upload Back Image");
+    }
+
+    showLoading(true);
+    const res = await addBankDetail(
+      "/bank",
+      userData.userData ? userData.userData.token : null,
+      state
+    );
+    showLoading(false);
+    if (res.status == 200) {
+      toast.success(res.data.message);
+    } else {
+      if (res.data == 403) {
+        toast.error(res.data ? res.data.message : String(res));
+      }
+      toast.error(res.data ? res.data.error_description : String(res));
+    }
   };
 
   const selectFile = () => {
@@ -39,7 +214,7 @@ const OwnerPayment = ({uploadDoc, userData}) => {
   const selectBackFile = () => {
     document.getElementById("my-create-input2").click();
   };
-  console.log("s", frontImage);
+
   return (
     <div>
       <Ownerheader />
@@ -237,6 +412,11 @@ const OwnerPayment = ({uploadDoc, userData}) => {
           </div>
 
           <div className="owner-right">
+            {loading ? (
+              <div class="loader-wrapper">
+                <div class="loader"></div>
+              </div>
+            ) : null}
             <div className="container">
               <div className="row">
                 <div className="col-md-12 mt-4">
@@ -251,40 +431,169 @@ const OwnerPayment = ({uploadDoc, userData}) => {
                         significant management rresponsibilit complete this
                         form.
                       </p>
-                      <div className="row mt-4 mb-3">
-                        <div className="col-md-8">
-                          <label>Email</label>
+                      <div className="bank">
+                        <div className="col-md-4 mt-2">
+                          <label>Name</label>
                           <input
                             type="text"
                             autocomplete="off"
-                            placeholder="john.j@gmail.com"
+                            placeholder="name"
+                            onChange={(e) => {
+                              handleChange(e, "name");
+                            }}
                           />
                         </div>
-                      </div>
-                      <p>Have a Stripe account? You can see the same email.</p>
-                      <div className="row mt-2">
-                        <div className="col-md-12">
-                          <Link to="/billing">
-                            <button className="update-btn" onClick={saveDetail}>
-                              Next
-                            </button>
-                          </Link>
+                        <div className="col-md-4 mt-2">
+                          <label>Account Number</label>
+                          <input
+                            type="number"
+                            autocomplete="off"
+                            placeholder="account number"
+                            onChange={(e) => {
+                              handleChange(e, "accountnumber");
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 mt-2">
+                          <label>Last 4</label>
+                          <input
+                            type="text"
+                            max-length={4}
+                            autocomplete="off"
+                            placeholder="e.g 4323"
+                            onChange={(e) => {
+                              handleChange(e, "last4");
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 mt-2">
+                          <label>Routing Number</label>
+                          <input
+                            type="number"
+                            autocomplete="off"
+                            placeholder="routing number"
+                            onChange={(e) => {
+                              handleChange(e, "routingnumber");
+                            }}
+                          />
+                        </div>
+
+                        <div className="col-md-4 mt-2">
+                          <label>Address</label>
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            placeholder="eg. 122 Example Street"
+                            onChange={(e) => {
+                              handleChange(e, "address");
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 mt-2">
+                          <label>Date Of Birth</label>
+                          <input
+                            type="date"
+                            autocomplete="off"
+                            placeholder="eg. 122 Example Street"
+                            onChange={(e) => {
+                              handleChange(e, "date");
+                            }}
+                          />
+                        </div>
+                        <div className="row mt-4">
+                          <div className="col-md-3">
+                            <div className="card-number">
+                              <label>Postal Code</label>
+                              <input
+                                type="text"
+                                placeholder="eg: 10012"
+                                onChange={(e) => {
+                                  handleChange(e, "postalcode");
+                                }}
+                                maxlength={6}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-3">
+                            <div className="card-number">
+                              <label>City</label>
+                              <select
+                                name="cars"
+                                id="cars"
+                                placeholder="Select City"
+                                onChange={(e) => {
+                                  handleChange(e, "city");
+                                }}
+                              >
+                                <option value="volvo">Select City</option>
+                                <option value="New York">New York</option>
+                                <option value="Los Angeles">Los Angeles</option>
+                                <option value="Chicago">Chicago</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row mt-4">
+                          <div className="col-md-3">
+                            <div className="card-number">
+                              <label>State</label>
+                              <select
+                                name="cars"
+                                id="cars"
+                                placeholder="Select State"
+                                onChange={(e) => {
+                                  handleChange(e, "state");
+                                }}
+                              >
+                                <option value="volvo">Select State</option>
+                                <option value="California">California</option>
+                                <option value="Washington">Washington</option>
+                                <option value="Alaska">Alaska</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="col-md-3">
+                            <div className="card-number">
+                              <label>Country</label>
+                              <select
+                                name="cars"
+                                id="cars"
+                                placeholder="Select Country"
+                                onChange={(e) => {
+                                  handleChange(e, "country");
+                                }}
+                              >
+                                <option value="volvo">Select Country</option>
+                                <option value="IN">India</option>
+                                <option value="US">United States</option>
+                                <option value="AU">Australia</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                       <div className="row">
                         <div className="create-single-upload mt-3">
                           <p>Upload Front Side</p>
                           <div className="upload-box-container">
                             <div className="upload-box">
                               {frontImage ? (
-                                <img src={frontImage} />
+                                <>
+                                  <CloseCircleFilled
+                                    onClick={() => removeFile("front")}
+                                  />
+                                  <img src={frontImage} />
+                                </>
                               ) : (
                                 <div className="upload-input">
                                   <p>PNG, GIF, MP4 or MP3. Max 30mb</p>
                                   <input
                                     id="my-create-input"
                                     className="upload-box-input"
-                                    onChange={changeFile}
+                                    onChange={(e) => {
+                                      changeFile(e, "front");
+                                    }}
                                     type="file"
                                   />
                                   <button onClick={selectFile}>Upload</button>
@@ -297,15 +606,22 @@ const OwnerPayment = ({uploadDoc, userData}) => {
                           <p>Upload Back Side</p>
                           <div className="upload-box-container">
                             <div className="upload-box">
-                              {frontImage ? (
-                                <img src={frontImage} />
+                              {backImage ? (
+                                <>
+                                  <CloseCircleFilled
+                                    onClick={() => removeFile("back")}
+                                  />
+                                  <img src={backImage} />
+                                </>
                               ) : (
                                 <div className="upload-input">
                                   <p>PNG, GIF, MP4 or MP3. Max 30mb</p>
                                   <input
                                     id="my-create-input2"
                                     className="upload-box-input"
-                                    onChange={changeFile}
+                                    onChange={(e) => {
+                                      changeFile(e, "back");
+                                    }}
                                     type="file"
                                   />
                                   <button onClick={selectBackFile}>
@@ -314,6 +630,21 @@ const OwnerPayment = ({uploadDoc, userData}) => {
                                 </div>
                               )}
                             </div>
+                          </div>
+                        </div>
+                        <div className="row mt-2">
+                          <div className="col-md-12">
+                            <div className="mt-4">
+                              <p>
+                                Have a Stripe account? You can see the same
+                                email.
+                              </p>
+                            </div>
+                            {/* <Link to="/billing"> */}
+                            <button className="update-btn" onClick={save}>
+                              Save
+                            </button>
+                            {/* </Link> */}
                           </div>
                         </div>
                       </div>
@@ -338,7 +669,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBankDetail: (url, token, obj) => dispatch(addBank(url, token, obj)),
-    uploadDoc : (url, token, obj) => dispatch(uploadDocument(url, token, obj))
+    uploadDoc: (url, token, obj) => dispatch(uploadDocument(url, token, obj)),
   };
 };
 

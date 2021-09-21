@@ -86,7 +86,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
     e.preventDefault();
     if (forgotEmail) {
       if (!validateEmail(forgotEmail)) {
-        toast.error("Please Enter Valid Email Id");
+        toast.error("Please Enter Valid Email");
       }
       showLoading(true);
       const res = await forgotPassword("/user/forgot/password", {
@@ -210,7 +210,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
   const signUpUser = async (e) => {
     e.preventDefault();
     if (state.email == "") {
-      return toast.error("Please Enter Email Id");
+      return toast.error("Please Enter Email");
     }
     if (state.phone_number == "") {
       return toast.error("Please Enter Phone Number");
@@ -234,7 +234,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
       return toast.error("Please Enter Valid Phone Number");
     }
     if (!validateEmail(state.email)) {
-      return toast.error("Please Enter Valid Email Id");
+      return toast.error("Please Enter Valid Email");
     }
     if (!validatePassword(state.password)) {
       return toast.error(

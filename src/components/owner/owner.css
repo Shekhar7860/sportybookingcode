@@ -211,3 +211,6 @@
     max-width: 100%;
   }
 }
+.bank .col-md-4 {
+  padding-left: 0px;
+}
