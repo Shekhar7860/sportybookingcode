@@ -10,13 +10,15 @@ import notifications from "../../assets/owner/notifications.png";
 import subscriptions from "../../assets/owner/subscriptions.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addBank } from "../../redux/actions/owner";
+import { addBank, uploadDocument} from "../../redux/actions/owner";
 import "./owner.css";
-const OwnerPayment = () => {
+const OwnerPayment = ({uploadDoc, userData}) => {
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
-  const saveDetail = () => {
-    alert("hi");
+  const saveDetail = async () => {
+    const res = await uploadDoc('/upload',userData.userData ? userData.userData.token : null, 
+    {documentfront : frontImage} )
+    console.log('re', res)
   };
 
   const changeFile = (e) => {
@@ -336,6 +338,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBankDetail: (url, token, obj) => dispatch(addBank(url, token, obj)),
+    uploadDoc : (url, token, obj) => dispatch(uploadDocument(url, token, obj))
   };
 };
 
