@@ -1757,9 +1757,22 @@ button:focus {
 }
 table,
 td {
-  border: 1px solid black;
+  border: 1px solid #0000000f;
   border-collapse: collapse;
-  height: 50px;
+  background: #FAFAFA;
+  padding: 8px 10px 8px !important;
+}
+.table-week ul li {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: right;
+  color: #000000;
+  padding-top: 22px;
+  margin-right: 10px;
+}
+td{
+  height: 34px;
 }
 .firstSelection {
   background: #9bc7fb;
@@ -1785,6 +1798,10 @@ th {
   background: #000000;
   height: 50px;
   color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
 }
 .payment-heading.wallet p {
   opacity: 1;
@@ -3605,6 +3622,56 @@ button.uploads-btns {
   left: -5px;
 }
 
+.map-box {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  margin: 0 auto;
+  width: 70%;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.map-img img {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+.map-text-box {
+  background: #080808;
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 20%);
+  padding: 15px;
+  border-radius: 0 0 15px 15px;
+  position: relative;
+}
+.map-text-box h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.map-text-box p {
+  font-size: 12px;
+  line-height: 18px;
+  color: #FFFFFF;
+  opacity: 0.8;
+  margin: 0;
+}
+.map-text-box:after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: #080808;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: 0 auto;
+  bottom: -15px;
+  transform: rotate(45deg);
+}
 /******* responsive start here ********/
 @media only screen and (min-width: 1420px) {
   body.modal-open {

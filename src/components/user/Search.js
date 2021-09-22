@@ -439,6 +439,15 @@ function Search({ userLabelName }) {
                     allowfullscreen=""
                     loading="lazy"
                   ></iframe>
+                  <div className="map-box">
+                    <div className="map-img">
+                      <img src={one} />
+                    </div>
+                    <div className="map-text-box">
+                      <h2>Wayne Gretzky Sports Centre</h2>
+                      <p>254 North Park Street, Brantford ON N3R 4L1</p>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

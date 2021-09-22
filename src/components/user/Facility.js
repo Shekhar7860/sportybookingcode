@@ -304,6 +304,23 @@ function Facility() {
                 <div className="col-md-12 pt-4">
                   <div className="all-room-img">
                     <div className="demo-app">
+                      <div className="table-week">
+                        <ul>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                          <li>7:00 <span></span> AM </li>
+                        </ul>
+                      </div>
                       <div className="demo-app-main">
                         {table == true ? (
                           <table>
