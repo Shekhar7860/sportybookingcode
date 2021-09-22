@@ -20,3 +20,13 @@ export const getCards = (url, token, params) => async (dispatch) => {
   const response = await getApi(url, token, params);
   return response;
 };
+
+export const getOwnerFacilities = (url, token, params) => async (dispatch) => {
+  const response = await getApi(url, token, params);
+  return response;
+};
+
+export const addOwnerFacility = (url, token, params) => async (dispatch) => {
+  const response = await postApiWithHeaders(url, token, params);
+  return response;
+};

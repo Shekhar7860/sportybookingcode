@@ -247,6 +247,7 @@ const Header = ({ signUp, login, forgotPassword }) => {
       country_code: phone,
     };
     const res = await signUp("/user/signup", updatedState);
+    console.log("res", res);
     if (res.status == 200) {
       showLoading(false);
       if (res.data.statusCode == 200) {

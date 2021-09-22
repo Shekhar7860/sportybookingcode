@@ -543,7 +543,7 @@ const OwnerListing = () => {
             <div className="more-filter-btn pt-4">
               <div className="add-list-rink">
                 <button className="listing" onClick={showhideaddrecurringmodal}>
-                  Add Recurring Listing
+                  Add Bulk Listing
                 </button>
               </div>
               <div className="more-clear">
@@ -567,7 +567,7 @@ const OwnerListing = () => {
           </span>
           <div className="add-list">
             <p>Wayne Gretzky Sports Centre</p>
-            <h2>Add Recurring Listing</h2>
+            <h2>Add Bulk Listing</h2>
           </div>
           <div className="active-type">
             <form>

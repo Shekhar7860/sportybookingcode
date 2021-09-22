@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Ownerheader from "../Ownerheader";
 import home from "../../assets/owner/home.png";
 import calendar from "../../assets/owner/calendar.png";
@@ -14,8 +14,22 @@ import preium from "../../assets/images/preium.png";
 import Pending from "../../assets/images/Pending.png";
 import Premium from "../../assets/images/Premium.png";
 import { Link } from "react-router-dom";
-
-const OwnerMyFacilities = () => {
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import { getOwnerFacilities } from "../../redux/actions/owner";
+const OwnerMyFacilities = ({ userData, getFacilities }) => {
+  useEffect(() => {
+    const ownerMyFacilities = async () => {
+      const res = await getFacilities(
+        "/facility/facilities",
+        userData.userData ? userData.userData.token : null
+      );
+      console.log("res", res);
+      if (res.status == 200) {
+      }
+    };
+    ownerMyFacilities();
+  }, [userData.userData]);
   return (
     <div>
       <Ownerheader />
@@ -318,4 +332,17 @@ const OwnerMyFacilities = () => {
   );
 };
 
-export default OwnerMyFacilities;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getFacilities: (url, token, obj) =>
+      dispatch(getOwnerFacilities(url, token, obj)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerMyFacilities);

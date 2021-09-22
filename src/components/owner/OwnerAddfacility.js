@@ -11,8 +11,9 @@ import photo2 from "../../assets/owner/photo2.png";
 import upload from "../../assets/owner/Upload.png";
 import nine from "../../assets/images/imagenine.png";
 import { Link } from "react-router-dom";
-
-const OwnerAddFacility = () => {
+import { connect } from "react-redux";
+import { addOwnerFacility } from "../../redux/actions/owner";
+const OwnerAddFacility = ({ userData, addFacility }) => {
   return (
     <div>
       <Ownerheader />
@@ -839,7 +840,9 @@ const OwnerAddFacility = () => {
                                   <div className="select-one">
                                     <i class="far fa-angle-down"></i>
                                     <select name="cars" id="cars">
-                                      <option value="volvo">Hockey Rink </option>
+                                      <option value="volvo">
+                                        Hockey Rink{" "}
+                                      </option>
                                       <option value="saab">9 AM</option>
                                       <option value="mercedes">13 AM</option>
                                       <option value="audi">7 AM</option>
@@ -1149,13 +1152,6 @@ const OwnerAddFacility = () => {
                         </div>
                       </div>
 
-
-
-
-
-
-
-
                       <div
                         className="tab-pane fade"
                         id="features"
@@ -1176,25 +1172,29 @@ const OwnerAddFacility = () => {
                                       <div className="select-one">
                                         <i class="far fa-angle-down"></i>
                                         <select name="cars" id="cars">
-                                          <option value="volvo">200 x 85 feet </option>
+                                          <option value="volvo">
+                                            200 x 85 feet{" "}
+                                          </option>
                                           <option value="saab">9 AM</option>
-                                          <option value="mercedes">13 AM</option>
+                                          <option value="mercedes">
+                                            13 AM
+                                          </option>
                                           <option value="audi">7 AM</option>
                                         </select>
                                       </div>
                                     </div>
                                   </div>
                                   <div className="form-group width-incress half-select">
-                                    <label>
-                                      Max Participants
-                                    </label>
+                                    <label>Max Participants</label>
                                     <div className="select-box">
                                       <div className="select-one">
                                         <i class="far fa-angle-down"></i>
                                         <select name="cars" id="cars">
                                           <option value="volvo"> 20</option>
                                           <option value="saab">9 AM</option>
-                                          <option value="mercedes">13 AM</option>
+                                          <option value="mercedes">
+                                            13 AM
+                                          </option>
                                           <option value="audi">7 AM</option>
                                         </select>
                                       </div>
@@ -1202,22 +1202,21 @@ const OwnerAddFacility = () => {
                                   </div>
 
                                   <div className="form-group width-incress half-select">
-                                    <label>
-                                      Total Spectators
-                                    </label>
+                                    <label>Total Spectators</label>
                                     <div className="select-box">
                                       <div className="select-one">
                                         <i class="far fa-angle-down"></i>
                                         <select name="cars" id="cars">
                                           <option value="volvo"> 190 </option>
                                           <option value="saab">9 AM</option>
-                                          <option value="mercedes">13 AM</option>
+                                          <option value="mercedes">
+                                            13 AM
+                                          </option>
                                           <option value="audi">7 AM</option>
                                         </select>
                                       </div>
                                     </div>
                                   </div>
-
                                 </div>
                               </div>
                               <div className="col-md-6 mt-5">
@@ -1238,7 +1237,6 @@ const OwnerAddFacility = () => {
                                   </label>
                                   <span className="map-text">No</span>
                                 </div>
-
 
                                 <div class="anil_nepal mb-2">
                                   <h3>Change Rooms Lockers</h3>
@@ -1276,7 +1274,6 @@ const OwnerAddFacility = () => {
                                   <span className="map-text">No</span>
                                 </div>
 
-
                                 <div class="anil_nepal mb-2">
                                   <h3>Washroom</h3>
                                   <span className="map-text mr-2">Yes</span>
@@ -1294,11 +1291,8 @@ const OwnerAddFacility = () => {
                                   </label>
                                   <span className="map-text">No</span>
                                 </div>
-
-
                               </div>
                             </div>
-
                           </div>
 
                           <div className="col-md-6 pl-5">
@@ -1332,13 +1326,10 @@ const OwnerAddFacility = () => {
                                     name="w3review"
                                     rows="4"
                                     cols="50"
-                                  // placeholder="Description"
+                                    // placeholder="Description"
                                   ></textarea>
                                 </div>
-
                               </div>
-
-
                             </div>
                           </div>
                           <div className="feature-buttons row">
@@ -1365,8 +1356,6 @@ const OwnerAddFacility = () => {
                           </div>
                         </div>
                       </div>
-
-
 
                       <div
                         className="tab-pane fade"
@@ -1407,21 +1396,20 @@ const OwnerAddFacility = () => {
                                 <label for="cars">Wavier Link</label>
                                 <div className="select-box">
                                   <div className="select-one">
-                                    <input type="text" placeholder="waynegretzky.ca/wavier.html" />
+                                    <input
+                                      type="text"
+                                      placeholder="waynegretzky.ca/wavier.html"
+                                    />
                                   </div>
                                 </div>
                               </div>
 
-
                               <div className="form-group upload-waiver buttons-addroom activities-half">
-                                <label>
-                                  Upload Wavier PDF
-                                </label>
+                                <label>Upload Wavier PDF</label>
                                 <button className="btn btn-black">
                                   Select File
                                 </button>
                               </div>
-
 
                               <div className="form-group mb-5">
                                 <div className="col-md-6 pl-0 pr-0">
@@ -1438,7 +1426,9 @@ const OwnerAddFacility = () => {
                                     </div>
                                     <span></span>
                                     <div className="select-one">
-                                      <label for="cars">Cancellation Policy</label>
+                                      <label for="cars">
+                                        Cancellation Policy
+                                      </label>
                                       <i class="far fa-angle-down"></i>
                                       <select name="cars" id="cars">
                                         <option value="volvo">11 days </option>
@@ -1472,16 +1462,10 @@ const OwnerAddFacility = () => {
                                   </button>
                                 </div>
                               </div>
-
                             </div>
                           </div>
-
-
-
                         </div>
                       </div>
-
-
 
                       <div
                         className="tab-pane fade"
@@ -1492,7 +1476,6 @@ const OwnerAddFacility = () => {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="add-facility-form">
-
                               <div className="uploads-tab">
                                 <button className="uploads-btns">Uploas</button>
                               </div>
@@ -1524,19 +1507,11 @@ const OwnerAddFacility = () => {
                                   </button>
                                 </div>
                               </div>
-
                             </div>
                           </div>
-
-
-
                         </div>
                       </div>
-
-
-
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -1544,9 +1519,6 @@ const OwnerAddFacility = () => {
           </div>
         </div>
       </div>
-
-
-
 
       <div
         class="modal fade"
@@ -1595,4 +1567,17 @@ const OwnerAddFacility = () => {
   );
 };
 
-export default OwnerAddFacility;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFacility: (url, token, obj) =>
+      dispatch(addOwnerFacility(url, token, obj)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerAddFacility);

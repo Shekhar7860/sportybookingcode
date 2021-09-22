@@ -200,7 +200,7 @@ const OwnerPayment = ({ uploadDoc, userData, addBankDetail }) => {
     if (res.status == 200) {
       toast.success(res.data.message);
     } else {
-      if (res.data == 403) {
+      if (res.status == 403) {
         toast.error(res.data ? res.data.message : String(res));
       }
       toast.error(res.data ? res.data.error_description : String(res));
